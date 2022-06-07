@@ -3,7 +3,7 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
-            "title": "Getting Started with Live Labs",
+            "title": "Get Started with Live Labs",
             "filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/cloud-login/cloud-login-livelabs2.md",
             "type": "livelabs"
         },
@@ -13,7 +13,7 @@
             "type": "livelabs"
         },
         {
-            "title": "Lab 1: Getting Started with OML4Py",
+            "title": "Lab 1: Get Started with OML4Py",
             "type": "livelabs",
             "filename": "../../get-started/get-started.md"
         },
