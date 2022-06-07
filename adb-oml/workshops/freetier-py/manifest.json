@@ -36,7 +36,7 @@
         "title": "Lab A4: Using Prediction in an Application",
         "description": "Set up the ATP environment, import and APEX application and explore how ADB can be embedded into applications.",
         "filename": "../../integrate-with-app/integrate-with-app2.md"
-      },        
+      },
       {
         "title": "OML4PY Introduction - B",
         "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/oracle-machine-learning/oml4py-adb/introduction/introduction.md"
