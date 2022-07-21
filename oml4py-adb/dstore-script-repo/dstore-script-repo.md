@@ -1,6 +1,6 @@
 # Store and manage Python objects and user-defined functions
 
-## Introduction
+### Introduction
 
 This lab walks you through the steps to use and work with OML4Py datastores and the script repository.
 
@@ -175,4 +175,4 @@ After you reach the end of Lab 4, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022

@@ -1,6 +1,6 @@
 # Select and manipulate data using the transparency layer
 
-## Introduction
+### Introduction
 
 This lab shows how to use the transparency layer classes to work with data and to perform exploratory analysis of the data.
 
@@ -127,4 +127,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
