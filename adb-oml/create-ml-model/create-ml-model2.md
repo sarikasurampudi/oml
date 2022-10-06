@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the lab where you’re going to do the work of building and training a machine learning model that will help Alpha Office.
+In this lab, you will build a machine learning model that will help Alpha Office.
 
 Estimated lab time: 20 - 30 minutes
 
@@ -23,7 +23,7 @@ In this lab, you will use Apache Zeppelin notebooks to do this work. The lab wil
 ### Objectives
 
 - Import an Apache Zeppelin notebook.
-- Become familiar with Oracle Machine Learning Algorithms.
+- Become familiar with Oracle Machine Learning algorithms.
 - Create a machine learning model to determine factors that predict good credit.
 
 ### Prerequisites
@@ -34,27 +34,29 @@ This lab assumes you have completed the following labs:
 
 ## Task 1: Create ML Notebook
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and navigate to your instance.
+1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
     ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
+2.  Navigate to your instance.
+
     ![](./images/adw-instance.png " ")
 
-    On the **Tools** tab of your ADW instance, and click on **Open Oracle ML User Administration**.
+3. On the **Tools** tab of your ADW instance, and click **Open Oracle ML User Administration**.
 
     ![](./images/tools.png " ")
 
     ![](./images/open-ml-admin.png " ")
 
-    Sign in as **Username - ADMIN** with the password you used when you created your Autonomous instance.
+4. Sign in as **Username - ADMIN** with the password you used when you created your ADW instance.
 
     ![](./images/ml-login.png  " ")
 
-2.  In the Machine Learning User Administration, click on the **home icon** on the upper right.
+5.  In the Machine Learning User Administration, click on the **home icon** on the upper right.
 
     ![](./images/home-icon.png  " ")
 
-3.  Log in as **ML\_USER** and provide the password you created in lab 1 for the ML\_USER. Before you log in, you may wish to bookmark this page.
+3.  Log in as **ML\_USER** and provide the password you created in Lab 1 for the ML\_USER. Before you log in, you may wish to bookmark this page.
 
     ![](./images/mluser-sign-in.png  " ")
 
@@ -62,57 +64,51 @@ This lab assumes you have completed the following labs:
 
     ![](./images/examples.png  " ")
 
-5.  Note the various ML notebook examples. Feel free to review some of these. We will be creating a new ML notebook in this lab. Click on the upper-left hamburger menu.
+5.  Note the various ML notebook examples. Feel free to review some of these. Let's create a new ML notebook in this lab. Click on the upper-left cloud menu.
 
     ![](./images/notebooks-menu.png  " ")
 
-6.  Click on the upper-left hamburger menu and select **Notebooks**.
+6.  Select **Notebooks**.
 
     ![](./images/choose-notebooks.png  " ")
 
-7.  We will create a notebook from the beginning, select **Create**.
+7.  Let's create a notebook from scratch. Click **Create**.
 
     ![](./images/018.png  " ")
 
-8.  Enter **adwc_notebook** as the name, then click **OK**.
+8.  Enter **My ADW Notebook** as the name, then click **OK**.
 
     ![](./images/019.png  " ")
 
-9. Now you can view the notebook created - **adwc_notebook**.
+9. The **My ADW Notebook** open for you to edit.
 
     ![](./images/new-notebook.png " ")
 
 ## Task 2: Add Content to Your ADW Notebook
 
-It is simple to create content in Zeppelin Notebooks, and the following exercise will give you experience in doing so.
+You can add text and code to your notebook to customize it.  Follow these steps to edit your OML Notebook.
 
-1.  Click on the hamburger menu and select **Notebooks** in the upper left.
+1.  Click the **gear** icon in the upper right. We must set the interpreter binding to connect to the ADW database instance and run queries. Be sure to select at least one of the **services** (High, Medium, or Low (or all)) and click **Save**.
 
-    ![](./images/046.png  " ")
-
-    ![](./images/047.png  " ")
-
-2.  Select the **notebook** you just created.
-
-    ![](./images/adwc-notebook.png  " ")
-
-3.  Click on the **gear** icon in the upper right. We must set the interpreter binding if we're going to connect to the ADW database and run queries. Be sure to select at least one of the **services** (High, Medium, or Low (or all)).
+2. Click on the **gear** icon in the upper right. We must set the interpreter binding if we're going to connect to the ADW database and run queries. Select the medium and markdown interpreters. You can deselect items by clicking them, changing them from blue to white.
 
     ![](./images/gear.png  " ")
 
-    Zeppelin notebooks are composed of paragraphs that can contain formatted text, sql, and script (pl/sql). Notebooks can support a broad range of scripting languages (python, R, etc.), but we'll just be using these three. We create different paragraphs with different interpreters based on what we want to put in the paragraphs. The interpreter is set at the top of the paragraph:
+  Zeppelin notebooks are composed of paragraphs that can contain formatted text using markdown, SQL, PL/SQL, Python, and R. We'll just be using markdown, SQL, PL/SQL, and Python. We create different paragraphs with different interpreters based on what we want to put in the paragraphs. The interpreter is set at the top of the paragraph:
     - %md - markdown language which is used for formatted text.
     - %sql - used to run sql statements.  Note you can only run one statement per paragraph, otherwise use a script.
     - %script - used to run multiple sql statements and pl/sql blocks.
+    - %python - used to run Python code.
+    - %r - used to run the R code.
 
-4.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically. There is no need to click a save button.
+4.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
 
     ````
     <copy>
     %md
     ### Targeting Likely Good Credit Customers using Oracle Machine Learning's (OML) Classification Models
 
-    Heather has spent most of her time over the past couple of years extracting and preparing data for analysis.  The large volumes of data need extracting and processing mean she spends most of her time waiting for jobs to finish and very little of her time analyzing the data.  Demands from marketing are forcing a new approach whereby the data remains in the data warehouse and is processed there.  The alternative cloud solution is more complex, and has no direct out of the box processes to analyze the data in place.  She started taking a look at Oracle, and found the simple SQL commands in ADW are familiar, and execute extremely fast, leveraging all the performance features of the platform.  Further once she is done can can apply the learning models to incoming data on the fly, and allow end user analysts to immediately see mining results.  This drastically reduces the cycle of data preparation, analysis, and publishing.  It also means there is no change to analysis/reporting Data Visualization toolset that users are familiar with.
+    Heather has spent most of her time over the past couple of years extracting and preparing data for analysis.  The large volumes of data that need extracting and processing mean she spends most of her time waiting for jobs to finish and very little of her time analyzing the data. Demands from marketing are forcing a new approach whereby the data remains in the data warehouse and is processed there. The alternative cloud solution is more complex and has no direct out of the box processes to analyze the data in place. She started taking a look at Oracle and found the simple SQL commands in ADW are familiar, and run extremely fast, leveraging all the performance features of the platform. Further once she is done can apply the learning models to incoming data on the fly and allow end user analysts to immediately see mining results. This drastically reduces the cycle of data preparation, analysis, and deployment. It also means there is no change to analysis/reporting data visualization toolset that users are familiar with.
     </copy>
     ````
 
@@ -126,7 +122,7 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
 
     ![](./images/053.png  " ")
 
-6.  In the next paragraph enter the following, overwrite the %md that has defaulted in. Then hit **execute**.
+6.  In the next paragraph overwrite the %md with the following code. Click the play icon to run this paragraph.
 
     ````
     <copy>
@@ -142,11 +138,11 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
 
     ![](./images/select-mluser-table.png  " ")
 
-7.  To add a title, click on the **gear** icon and select **Show title**.
+7.  To add a title, click the **gear** icon and select **Show title**.
 
     ![](./images/show-title.png  " ")
 
-8.  Enter the following into the title.
+8.  Click the **Untitled** field and enter the following into the title.
 
     ````
     <copy>
@@ -157,155 +153,173 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
     ![](./images/edit-title.png  " ")
     ![](./images/057.png  " ")
 
-9.  In this last example, enter the following in the next paragraph and then execute the script. Review Data by Mode of Job Contacts and Income.
+9.  Enter the following in the next paragraph.
+      ````
+      <copy>
+      %sql
 
-    ````
-    <copy>
-    %sql
+      /* This is a basic example of a chart visualization in OML Notebooks. This one is a column graph.  Click on the 'settings' link below.  That will show you the fields in the query that were used to create the chart. After you review the settings, you can click on the link again to hide the settings. */
 
-    /* This is a basic example of a chart visualization in Zeppelin.  This particular one is a column graph.  Click on the 'settings' link below.  That will show you the fields in the query that were used to create the chart.  After you review the settings you can click on the link again to hide the settings. */
+      select customer_id, age, income, tenure, loan_type, loan_amount, occupation, number_of_current_accounts, max_cc_spent_amount, mode_job_of_contacts from ml_user.credit_scoring_100k where rownum &lt; 1000
+      </copy>
+      ````
 
-    select customer_id, age, income, tenure, loan_type, loan_amount, occupation, number_of_current_accounts, max_cc_spent_amount, mode_job_of_contacts from ml_user.credit_scoring_100k where rownum &lt; 1000
-    </copy>
-    ````
+![](./images/enter-paragraph.png  " ")
 
-    ![](./images/enter-paragraph.png  " ")
+
+10. Click the play icon to run the script and review the data by mode of job contacts and income.
 
     ![](./images/select-query-output.png  " ")
 
-10. Change the presentation style by selecting **bar chart** and then click on **Setting**.
+10. To view a bar chart presentation of the data, click the **bar chart** icon.
 
     ![](./images/bar-chart.png  " ")
 
+11. Click **settings** and remove `CUSTOMER_ID` from the keys field and `AGE SUM` from the values field.
+
     ![](./images/settings.png  " ")
 
-11. Drag and drop the fields into a position to review the results.
 
+12. Drag and drop `OCCUPATION` into **keys** and `CUSTOMER_ID` into the **values** fields. Review the results. Hide the settings by clicking on the **settings** label again.
     ![](./images/drag-and-drop.png  " ")
 
-12. Hide the settings by clicking on the **settings** label again.
 
+13. To hide the settings click settings again.
     ![](./images/hide-settings.png  " ")
 
-    So how does all this help us build ml models, collaborate with others, and review and share the results/findings?
+    So how does all this help us build machine learning models, collaborate with others, and review and share the results/findings?
 
-    Zeppelin provides:
+    OML Notebooks provide:
     - A collaborative shared workspace for model development.
     - A direct connection to all the data in your Autonomous Database that can scale to petabytes.
     - A platform for preparing data for model ingestion.
     - A visual pallet to display data and ml results.
     - A shared platform where discussion, documentation, execution, and results are presented together.
 
-13. Finally, let's review some examples. Click on hamburger and navigate to the **Home** dashboard.
+13. Finally, Let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame..
 
     ![](./images/hamburger-menu.png  " ")
 
     ![](./images/home.png  " ")
 
-14. Navigate to **Examples**.
-
     ![](./images/click-examples.png  " ")
 
-15. Select a model of interest. In this example, we will open **Anomaly Detection**.
+15. Select the notebook with an algorithm of interest. In this example, open the **OML4SQL Anomaly Detection** example and go through it. In the search box, type “anomaly” to see the notebooks illustrating this technique.
 
     ![](./images/click-anamoly-detection.png  " ")
 
     ![](./images/anamoly-detection.png  " ")
 
-## Task 3: Import ML Notebook
+## Task 3: Import the Workshop Notebook
 
-Adding content to a notebook is simple and fast. In this step, we have built the steps that are normally followed when exploring data and building a machine learning model. This has been saved to the file you can download. We will import this notebook and review it. It is important to note that you *must execute all the steps in this notebook if you wish to continue with lab 3 and 4*. Executing the steps takes only a few minutes.
+From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _OML4SQL Identifying Reliable Customers.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
 1. Download the notebook [targeting\_customers\_that\_complete\_all\_payments\_v4.json](files/targeting_customers_that_complete_all_payments_v4.json?download=1).
 
-2.  Navigate back to the Notebook page.
+2.  Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page..
 
     ![](./images/020.png  " ")
 
-3.  We will be importing a pre-built notebook, and using this for the remainder of the lab. Select **Import**.
+3.  Click **Import**. Let's import a pre-built notebook and use it for the rest of the lab.
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the JSON file and import the **targeting\_customers\_that\_complete\_all\_payments\_v4.json** notebook.
+4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting\_customers\_that\_complete\_all\_payments\_v4.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
 
-5.  Select the **Targeting Customers That Complete All Payments** notebook.
 
+##Task 4 View Notebook options
+Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
+
+1.  Click the **Targeting Customers That Complete All Payments** notebook to open it.
     ![](./images/step4.4-023.png  " ")
 
-6.  Before you start working the **Targeting Customers That Complete All Payments** you need to set the interpreter binging. Click on the gear icon.
+6.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
 
     ![](./images/step4.5-024.png  " ")
 
-7.  Select the **orcl_high** interpreter, drag and drop it to reorder and then **Save**.
+7.  Select the **orcl\_high** interpreter, drag and drop it to reorder and then click **Save**.
 
     ![](./images/gear2.png  " ")
 
-8.  Click on the **arrow** icon to run all paragraphs in the notebook.
+8.  Click the **play** icon to run all paragraphs in the notebook.
 
     ![](./images/step4.7-026.png  " ")
 
-    ![](./images/click-ok.png  " ")
+9. A confirmation window appears. Click **OK** to run all paragraphs. The paragraphs run one by one displaying the status next to the title.
+     ![](./images/click-ok.png  " ")
 
-9.  Click on the **output** icon to show the output and to view the code and the formatted text, click on **show editor** icon. Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
+9.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
+Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
 
     ![](./images/step4.8-027.png  " ")
 
     ![](./images/step4.9-029.png  " ")
 
-    ![](./images/step4.9-030.png  " ")
+10. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
+     ![](./images/step4.9-030.png  " ")
 
-    ![](./images/step4.9-031.png  " ")
+     ![](./images/step4.9-031.png  " ")
 
 ## Task 4: About this Notebook
 
-The rest of this lab will be done interactively in the notebook. This step discusses the result of each portion of the notebook.
+The rest of this lab will be done interactively in the notebook. This step discusses the result of each section of the notebook.
 
-1. This graph illustrates Good\_Credit customers who complete all their payments are hard to find.
+1. This graph illustrates viewing customers with “Good Credit” who complete all their payments are hard to find.
 
     ![](./images/nb3.png  " ")
 
-2. This section illustrates how we can graph our understanding of the data.
+2. This section illustrates how we can explore the data. The pie charts here show MARITAL and OCCUPATION, respectively, from a few selected attributes.
 
     ![](./images/nb4.png  " ")
 
+3. Next, we explore the bar chart with the following settings: MAX\_CC\_SPENT\_AMOUNT as **keys**, CREDIT\_SCORE\_BIN as **groups**, and CUSTOMER\_ID as **values**. For the scatter plot, the following are the settings: **xAxis**: AGE, **yAxis**: MAX\_CC\_SPENT\_AMOUNT, **group**: CREDIT\_SCORE\_BIN, **size**: NUMBER\_OF\_OPEN\_ACCOUNTS.
+
     ![](./images/nb5.png  " ")
 
-3. Run the Attribute Importance to identify key variables that most influence the target attribute.
+4. Optionally, we can create Histograms.
+
+5. Here, we are building a model to identify key variables that most influence the target attribute by running the Attribute Importance machine learning technique. 
 
     ![](./images/nb6.png  " ")
 
-4. Now, split the data into Train and Test data sets. Drop, then Build and Evaluate the Classification Model.
+6. View the attributes that independently influence the target MAX\_CC\_SPENT\_AMOUNT.
+
+7. Now, split the data into Train and Test data sets. This example has an automatic data preparation parameter in the model building step. We’ll first drop any model with the same name and then build and evaluate a classification model to predict the column CREDIT\_SCORE\_BIN.
 
     ![](./images/nb7.png  " ")
 
-5. Drop, build and evaluate multiple OML models for comparison.
+8. Drop and then build and evaluate multiple OML Classification models to compare the accuracy of the model. 
 
     ![](./images/nb8.png  " ")
 
-6. Join model outputs e.g. cumulative gains chart to view and assess model quality.
+9. Join the model outputs in a table. Here, the table ALL\_LIFT\_DATA contains cumulative gains output from all the models. Plot a cumulative gains chart to view and assess the model quality.
 
     ![](./images/nb9.png  " ")
 
-7. Now, apply the model to make predictions.
+10. Now, apply the model to make predictions on customers who are likely to be “GOOD CREDIT” and complete their payments.
 
     ![](./images/nb10.png  " ")
 
-8. Apply the model to a single record to make a prediction.
+11. Let's create a new table CREDIT\_SCORE\_NEW\_PREDICTIONS to view other data visualization tools. Drop the table if it already exists. 
+
+12. The next step scores and ranks the customers who are married, occupation is "Professional", indicating the loan type, and education level among other attributes. You can substitute the filters. 
+
+13. Let's apply the model in real-time and make a prediction with a single record. Also, create a new view to include the CUSTOMER\_SCORING\_100K\_PREDICT\_V data with the generated predictions.
 
     ![](./images/nb11.png  " ")
 
-9. Verify the table or view.
+14. Now, verify the CUSTOMER\_SCORING\_100k\_PREDICT\_V view.
 
     ![](./images/nb12.png  " ")
+
+ This way, the Alpha office can approach customers who can complete payments for their purchases.
 
 [Please proceed to the next lab](#next).
 
 ## Acknowledgements
 
 - **Author** - Derrick Cameron
-- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, June 2020
-- **Last Updated By/Date** - Anoosha Pilli, Product Manager, DB Product Management, March 2021
-
-
+- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning 
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development, October 2022
