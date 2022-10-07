@@ -12,15 +12,15 @@ Watch this short video to preview how to use prediction in an application.
 
 ### Before You Begin
 
-We will start this lab with some more setup, loading both data and an APEX application, the Alpha Office Customer Service application. Once those are ready we will show you three ways that you could deploy this model.
+We will start this lab with some more setup, loading both data and an APEX application, the Alpha Office Customer Service application. Once those are ready, we will show you three ways that you could deploy this model.
 
-First, we will integrate it into the Customer Service application. This is something that customer-facing employees would use when interacting with customers. In this case, the customer walks into the office, asks about making a purchase, and the rep can get an immediate answer. By integrating this model with that workflow, we can shorten the process of applying for the new service and improve customer experience. This is a common situation, where a model can help guide a response to an event as it happens. This would include situations like any customer interaction, recommending products on a web site, processing a financial transaction, or responding to a new sensor reading on a piece of equipment.
+We will first incorporate it into the application for customer service. Employees who deal with customers directly would do this when speaking with them. When a consumer enters the office and inquires about purchasing something, the representative can respond right away. This model can be integrated with that application workflow to speed up the application process for a given new service and enhance the user experience. This is a typical scenario where a model can assist in directing a reaction to an event in real time. Any client interaction, making product recommendations on a website, handling a financial transaction, or reacting to a new sensor reading on a piece of equipment would fall under this category.
 
-In the second scenario, we are going to process a large number of customers in batch. Alpha Office has completed an acquisition and inherited some new customers. The marketing department would like to process all those customers at once, perhaps creating a campaign to target those who are suitable. In this lab, we do that using the Customer Service application. It would also be possible to address a use case like this by loading bulk data into the database, running scripts to process them, and making results available through a suitable analytics tool like Oracle Analytics Cloud.
+n the second case, we'll deal with a lot of consumers in a batch. After completing an acquisition, Alpha Office now has several new customers. The marketing division would like to handle every customer at once, possibly by developing a campaign to focus on the right people. In this lab, we use the Customer Service application to accomplish that. A similar use case might also be addressed by importing large amounts of data into the database, processing them with scripts, and making the results accessible through an appropriate analytics tool like Oracle Analytics Cloud.
 
-Finally, while APEX applications work well with Oracle Database, many organizations use a distributed development approach. If this is the case, then making a model available via a REST API endpoint is the way to go. We’ll show you how to do that as well.
+Finally, even though APEX applications are compatible with Oracle Database, many businesses employ a distributed development methodology. If so, the best course of action is to make a model accessible via a REST API endpoint. We'll also demonstrate how to do that for you.
 
-And when you’ve completed this lab, you are all done. You have set up two autonomous databases, built, trained, and deployed a machine learning model. We hope that you can take your new-found skills back to your organization. Are there some business problems that you might be able to help with? Are there existing data sets that colleagues are analyzing where machine learning might help? If you set up a free trial account to do this lab, then you can continue to use the free tier or your $300 of cloud credits to experiment further. And you can find more information at Oracle.com/machine-learning
+Furthermore, you are done once you have finished this lab. You've created, trained, and deployed a machine learning model after establishing two autonomous databases. We hope you'll be able to apply your newly acquired skills at your company. Are there any business issues that you might be able to assist with? Do your coworkers currently analyze any data sets where machine learning could be useful? If you create a free trial account to do this lab, you can utilize the free tier or your $300 in cloud credits to do more experiments. Additionally, more details are available at Oracle.com/machine-learning.
 
 ### Objectives
 
@@ -36,9 +36,9 @@ This lab assumes you have completed the following labs:
 - Login to Oracle Cloud/Sign Up for Free Tier Account
 - Connect and Provision ADB
 - Create a Machine Learning Model
-- Migrate ML Model to ATP
+- Migrate machine learning model to ATP
 
-## Task 1: Download the Necessary Files
+## Task 1: Download the Custom Files
 
 1.  Click the link below to download the install file.
 
@@ -50,53 +50,57 @@ This lab assumes you have completed the following labs:
 
 ## Task 2: Prepare data for the lab in ATP
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
+1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
+    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
 
-    ![](./images/atp-instance.png " ")
+2. Choose your compartment and click your ATP instance.
+   ![](./images/atp-instance.png " ")
 
-2.  Select **Tools** on the Autonomous Database Details page and click on **Open Database Actions** under the tools.
+3. Click **Database Actions**. The Launch DB Actions initialization screen appears. 
 
     ![](./images/atp-tools.png " ")
 
     ![](./images/atp-open-database-actions.png  " ")
 
-3.  Provide the **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**.
+4.  The Database Actions login page appears. If prompted, log in with your ATP credentials. **Username - ML\_USER** and click **Next**. Then provide the password for your M\L_USER and click **Sign in**.
 
     ![](images/atp-mluser-login.png)
 
     ![](images/atp-mluser-password.png)
 
-4. From the Database Actions menu, choose **SQL**.
+5. From the Database Actions menu, select **SQL**.
 
     ![](./images/atp-sql.png " ")
 
-    ![](./images/sql-worksheet.png " ")
+6.  Dismiss the Help by clicking on the **X** in the popup. The worksheet area is displayed. 
+     ![](./images/sql-worksheet.png " ")
 
-5.  To show how an application would use ml predictions we will add some customer names to the original credit\_scoring\_100k data set. Click on the more options icon, select **Data Loading** and then select **Upload Data Into New Table**.
+7. To show how an application would use machine learning predictions, we will add some customer names to the original credit\_scoring\_100k data set. Click on the elipses **...** for more options. Select **Data Loading** and then click **Upload Data Into New Table**.
 
     ![](./images/upload-data.png  " ")
 
-6.  Click on **Select files**, upload **customer\_names.csv** file from the install.zip you downloaded earlier and click **Next**.
+8.  Click on **Select files**, upload **customer\_names.csv** file from the install.zip custom folder that you downloaded in Lab 1 and click **Next**.
 
     ![](./images/select-files-to-upload.png  " ")
 
-    ![](./images/click-next.png  " ")
+9.  The screen displays the progress of the upload and then displays the customer_names.csv table. Click **Next**.
+     ![](./images/click-next.png  " ")
 
-7.  Change the data type of **CUSTOMER\_ID - Number**. Change the lengths of **CUSTOMER\_ID - 6**, **FIRST\_NAME - 100** and **LAST\_NAME to 100** and click **Next** .
+10. Change the lengths of **CUSTOMER\_ID**  to **6**, **FIRST\_NAME** to **100**, and **LAST\_NAME** to **100** and click **Next** .
 
     ![](./images/edit-types.png  " ")
 
-8.  Once the DDL Code is generated, click **Finish**.
+11.  Once the DDL Code is generated, click **Finish**.
 
     ![](./images/click-finish.png  " ")
 
-9. Uploading the data may take time, click **OK** to close the popup.
+12. Uploading the data may take time, click **OK** to close the popup.
 
     ![](./images/uploading-ok.png " ")
 
-10.  Create a view that combines the names with the credit\_scoring\_100k data set.
+13. After the upload, the Data Loading tab at the bottom displays the table information. 
+14. Create a view that combines the names with the credit\_scoring\_100k data set and click **Run Script**.
 
     ````
     <copy>
@@ -109,7 +113,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/create-view.png  " ")
 
-11.  Create a new *upload_customers* table. This will be used in the application to show how newly loaded records can be scored on the fly.
+15.  Create a new *upload_customers* table. This will be used in the application to show how newly loaded records can be scored on the fly.
 
     ````
     <copy>
@@ -159,13 +163,14 @@ This lab assumes you have completed the following labs:
 
 ## Task 3: Import the APEX Application
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing** and navigate to your ATP instance.
+1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing** and choose your compartment.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
+    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
 
+2. Navigate to your ATP instance.
     ![](./images/atp-instance.png " ")
 
-2.  Select **Tools** on the Autonomous Database Details page and click on **Open Database Actions** under the tools.
+3. Click **Tools** and click **Open APEX**.
 
     ![](./images/atp-tools.png " ")
 
@@ -175,43 +180,47 @@ This lab assumes you have completed the following labs:
 
     ![](./images/apex-password.png  " ")
 
-4.  You will be prompted to create a workspace, Click **Create Workspace**.
+4.  You will be prompted to create a workspace. Click **Create Workspace**.
 
     ![](./images/create-workspace.png  " ")
 
-5.  Select **Database User - ML\_USER** from the drop down, enter **Workspace Name - ML\_CREDIT\_APP** and click on **Create Workspace**.
+5.  Click **Existing Schema** on the Create Workshop screen.
+
+6.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
+
+7. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
 
     ![](./images/create-new-workspace.png  " ")
 
     ![](./images/workspace-created.png  " ")
 
-6.  Click on admin and then on **Sign out** to sign out of ADMIN user.
-
-    ![](./images/sign-out.png  " ")
-
-7. When the popup appears, click **Return to Sign In Page** and log in to the ML\_CREDIT\_APP as a ML\_USER. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER** and **Password** you created for ATP instance and then click on **Sign In**.
+8. When the popup appears, click **Return to Sign In Page** and log in to the ML\_CREDIT\_APP as a ML\_USER. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER** and **Password** you created for ATP instance and then click on **Sign In**.
 
     ![](./images/return-signin.png  " ")
 
     ![](./images/mluser-apex-signin.png  " ")
 
-8.  You will be prompted to set the new application password for ML\_USER. Click on **Set APEX Account Password**.
+9. Enter **Workspace Name** as **ML\_CREDIT\_APP**, **Workspace Username** as **ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
 
-    ![](./images/set-apex-password.png  " ")
+10. Your APEX workspace is ready to build an application! 
 
-9. Enter a proper **Email Address** (not necessarily valid) and click **Apply Changes**.
+11. Click **admin** in the top right corner and then click **Sign out** to sign out of ADMIN user.
 
-    ![](./images/reset-password-email.png  " ")
+        ![](./images/sign-out.png  " ")
+12. When the popup appears, click **Return to Sign In Page**.
 
-7.  Select **App Builder**.
+13. Log in to the **ML\_CREDIT\_APP** as an **ML\_USER**. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER**, and **Password** you created for the ATP instance, and then click **Sign In**.
+
+14. Your ML\_USER workspace opens. 
+15. Select **App Builder**.
 
     ![](./images/app-builder.png  " ")
 
-8.  Select **Import**
+16.  Select **Import**
 
     ![](./images/import.png  " ")
 
-9.  To import file, select **Choose File**, select **f100.sql** file from your install zip file in downloads folder and click **Next**.
+17.  To import file, click the plus icon next to Drag and Drop and select **f100.sql** file from your install zip folder that you downloaded in Lab 1. Leave all other fields with their default values. 
 
     ![](./images/import-file.png  " ")
 
@@ -219,33 +228,36 @@ This lab assumes you have completed the following labs:
 
     ![](./images/save-import.png  " ")
 
-10. To confirm file import, click **Next**.
+18. Once the file is uploaded, the file name appears under the Drag and Drop field. Click **Next**.
+     ![](./images/click-next2.png  " ")
 
-    ![](./images/click-next2.png  " ")
+19. Click **Next** to confirm file import.
 
-11. To install database application, accept the defaults and click on **Install Application**.
+20. To install database application, accept the defaults and click **Install Application**.
 
     ![](./images/install-app.png  " ")
 
-12. Click **Next** to confirm the installation and click **Install**.
+21. Click **Next** to installation the application.
 
     ![](./images/install-next.png  " ")
 
-    ![](./images/final-install.png  " ")
+22. Click **Install** to confirm the installation.
+     ![](./images/final-install.png  " ")
 
-13. Once the installation is complete, click on **Run Application** to run the application.
+23. Once the installation is complete, click **Run Application** to run the application.
 
     ![](./images/run-app.png  " ")
 
-14. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP instance and then click on **Sign In**.
+24. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP instance and then click **Sign In**.
 
     ![](./images/mluser-app-signin.png  " ")
 
-    ![](./images/alpha_office.png  " ")
+25. The Alpha Office application opens. 
+     ![](./images/alpha_office.png  " ")
 
 ## Task 4: Run the application and review on-the-fly prediction/scoring
 
-1.  On the Alpha Office homepgae, select **Customer Walk-in** from the menu.
+1.  On the Alpha Office home pgae, select **Customer Walk-in** from the menu.
 
     ![](./images/customer-walkin.png  " ")
 
@@ -313,7 +325,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/overall-profile-1.png  " ")
 
-## Task 5: Expose the ml model as a REST end point so any application can call it
+## Task 5: Expose the Machine Learning Model as a REST End Point so any Application can Call it
 
 1.  Select the **Home** button from the menu at the bottom of the screen. (Note: If you do not see the menu bar at the bottom of the page, switch to Oracle APEX tab which was opened earlier in the browser.)
 
@@ -323,7 +335,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/select-workshop.png  " ")
 
-3.  Select **RESTFul Services**.
+3.  Select **RESTful Services**.
 
     ![](./images/restful.png  " ")
 
@@ -351,7 +363,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/click-create-handler.png  " ")
 
-9.  Be sure to select **Method - GET** and **Source Type - Query One Row**, and enter the following SQL query in the worksheet and select **Create Handler**.
+9.  Be sure to select **Method - GET** and **Source Type - Query One Row** and enter the following SQL query in the worksheet and select **Create Handler**.
 
     ````
     <copy>
@@ -372,5 +384,5 @@ This concludes this lab and this workshop.
 ## Acknowledgements
 
 - **Author** - Derrick Cameron
-- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, June 2020
-- **Last Updated By/Date** - Anoosha Pilli, Product Manager, DB Product Management, March 2021
+- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr; Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development, October 2022
