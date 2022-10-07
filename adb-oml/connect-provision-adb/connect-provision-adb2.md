@@ -86,33 +86,26 @@ You now have created your first ADW instance. Now, we are going to work on very 
 
     ![](./images/atp-create.png  " ")
 
-3.  From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and select a compartment by clicking on the drop-down list. Click **Create Autonomous Database**.
-
+4.  Select **Compartment**. If you are using a LiveLabs environment, be sure to select the compartment provided by the environment. (Note that yours will be different - do not select **ManagedCompartmentforPaaS**) and then enter **Display Name**, **Database Name**.
     ![](./images/display-name.png  " ")
 
-4.  Select **Compartment**. If you are using a LiveLabs environment, be sure to select the compartment provided by the environment. (Note that yours will be different - do not select **ManagedCompartmentforPaaS**) and then enter **Display Name**, **Database Name**.
-
+5.  Under Choose a workload type and Choose a deployment type, select **Transaction Processing**, and **Shared Infrastructure** respectively.
     ![](./images/provision-atp.png  " ")
 
-5.  Under Choose a workload type and Choose a deployment type, select **Transaction Processing**, and **Shared Infrastructure** respectively.
-
+6.  Under **Configure the database**, accept the default values for **Choose database version** , **Storage (TB)**, and **OCPU Count**.
     ![](./images/009.png  " ")
 
-6.  Under **Configure the database**, accept the default values for **Choose database version** , **Storage (TB)**, and **OCPU Count**.
-
-    ![](./images/010.png  " ")
-
 7.  Add a password. Copy the password in a notepad, you will need it later in labs.
-
-    ![](./images/atp-provision.png  " ")
+    ![](./images/010.png  " ")
 
 8. In **Choose network access**, keep the default access type **Secure access from everywhere**. Under **Choose License and Oracle Database Edition**, select **Bring Your Own License (BYOL)**. The **Oracle Database Enterprise Edition** option gets selected automatically. Click **Create Autonomous Database**. Leave the **Provide contacts for operational notifications and announcements** field blank.
 
+    ![](./images/atp-provision.png  " ")
+
+9. Now, Autonomous Transaction Processing starts provisioning. Once it finishes provisioning, you can view the instance details.
     ![](./images/atp-provisioned.png  " ")
 
     ![](./images/atp-available.png  " ")
-9. Now, Autonomous Transaction Processing starts provisioning. Once it finishes provisioning, you can view the instance details.
-
 You now have created your first ATP instance.
 
 ## Task 3: Create ML User in ADW
@@ -121,25 +114,20 @@ You now have created your first ATP instance.
 
 	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
+2.  Navigate to your ADW instance.
     ![](./images/adw-instance.png " ")
 
-2.  Navigate to your ADW instance.
-
+3.  Select **Tools** on the Autonomous Database Details page.
     ![](./images/tools.png " ")
 
-3.  Select **Tools** on the Autonomous Database Details page.
-
+4. To allow us to create OML users, **Open Oracle ML User Administration** under the tools.
     ![](./images/open-ml-admin.png " ")
 
-4. To allow us to create OML users, **Open Oracle ML User Administration** under the tools.
-
+5. Sign in as **Username - ADMIN** and with the password, you used when you created your Autonomous instance.
     ![](./images/ml-login.png  " ")
 
-5. Sign in as **Username - ADMIN** and with the password, you used when you created your Autonomous instance.
-
-    ![](./images/create.png  " ")
-
 6. Click **Create** to create a new ML user.
+    ![](./images/create.png  " ")
 
 7. On the Create User form, enter **Username - ML\_USER**, an e-mail address (you can use admin@oracle.com), un-check **Generate password**, and enter a password you will remember. You can use the same password you used for the ADMIN account. Then click **Create**.
 
@@ -153,7 +141,7 @@ You now have created your first ATP instance.
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
-	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
 
 2. Navigate to your ADW instance.
   ![](./images/adw-instance.png " ")
@@ -217,7 +205,7 @@ You now have created your first ATP instance.
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
+    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
 
 2. Navigate to your ATP instance.
     ![](./images/atp-instance.png " ")
