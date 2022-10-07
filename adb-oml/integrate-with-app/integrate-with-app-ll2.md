@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In Lab 1, you built a model and in Lab 2, you imported that model into a new database, representing a production system. Now we just need to integrate that model with existing applications and processes. It’s worth repeating that this is a critical step. Machine learning models aren’t delivering value until they are being actively used by the company in existing applications and processes.
+In Lab 2, you created a model, which you then imported into a new database to represent a production system in Lab 3. Now we just need to integrate that model with existing applications and processes. It’s worth repeating that this is a critical step. Machine learning models won't be useful to the business until they are actively used in existing applications and processes.
 
 Estimated lab time: 20 - 30 minutes
 
@@ -100,7 +100,7 @@ This lab assumes you have completed the following labs:
 
     ````
     <copy>
-    create or replace view ml_user.credit_scoring_100k_v as select a.first_name, 
+    create or replace view ml_user.credit_scoring_100k_v as select a.first_name,
     a.last_name, b.*
     from ml_user.customer_names a, credit_scoring_100k b
     where a.customer_id(+)= b.customer_id;
@@ -127,7 +127,7 @@ This lab assumes you have completed the following labs:
     , max_cc_spent_amount number
     , max_cc_spent_amount_prev number
     , residental_status varchar2(26)
-    , likely_good_credit_pcnt AS (round((100*(prediction_probability(n1_class_model, 'Good Credit' USING 
+    , likely_good_credit_pcnt AS (round((100*(prediction_probability(n1_class_model, 'Good Credit' USING
         wealth
     , customer_dmg_segment
     , income

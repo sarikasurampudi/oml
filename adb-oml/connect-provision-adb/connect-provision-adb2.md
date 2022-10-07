@@ -24,7 +24,7 @@ What Alpha Office wants is to deploy this machine learning model in a production
 
 -   Learn how to provision an ADW instance
 -   Learn how to provision an ATP instance
--   Create a user in ADW and ATP and grant privileges
+-   Create a user in ADW and ATP and grant privileges and user access to the SQL Developer Web, and to storage.
 -   Load data into a table
 
 ### Prerequisites
