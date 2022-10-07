@@ -137,7 +137,7 @@ You now have created your first ATP instance.
 
     ![](./images/ml-user-created.png " ")
 
-## Task 4: Grant Privileges to ML_USER to access Database Actions
+## Task 4: Grant Privileges to ADW ML_USER to access Database Actions
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
@@ -182,7 +182,7 @@ You now have created your first ATP instance.
       );
       COMMIT;
     END;
-    /
+
     </copy>
     ````
 
@@ -223,18 +223,16 @@ You now have created your first ATP instance.
     ![](./images/atp-ml-admin-login.png  " ")
 
 6.  Click **Create** to create a new ML user.
-
-    ![](./images/create-ml-user.png  " ")
+    ![](./images/atp-ml-user.png  " ")
 
 7. On the Create User form, enter **Username - ML\_USER**, an e-mail address (you can use admin@oracle.com), un-check **Generate password**, and enter a password you will remember. You can use the same password you used for the ADMIN account. Then click **Create**.
-
-    ![](./images/atp-ml-user.png  " ")
+    ![](./images/create-ml-user.png  " ")
 
 8. Notice that the **ML\_USER** is created.
 
     ![](./images/atp-ml-user-created.png " ")
 
-## Task 6: Grant Privileges to ML_USER to access Database Actions
+## Task 6: Grant Privileges to ATP ML_USER to access Database Actions
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
@@ -275,7 +273,7 @@ You now have created your first ATP instance.
       );
       COMMIT;
     END;
-    /
+
     </copy>
     ````
 
@@ -298,13 +296,13 @@ Download the compressed install file that contains data files and custom OML Not
 
 1.  Click the link below to download the install file.
 
-    [install.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/adbml/o/install.zip)
+    [install.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/idrudhdwamji/b/adbml/o/install.zip)
 
 2.  Save the install.zip to a download directory and then unzip the file.
 
     ![](./images/060.png  " ")
 
-## Task 6: Upload the data files to ML_USER
+## Task 6: Upload the data files to ADW ML_USER
 
 1. On the tab with your ADW instance, click **Database Actions**.
 
@@ -348,7 +346,7 @@ Download the compressed install file that contains data files and custom OML Not
 
     ![](./images/close.png  " ")
 
-10. The SQL Web Developer shows the table has been successfully created (and associated with ML\_USER).
+10. The Database Actions screen shows the table has been successfully created (and associated with ML\_USER).
 
     ![](images/tables-loaded.png)
 

@@ -196,12 +196,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     - A visual pallet to display data and ml results.
     - A shared platform where discussion, documentation, execution, and results are presented together.
 
-13. Finally, Let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame..
-
-    ![](./images/hamburger-menu.png  " ")
-
-    ![](./images/home.png  " ")
-
+14. Finally, let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame.
     ![](./images/click-examples.png  " ")
 
 15. Select the notebook with an algorithm of interest. In this example, open the **OML4SQL Anomaly Detection** example and go through it. In the search box, type “anomaly” to see the notebooks illustrating this technique.
@@ -212,11 +207,11 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
 ## Task 3: Import the Workshop Notebook
 
-From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _OML4SQL Identifying Reliable Customers.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
+From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting\_customers\_that\_complete\_all\_payments\_v4.json](files/targeting_customers_that_complete_all_payments_v4.json?download=1).
+1. Download the notebook [targeting\_customers\_that\_complete\_all\_payments\_v6.json](files/targeting_customers_that_complete_all_payments_v4.json?download=1).
 
-2.  Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page..
+2.  Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
     ![](./images/020.png  " ")
 
@@ -224,7 +219,7 @@ From the previous tasks, we learned how simple it is to add content to your note
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting\_customers\_that\_complete\_all\_payments\_v4.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
+4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
 
@@ -235,29 +230,29 @@ Before you start working on the imported notebooks. Let's explore some options i
 1.  Click the **Targeting Customers That Complete All Payments** notebook to open it.
     ![](./images/step4.4-023.png  " ")
 
-6.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
+2.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
 
     ![](./images/step4.5-024.png  " ")
 
-7.  Select the **orcl\_high** interpreter, drag and drop it to reorder and then click **Save**.
+3.  Select the **orcl\_high** interpreter, drag and drop it to reorder and then click **Save**.
 
     ![](./images/gear2.png  " ")
 
-8.  Click the **play** icon to run all paragraphs in the notebook.
+4.  Click the **play** icon to run all paragraphs in the notebook.
 
     ![](./images/step4.7-026.png  " ")
 
-9. A confirmation window appears. Click **OK** to run all paragraphs. The paragraphs run one by one displaying the status next to the title.
+5. A confirmation window appears. Click **OK** to run all paragraphs. The paragraphs run one by one displaying the status next to the title.
      ![](./images/click-ok.png  " ")
 
-9.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
+6.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
 Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
 
     ![](./images/step4.8-027.png  " ")
 
     ![](./images/step4.9-029.png  " ")
 
-10. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
+7. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
      ![](./images/step4.9-030.png  " ")
 
      ![](./images/step4.9-031.png  " ")
@@ -321,5 +316,5 @@ The rest of this lab will be done interactively in the notebook. This step discu
 ## Acknowledgements
 
 - **Author** - Derrick Cameron
-- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning 
+- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning
 - **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development, October 2022

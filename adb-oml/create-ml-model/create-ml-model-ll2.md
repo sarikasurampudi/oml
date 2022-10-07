@@ -72,29 +72,30 @@ This lab assumes you have completed the following labs:
 
     ![](./images/ml-user-created.png " ")
 
-## Task 2: Grant Privileges to ML_USER to access Database Actions
+## Task 2: Grant Privileges to ADW ML_USER to access Database Actions
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse** and navigate to your ADW instance.
-	
-	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
-    ![](./images/adw-instance.png " ")
+	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
 
-2.  Select **Tools** on the Autonomous Database Details page.
+2. Navigate to your ADW instance.
+  ![](./images/adw-instance.png " ")
 
-    ![](./images/tools.png " ")
-
-3. Select **Open Database Actions** under the tools.
+3. Click **Database Actions**.
 
     ![](./images/open-database-actions.png  " ")
 
-4. On the Database Actions login page, log in with your ADW credentials, provide the **Username - ADMIN** and click **Next**. Then provide the **Password - WELcome__1234** created for the Autonomous instance and click **Sign in**.
+	A **Launch DB Actions** screen appears.
+
+	![](./images/launch-db-actions.png)
+
+4. On the Database Actions login page, if prompted, log in with your ADW credentials, provide the **Username - ADMIN** and click **Next**. Then provide the **Password - WELcome__1234** created for the Autonomous instance and click **Sign in**.
 
     ![](./images/ml-admin.png " ")
 
     ![](./images/ml-admin-password.png " ")
 
-5. From the Database Action menu, select **SQL**.
+5. From the Database Actions Development menu, select **SQL**.
 
     ![](./images/sql.png " ")
 
@@ -102,7 +103,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/click-x.png  " ")
 
-7.  By default, only the ADMIN user can use the SQL Developer Web. To enable ML\_USER to use it, you need to enter the following and execute the procedure to grant SQL developer web access to ML\_USER.
+7.  By default, only the ADMIN user can use the SQL Developer Web. To enable ML\_USER to use it, enter the following and click the **Run Statement** button to grant SQL developer web access to ML\_USER.
 
     ````
     <copy>
@@ -116,15 +117,14 @@ This lab assumes you have completed the following labs:
       );
       COMMIT;
     END;
-    /
+
     </copy>
     ````
 
     ![](./images/grant-mluser-access.png " ")
-
     ![](./images/mluser-access-granted.png " ")
 
-8.  Grant storage privileges to ML\_USER.
+8.  To grant storage privileges to ML\_USER, enter the following code and click **Run Statement**
 
     ````
     <copy>
@@ -134,6 +134,9 @@ This lab assumes you have completed the following labs:
 
     ![](./images/storage-privileges.png " ")
 
+9. Now, on the right, click the ADMIN profile dropdown and click **Sign Out** of the ADMIN account.
+
+
 ## Task 3: Create ML Notebook
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and navigate to your instance.
@@ -142,79 +145,71 @@ This lab assumes you have completed the following labs:
 
     ![](./images/adw-instance.png " ")
 
-    On the **Tools** tab of your ADW instance, and click on **Open Oracle ML User Administration**.
+2. On the **Tools** tab of your ADW instance, and click on **Open Oracle ML User Administration**.
 
     ![](./images/tools.png " ")
 
     ![](./images/open-ml-admin.png " ")
 
-    Sign in as **Username - ADMIN** with the **Password - WELcome__1234** created for your Autonomous instance.
+3. Sign in as **Username - ADMIN** with the **Password - WELcome__1234** created for your Autonomous instance.
 
     ![](./images/ml-login.png  " ")
 
-2.  In the Machine Learning User Administration, click on the **home icon** on the upper right.
+4.  In the Machine Learning User Administration, click on the **home icon** on the upper right.
 
     ![](./images/home-icon.png  " ")
 
-3.  Log in as **ML\_USER** and provide the password you created  for the ML\_USER. Before you log in, you may wish to bookmark this page.
+5.  Log in as **ML\_USER** and provide the password you created  for the ML\_USER. Before you log in, you may wish to bookmark this page.
 
     ![](./images/mluser-sign-in.png  " ")
 
-4.  Navigate around to get familiar with the ML pages. Click on **Examples**.
+6.  Navigate to get familiar with the ML pages. Click **Examples**.
 
     ![](./images/examples.png  " ")
 
-5.  Note the various ML notebook examples. Feel free to review some of these. We will be creating a new ML notebook in this lab. Click on the upper-left hamburger menu.
+7.  Note the various machine learning notebook examples. Feel free to review some of these. Let's create a new machine learning notebook in this lab. Click on the upper-left cloud menu.
 
     ![](./images/notebooks-menu.png  " ")
 
-6.  Click on the upper-left hamburger menu and select **Notebooks**.
+8.  Select **Notebooks**.
 
     ![](./images/choose-notebooks.png  " ")
 
-7.  We will create a notebook from the beginning, select **Create**.
+9.  Let's create a notebook from scratch. Click **Create**.
 
     ![](./images/018.png  " ")
 
-8.  Enter **adwc_notebook** as the name, then click **OK**.
+19.  Enter **My ADW Notebook** as the name, then click **OK**.
 
     ![](./images/019.png  " ")
 
-9. Now you can view the notebook created - **adwc_notebook**.
+11. The **My ADW Notebook** opens for you to edit.
 
     ![](./images/new-notebook.png " ")
 
 ## Task 4: Add Content to Your ADW Notebook
 
-It is simple to create content in Zeppelin Notebooks, and the following exercise will give you experience in doing so.
+You can add text and code to your notebook to customize it.  Follow these steps to edit your OML Notebook.
 
-1.  Click on the hamburger menu and select **Notebooks** in the upper left.
-
-    ![](./images/046.png  " ")
-
-    ![](./images/047.png  " ")
-
-2.  Select the **notebook** you just created.
-
-    ![](./images/adwc-notebook.png  " ")
-
-3.  Click on the **gear** icon in the upper right. We must set the interpreter binding if we're going to connect to the ADW database and run queries. Be sure to select at least one of the **services** (High, Medium, or Low (or all)).
+1.  Click the **gear** icon in the upper right. We must set the interpreter binding to connect to the ADW database instance and run queries. Select the medium and markdown interpreters. You can deselect items by clicking them, changing them from blue to white and click **Save**.
 
     ![](./images/gear.png  " ")
 
-    Zeppelin notebooks are composed of paragraphs that can contain formatted text, sql, and script (pl/sql). Notebooks can support a broad range of scripting languages (python, R, etc.), but we'll just be using these three. We create different paragraphs with different interpreters based on what we want to put in the paragraphs. The interpreter is set at the top of the paragraph:
-    - %md - markdown language which is used for formatted text.
-    - %sql - used to run sql statements.  Note you can only run one statement per paragraph, otherwise use a script.
-    - %script - used to run multiple sql statements and pl/sql blocks.
+  Zeppelin notebooks are composed of paragraphs that can contain formatted text using markdown, SQL, PL/SQL, Python, and R. We'll just be using markdown, SQL, and PL/SQL . We create different paragraphs with different interpreters based on what we want to put in the paragraphs. The interpreter is set at the top of the paragraph:
+      - %md - markdown language which is used for formatted text.
+      - %sql - used to run sql statements.  Note you can only run one statement per paragraph, otherwise use a script.
+      - %script - used to run multiple sql statements and pl/sql blocks.
+	- %python - used to run Python code.
+	- %r- used to runR code.
 
-4.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically. There is no need to click a save button.
+2.  Paste the following into the first paragraph and click the play icon to run the code (formatted text in this case). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
 
     ````
     <copy>
     %md
     ### Targeting Likely Good Credit Customers using Oracle Machine Learning's (OML) Classification Models
 
-    Heather has spent most of her time over the past couple of years extracting and preparing data for analysis.  The large volumes of data need extracting and processing mean she spends most of her time waiting for jobs to finish and very little of her time analyzing the data.  Demands from marketing are forcing a new approach whereby the data remains in the data warehouse and is processed there.  The alternative cloud solution is more complex, and has no direct out of the box processes to analyze the data in place.  She started taking a look at Oracle, and found the simple SQL commands in ADW are familiar, and execute extremely fast, leveraging all the performance features of the platform.  Further once she is done can can apply the learning models to incoming data on the fly, and allow end user analysts to immediately see mining results.  This drastically reduces the cycle of data preparation, analysis, and publishing.  It also means there is no change to analysis/reporting Data Visualization toolset that users are familiar with.
+    Heather has spent most of her time over the past couple of years extracting and preparing data for analysis.  The large volumes of data that need extracting and processing mean she spends most of her time waiting for jobs to finish and very little of her time analyzing the data. Demands from marketing are forcing a new approach whereby the data remains in the data warehouse and is processed there. The alternative cloud solution is more complex and has no direct out of the box processes to analyze the data in place. She started taking a look at Oracle and found the simple SQL commands in ADW are familiar, and run extremely fast, leveraging all the performance features of the platform. Further once she is done can apply the learning models to incoming data on the fly and allow end user analysts to immediately see mining results. This drastically reduces the cycle of data preparation, analysis, and deployment. It also means there is no change to analysis/reporting data visualization toolset that users are familiar with.
     </copy>
     ````
 
@@ -222,13 +217,13 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
 
     ![](./images/051.png  " ")
 
-5.  Sometimes we just want the result (formatted text in this case), and not the code. Click on the **show editor** icon to hide the code.
+3.  Sometimes we just want the result (formatted text in this case), and not the code. Click on the **Show editor** icon to hide the code.
 
     ![](./images/052.png  " ")
 
     ![](./images/053.png  " ")
 
-6.  In the next paragraph enter the following, overwrite the %md that has defaulted in. Then hit **execute**.
+4.  In the next paragraph overwrite the %md with the following code. Click the play icon to run this paragraph.
 
     ````
     <copy>
@@ -244,11 +239,11 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
 
     ![](./images/select-admin-table.png  " ")
 
-7.  To add a title, click on the **gear** icon and select **Show title**.
+5.  To add a title, click on the **gear** icon and select **Show title**.
 
     ![](./images/gear-show-title.png  " ")
 
-8.  Enter the following into the title.
+6.  Click the **Untitled** field and enter the following into the title.
 
     ````
     <copy>
@@ -259,7 +254,7 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
     ![](./images/add-title.png  " ")
     ![](./images/057.png  " ")
 
-9.  In this last example, enter the following in the next paragraph and then execute the script. Review Data by Mode of Job Contacts and Income.
+7.  Enter the following in the next paragraph.
 
     ````
     <copy>
@@ -270,46 +265,42 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
     select customer_id, age, income, tenure, loan_type, loan_amount, occupation, number_of_current_accounts, max_cc_spent_amount, mode_job_of_contacts from admin.credit_scoring_100k where rownum &lt; 1000
     </copy>
     ````
+8. Click the play icon to run the script and review the data by mode of job contacts and income.
+		![](./images/new-para.png  " ")
 
-    ![](./images/new-para.png  " ")
+	 ![](./images/para-output.png  " ")
 
-    ![](./images/para-output.png  " ")
-
-10. Change the presentation style by selecting **bar chart** and then click on **Setting**.
+9. To view a bar chart presentation of the data, click the **bar chart**.
 
     ![](./images/bar-graph.png  " ")
+
+10. Click **settings** and remove `CUSTOMER_ID` from the keys field and `AGE SUM` from the values field.
     ![](./images/step3.10-060-1.png  " ")
 
     ![](./images/settings.png  " ")
 
-11. Drag and drop the fields into a position to review the results.
+11. Drag and drop `OCCUPATION` into **keys** and `CUSTOMER_ID` into the **values** fields. Review the results. Hide the settings by clicking on the **settings** label again.
 
     ![](./images/drag-and-drop.png  " ")
 
-12. Hide the settings by clicking on the **settings** label again.
+12. To hide the settings click settings again.
 
     ![](./images/hide-settings.png  " ")
 
-    So how does all this help us build ml models, collaborate with others, and review and share the results/findings?
+	So how does all this help us build machine learning models, collaborate with others, and review and share the results/findings?
 
-    Zeppelin provides:
+
+    OML Notebooks provide:
     - A collaborative shared workspace for model development.
     - A direct connection to all the data in your Autonomous Database that can scale to petabytes.
     - A platform for preparing data for model ingestion.
     - A visual pallet to display data and ml results.
     - A shared platform where discussion, documentation, execution, and results are presented together.
 
-13. Finally, let's review some examples. Click on hamburger and navigate to the **Home** dashboard.
-
-    ![](./images/hamburger-menu.png  " ")
-
-    ![](./images/home.png  " ")
-
-14. Navigate to **Examples**.
-
+13. Finally, let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame.
     ![](./images/click-examples.png  " ")
 
-15. Select a model of interest. In this example, we will open **Anomaly Detection**.
+14. Select the notebook with an algorithm of interest. In this example, open the **OML4SQL Anomaly Detection** example and go through it. In the search box, type “anomaly” to see the notebooks illustrating this technique.
 
     ![](./images/click-anamoly-detection.png  " ")
 
@@ -317,21 +308,54 @@ It is simple to create content in Zeppelin Notebooks, and the following exercise
 
 ## Task 5: Import ML Notebook
 
-Adding content to a notebook is simple and fast. In this step, we have built the steps that are normally followed when exploring data and building a machine learning model. This has been saved to the file you can download. We will import this notebook and review it. It is important to note that you *must execute all the steps in this notebook if you wish to continue with lab 3 and 4*. Executing the steps takes only a few minutes.
+Arom the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting\_customers\_that\_complete\_all\_payments\_v4_ll.json](files/targeting_customers_that_complete_all_payments_v4_ll.json?download=1).
+1. Download the notebook [targeting customers that complete all payments v6.json](files/targeting_customers_that_complete_all_payments_v4_ll.json?download=1).
 
-2.  Navigate back to the Notebook page.
+2.   Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
     ![](./images/020.png  " ")
 
-3.  We will be importing a pre-built notebook, and using this for the remainder of the lab. Select **Import**.
+3.  Click **Import**. Let's import a pre-built notebook and use it for the rest of the lab.
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the JSON file and import the **targeting\_customers\_that\_complete\_all\_payments\_v4.json** notebook.
+4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
+
+##Task 6 View Notebook options
+Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
+
+1.  Click the **Targeting Customers That Complete All Payments** notebook to open it.
+		    ![](./images/step4.4-023.png  " ")
+
+2.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
+
+		    ![](./images/step4.5-024.png  " ")
+
+3.  Select the **orcl\_high** interpreter, drag and drop it to reorder and then click **Save**.
+
+		    ![](./images/gear2.png  " ")
+
+4.  Click the **play** icon to run all paragraphs in the notebook.
+
+		    ![](./images/step4.7-026.png  " ")
+
+5. A confirmation window appears. Click **OK** to run all paragraphs. The paragraphs run one by one displaying the status next to the title.
+		     ![](./images/click-ok.png  " ")
+
+6.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
+		Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
+
+		    ![](./images/step4.8-027.png  " ")
+
+		    ![](./images/step4.9-029.png  " ")
+
+7. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
+		     ![](./images/step4.9-030.png  " ")
+
+		     ![](./images/step4.9-031.png  " ")
 
 5.  Select the **Targeting Customers That Complete All Payments** notebook.
 
@@ -361,7 +385,7 @@ Adding content to a notebook is simple and fast. In this step, we have built the
 
     ![](./images/step4.9-031.png  " ")
 
-## Task 6: About this Notebook
+## Task 7: About this Notebook
 
 The rest of this lab will be done interactively in the notebook. This step discusses the result of each portion of the notebook.
 
