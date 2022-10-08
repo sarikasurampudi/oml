@@ -114,7 +114,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/create-view.png  " ")
 
-15.  Create a new *upload_customers* table. This will be used in the application to show how newly loaded records can be scored on the fly.
+15.  Create a new *upload_customers* table. Paste the following code and click **Run Script**. This will be used in the application to show how newly loaded records can be scored on the fly.
 
     ````
     <copy>
@@ -173,9 +173,7 @@ This lab assumes you have completed the following labs:
 
 3. Click **Tools** and click **Open APEX**.
 
-    ![](./images/atp-tools.png " ")
-
-    ![](./images/apex.png " ")
+   ![](./images/apex.png " ")
 
 3.  Enter your ADMIN **Password** and click **Sign In to Administration**.
 
@@ -186,33 +184,36 @@ This lab assumes you have completed the following labs:
     ![](./images/create-workspace.png  " ")
 
 5.  Click **Existing Schema** on the Create Workshop screen.
+    ![](./images/existing-schema.png  " ")
 
 6.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
+    ![](./images/database-user.png  " ")
+
+    ![](./images/user-search.png  " ")
 
 7. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
+    ![](./images/select-ml-user.png  " ")
 
-    ![](./images/create-new-workspace.png  " ")
+    ![](./images/autopopulated-workspace.png  " ")
 
-    ![](./images/workspace-created.png  " ")
-
-8. When the popup appears, click **Return to Sign In Page** and log in to the ML\_CREDIT\_APP as a ML\_USER. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER** and **Password** you created for ATP instance and then click on **Sign In**.
-
-    ![](./images/return-signin.png  " ")
-
-    ![](./images/mluser-apex-signin.png  " ")
-
-9. Enter **Workspace Name** as **ML\_CREDIT\_APP**, **Workspace Username** as **ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
+8. Enter **Workspace Name - ML\_CREDIT\_APP**, **Workspace Username - ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
+   ![](./images/create-new-workspace.png  " ")
 
 10. Your APEX workspace is ready to build an application! 
+    ![](./images/workspace-created.png  " ")
 
 11. Click **admin** in the top right corner and then click **Sign out** to sign out of ADMIN user.
-
         ![](./images/sign-out.png  " ")
+
 12. When the popup appears, click **Return to Sign In Page**.
+    ![](./images/return-signin.png  " ")
 
 13. Log in to the **ML\_CREDIT\_APP** as an **ML\_USER**. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER**, and **Password** you created for the ATP instance, and then click **Sign In**.
+    ![](./images/mluser-apex-signing.png  " ")
 
 14. Your ML\_USER workspace opens. 
+    ![](./images/workspace-opens.png  " ")
+
 15. Select **App Builder**.
 
     ![](./images/app-builder.png  " ")
@@ -225,14 +226,11 @@ This lab assumes you have completed the following labs:
 
     ![](./images/import-file.png  " ")
 
-    ![](./images/022.png  " ")
-
-    ![](./images/save-import.png  " ")
-
 18. Once the file is uploaded, the file name appears under the Drag and Drop field. Click **Next**.
      ![](./images/click-next2.png  " ")
 
 19. Click **Next** to confirm file import.
+    ![](./images/confirm-file-import.png  " ")
 
 20. To install database application, accept the defaults and click **Install Application**.
 
@@ -290,9 +288,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/choose-file.png  " ")
 
-    ![](./images/037.png  " ")
-
-8.  Select **Load To - Existing Table** and choose **Table - UPLOAD\_CUSTOMERS** from the drop down menu and select **Load Data**. Once the data is appended to the table, close the popup.
+8.  Select **Load To - Existing Table** and choose **Table Name - UPLOAD\_CUSTOMERS** from the drop down menu and select **Load Data**. Once the data is appended to the table, close the popup.
 
     ![](./images/existing-file.png  " ")
 
@@ -360,6 +356,7 @@ This lab assumes you have completed the following labs:
     - URI Template: *credit_scoring_100k\_v/:wealth/:income*
 
     ![](./images/create-template.png  " ")
+    
 8. Next, click on **Create Handler**.
 
     ![](./images/click-create-handler.png  " ")
