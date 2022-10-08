@@ -2,8 +2,7 @@
 
 ## Introduction
 
-You built a machine learning model that predicts customer credit in the previous lab. Congratulations! But you’re not finished. It’s a good model, but models often need to be deployed to production systems to impact the business. Unfortunately, too many machine learning projects fail at this deployment step. We are going to spend the next two labs making sure you deploy this model so that Alpha Office employees can use it in their day-to-day work. Since we have a separate production system, our first step is to move the model from where it was developed into a production transaction processing database where it will be accessible to the Client Service application.
-This lab will walk you through the steps.  
+You built a machine learning model that predicts customer credit in the previous lab. Congratulations! But you’re not done yet. It's a good model, but models must be deployed into production systems and have a positive impact on the business, and far too many machine learning projects fail at this stage. We'll spend the next lab making sure you deploy this model so that Alpha Office employees can use it on a daily basis. Since we have a separate production system, the first step is to move the model from where it was developed into a production transaction processing database where the Client Service application can access it. This lab will walk you through the steps.
 
 Estimated lab time: 20 - 30 minutes
 
@@ -22,7 +21,7 @@ In this lab, you will:
 - In ATP:
     - Create a database link that will be used to copy (pull) export of the ml model from ADW to ATP.
     - Copy the model from ADW to ATP.
-    - Log in with ML\_USER and import the ml model.
+    - Log in with ML\_USER and import the machine learning model.
     - Create a virtual column on the table that applies the model to rows in the table.
 
 ### Prerequisites
@@ -34,7 +33,7 @@ This lab assumes you have completed the following labs:
 
 ## Task 1: Export the machine learning model
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and navigate to your instance.
+1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
     ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
 
@@ -124,8 +123,6 @@ This lab assumes you have completed the following labs:
 
 3.  Leave the default option (Instant Wallet) and click **Download wallet** on the Database Connection screen.
 
-    ![](./images/administration.png  " ")
-
     ![](./images/download-wallet.png  " ")
 
 4.  Specify a password of your choice for the wallet. You will need this password when connecting to the database later. Click **Download** to download the wallet file to your machine.
@@ -136,13 +133,13 @@ This lab assumes you have completed the following labs:
 
     ![](./images/unzip-wallet.png  " ")
 
-6. Click Close on the Database Connection screen.
+6. Click **Close** on the Database Connection screen.
 
 ## Task 3: Create a Bucket and Upload Your Data
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Storage**, and select **Buckets**.
 
-	![](https://oracle-livelabs.github.io/common/images/console/storage-buckets.png " ")
+	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/storage-buckets.png " ")
 
 2.  Choose the compartment and click **Create Bucket**.
 
@@ -168,7 +165,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/view-object-details.png  " ")
 
-9. Copy the URL Path to a notepad, we will need it later in this lab.
+9. Copy the URL Path to a text editor, we will need it later in this lab.
     ![](./images/copy-uri-path.png  " ")
 
 10. Click **Cancel** to dismiss the screen.
@@ -193,9 +190,8 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
     ![](./images/adwc-token.png  " ")
 
-    ![](./images/copy-token.png  " ")
-
 5. Click **Copy** and save it in a text editor as you won't be able to see it again. Click **Close** to dismiss the screen.
+    ![](./images/copy-token.png  " ")
 
 ## Task 5: Copy Machine Learning Models between ADW and ATP
 
@@ -337,11 +333,11 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
 ## Task 7: Import the ML model
 
-1.  Copy the SQL worksheet URL from the browser and paste it in another tab.
+1.  Copy the SQL worksheet URL from the browser and paste it into another tab.
 
     ![](./images/replace-admin.png  " ")
 
-2.  Change the user in the SQL Developer URL from ADMIN to **ml\_user** and press enter to log in as ML\_USER. Copy the URL to a text editor, you will need it later.
+2.  Change the user in the Database Actions URL from ADMIN to **ml\_user** and press enter to log in as ML\_USER. Copy the URL to a text editor, you will need it later.
     ![](./images/ml-user-replaced.png  " ")
 
 3. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP Instance. Click **Sign in**.

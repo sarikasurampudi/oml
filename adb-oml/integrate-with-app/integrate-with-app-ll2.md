@@ -16,7 +16,7 @@ We will start this lab with some more setup, loading both data and an APEX appli
 
 We will first incorporate it into the application for customer service. Employees who deal with customers directly would do this when speaking with them. When a consumer enters the office and inquires about purchasing something, the representative can respond right away. This model can be integrated with that application workflow to speed up the application process for a given new service and enhance the user experience. This is a typical scenario where a model can assist in directing a reaction to an event in real time. Any client interaction, making product recommendations on a website, handling a financial transaction, or reacting to a new sensor reading on a piece of equipment would fall under this category.
 
-n the second case, we'll deal with a lot of consumers in a batch. After completing an acquisition, Alpha Office now has several new customers. The marketing division would like to handle every customer at once, possibly by developing a campaign to focus on the right people. In this lab, we use the Customer Service application to accomplish that. A similar use case might also be addressed by importing large amounts of data into the database, processing them with scripts, and making the results accessible through an appropriate analytics tool like Oracle Analytics Cloud.
+In the second case, we'll deal with a lot of consumers in a batch. After completing an acquisition, Alpha Office now has several new customers. The marketing division would like to handle every customer at once, possibly by developing a campaign to focus on the right people. In this lab, we use the Customer Service application to accomplish that. A similar use case might also be addressed by importing large amounts of data into the database, processing them with scripts, and making the results accessible through an appropriate analytics tool like Oracle Analytics Cloud.
 
 Finally, even though APEX applications are compatible with Oracle Database, many businesses employ a distributed development methodology. If so, the best course of action is to make a model accessible via a REST API endpoint. We'll also demonstrate how to do that for you.
 
@@ -40,7 +40,7 @@ This lab assumes you have completed the following labs:
 
 ## Task 1: Download the Custom Files
 
-1.  Click the link below to download the install file.
+1.  Click the install file from the link in this step.
 
     [install.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/adbml/o/install.zip)
 
@@ -59,11 +59,9 @@ This lab assumes you have completed the following labs:
 
 3. Click **Database Actions**. The Launch DB Actions initialization screen appears. 
 
-    ![](./images/atp-tools.png " ")
-
     ![](./images/atp-open-database-actions.png  " ")
 
-4.  The Database Actions login page appears. If prompted, log in with your ATP credentials. **Username - ML\_USER** and click **Next**. Then provide the password for your M\L_USER and click **Sign in**.
+4.  The Database Actions login page appears. If prompted, log in with your ATP credentials. **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**.
 
     ![](images/atp-mluser-login.png)
 
@@ -100,6 +98,9 @@ This lab assumes you have completed the following labs:
     ![](./images/uploading-ok.png " ")
 
 13. After the upload, the Data Loading tab at the bottom displays the table information. 
+
+    ![](./images/table-information.png " ")
+
 14. Create a view that combines the names with the credit\_scoring\_100k data set and click **Run Script**.
 
     ````
