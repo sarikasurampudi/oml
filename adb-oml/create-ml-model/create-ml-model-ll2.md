@@ -163,7 +163,7 @@ Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**
 
     ![](./images/mluser-sign-in.png  " ")
 
-6.  Navigate to get familiar with the ML pages. Click **Examples**.
+6.  Navigate to get familiar with the machine learning pages. Click **Examples**.
 
     ![](./images/examples.png  " ")
 
@@ -202,7 +202,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 	- %python - used to run Python code.
 	- %r- used to runR code.
 
-2.  Paste the following into the first paragraph and click the play icon to run the code (formatted text in this case). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
+2.  Paste the following into the first paragraph and click the **Play** icon to run the code (formatted text in this case). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
 
     ````
     <copy>
@@ -320,7 +320,7 @@ Arom the previous tasks, we learned how simple it is to add content to your note
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
+4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments\_v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
 

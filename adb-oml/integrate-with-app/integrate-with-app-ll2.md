@@ -175,28 +175,28 @@ This lab assumes you have completed the following labs:
 
    ![](./images/apex.png " ")
 
-3.  Enter your ADMIN **Password** and click **Sign In to Administration**.
+4.  Enter your ADMIN **Password** and click **Sign In to Administration**.
 
     ![](./images/apex-password.png  " ")
 
-4.  You will be prompted to create a workspace. Click **Create Workspace**.
+5.  You will be prompted to create a workspace. Click **Create Workspace**.
 
     ![](./images/create-workspace.png  " ")
 
-5.  Click **Existing Schema** on the Create Workshop screen.
+6.  Click **Existing Schema** on the Create Workshop screen.
     ![](./images/existing-schema.png  " ")
 
-6.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
+7.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
     ![](./images/database-user.png  " ")
 
     ![](./images/user-search.png  " ")
 
-7. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
+8. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
     ![](./images/select-ml-user.png  " ")
 
     ![](./images/autopopulated-workspace.png  " ")
 
-8. Enter **Workspace Name - ML\_CREDIT\_APP**, **Workspace Username - ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
+9. Enter **Workspace Name - ML\_CREDIT\_APP**, **Workspace Username - ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
    ![](./images/create-new-workspace.png  " ")
 
 10. Your APEX workspace is ready to build an application! 
@@ -254,9 +254,9 @@ This lab assumes you have completed the following labs:
 25. The Alpha Office application opens. 
      ![](./images/alpha_office.png  " ")
 
-## Task 4: Run the application and review on-the-fly prediction/scoring
+## Task 4: Run the Application and Review on-the-fly prediction/scoring
 
-1.  On the Alpha Office home pgae, select **Customer Walk-in** from the menu.
+1.  On the Alpha Office home page, select **Customer Walk-in** from the menu.
 
     ![](./images/customer-walkin.png  " ")
 
@@ -356,7 +356,7 @@ This lab assumes you have completed the following labs:
     - URI Template: *credit_scoring_100k\_v/:wealth/:income*
 
     ![](./images/create-template.png  " ")
-    
+
 8. Next, click on **Create Handler**.
 
     ![](./images/click-create-handler.png  " ")

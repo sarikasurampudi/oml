@@ -56,31 +56,31 @@ This lab assumes you have completed the following labs:
 
     ![](./images/home-icon.png  " ")
 
-3.  Log in as **ML\_USER** and provide the password you created in Lab 1 for the ML\_USER. Before you log in, you may wish to bookmark this page.
+6.  Log in as **ML\_USER** and provide the password you created in Lab 1 for the ML\_USER. Before you log in, you may wish to bookmark this page.
 
     ![](./images/mluser-sign-in.png  " ")
 
-4.  Navigate around to get familiar with the ML pages. Click on **Examples**.
+7.  Navigate around to get familiar with the machine learning pages. Click on **Examples**.
 
     ![](./images/examples.png  " ")
 
-5.  Note the various ML notebook examples. Feel free to review some of these. Let's create a new ML notebook in this lab. Click on the upper-left cloud menu.
+8.  Note the various machine learning notebook examples. Feel free to review some of these. Let's create a new machine learning notebook in this lab. Click on the upper-left cloud menu.
 
     ![](./images/notebooks-menu.png  " ")
 
-6.  Select **Notebooks**.
+9.  Select **Notebooks**.
 
     ![](./images/choose-notebooks.png  " ")
 
-7.  Let's create a notebook from scratch. Click **Create**.
+10.  Let's create a notebook from scratch. Click **Create**.
 
     ![](./images/018.png  " ")
 
-8.  Enter **My ADW Notebook** as the name, then click **OK**.
+11.  Enter **My ADW Notebook** as the name, then click **OK**.
 
     ![](./images/019.png  " ")
 
-9. The **My ADW Notebook** open for you to edit.
+12. The **My ADW Notebook** open for you to edit.
 
     ![](./images/new-notebook.png " ")
 
@@ -99,7 +99,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     - %python - used to run Python code.
     - %r - used to run the R code.
 
-2.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
+2.  Paste the following into the first paragraph. Then click on the **Play** icon to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
 
     ````
     <copy>
@@ -217,12 +217,12 @@ From the previous tasks, we learned how simple it is to add content to your note
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
+4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments\_v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
 
 
-##Task 4 View Notebook options
+## Task 4: View Notebook Options
 Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
 
 1.  Click the **Targeting Customers That Complete All Payments\_V4\_1** notebook to open it.

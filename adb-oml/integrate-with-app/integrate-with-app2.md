@@ -46,9 +46,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/atp-instance.png " ")
 
-2.  Select **Tools** on the Autonomous Database Details page and click on **Open Database Actions** under the tools.
-
-    ![](./images/atp-tools.png " ")
+2.  Click **Database Actions**.
 
     ![](./images/atp-open-database-actions.png  " ")
 
@@ -58,17 +56,17 @@ This lab assumes you have completed the following labs:
 
     ![](images/atp-mluser-password.png)
 
-4. From the Database Actions menu, choose **SQL**.
+4. From the Database Actions menu, click **SQL**. The SQL worksheet opens.
 
     ![](./images/atp-sql.png " ")
 
     ![](./images/sql-worksheet.png " ")
 
-5.  To show how an application would use ml predictions we will add some customer names to the original credit\_scoring\_100k data set. Click on the more options icon, select **Data Loading** and then select **Upload Data Into New Table**.
+5.  To show how an application would use machine learning predictions we will add some customer names to the original credit\_scoring\_100k data set. Click on the more options icon, select **Data Loading** and then select **Upload Data Into New Table**.
 
     ![](./images/upload-data.png  " ")
 
-6.  Click on **Select files**, upload **customer\_names.csv** file from the install.zip you downloaded earlier and click **Next**.
+6.  Click **Select files**, upload **customer\_names.csv** file from the install.zip you downloaded earlier and click **Next**.
 
     ![](./images/select-files-to-upload.png  " ")
 
@@ -155,9 +153,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/atp-instance.png " ")
 
-2.  Select **Tools** on the Autonomous Database Details page and click on **Open Database Actions** under the tools.
-
-    ![](./images/atp-tools.png " ")
+2.  Click on **Tools** and click **Open APEX**.
 
     ![](./images/apex.png " ")
 
@@ -165,77 +161,85 @@ This lab assumes you have completed the following labs:
 
     ![](./images/apex-password.png  " ")
 
-4.  You will be prompted to create a workspace, Click **Create Workspace**.
+4.  You will be prompted to create a workspace. Click **Create Workspace**.
 
     ![](./images/create-workspace.png  " ")
 
-5.  Select **Database User - ML\_USER** from the drop down, enter **Workspace Name - ML\_CREDIT\_APP** and click on **Create Workspace**.
+5.  Click **Existing Schema** on the Create Workshop screen.
+     ![](./images/existing-schema.png  " ")
 
-    ![](./images/create-new-workspace.png  " ")
+6.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
+    ![](./images/database-user.png  " ")
 
+    ![](./images/user-search.png  " ")
+
+7. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
+    ![](./images/select-ml-user.png  " ")
+
+    ![](./images/autopopulated-workspace.png  " ")
+
+8. Enter **Workspace Name - ML\_CREDIT\_APP**, **Workspace Username - ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
+       ![](./images/create-new-workspace.png  " ")
+
+9. Your APEX workspace is ready to build an application! 
     ![](./images/workspace-created.png  " ")
 
-6.  Click on admin and then on **Sign out** to sign out of ADMIN user.
-
+10. Click **admin** in the top right corner and then click **Sign out** to sign out of ADMIN user.
     ![](./images/sign-out.png  " ")
 
-7. When the popup appears, click **Return to Sign In Page** and log in to the ML\_CREDIT\_APP as a ML\_USER. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER** and **Password** you created for ATP instance and then click on **Sign In**.
-
+11. When the popup appears, click **Return to Sign In Page**.
     ![](./images/return-signin.png  " ")
 
-    ![](./images/mluser-apex-signin.png  " ")
+12. Log in to the **ML\_CREDIT\_APP** as an **ML\_USER**. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER**, and **Password** you created for the ATP instance, and then click **Sign In**.
+        ![](./images/mluser-apex-signing.png  " ")
 
-8.  You will be prompted to set the new application password for ML\_USER. Click on **Set APEX Account Password**.
+13. Your ML\_USER workspace opens. 
+    ![](./images/workspace-opens.png  " ")
 
-    ![](./images/set-apex-password.png  " ")
-
-9. Enter a proper **Email Address** (not necessarily valid) and click **Apply Changes**.
-
-    ![](./images/reset-password-email.png  " ")
-
-7.  Select **App Builder**.
+14. Select **App Builder**.
 
     ![](./images/app-builder.png  " ")
 
-8.  Select **Import**
+15.  Select **Import**
 
     ![](./images/import.png  " ")
 
-9.  To import file, select **Choose File**, select **f100.sql** file from your install zip file in downloads folder and click **Next**.
+16.  To import file, click the plus icon next to Drag and Drop and select **f100.sql** file from your install zip folder that you downloaded in Lab 1. Leave all other fields with their default values. 
 
     ![](./images/import-file.png  " ")
 
-    ![](./images/022.png  " ")
+17. Once the file is uploaded, the file name appears under the Drag and Drop field. Click **Next**.
+      ![](./images/click-next2.png  " ")
 
-    ![](./images/save-import.png  " ")
+18. Click **Next** to confirm file import.
+    ![](./images/confirm-file-import.png  " ")
 
-10. To confirm file import, click **Next**.
-
-    ![](./images/click-next2.png  " ")
-
-11. To install database application, accept the defaults and click on **Install Application**.
+19. To install database application, accept the defaults and click **Install Application**.
 
     ![](./images/install-app.png  " ")
 
-12. Click **Next** to confirm the installation and click **Install**.
+20. Click **Next** to installation the application.
 
     ![](./images/install-next.png  " ")
 
+21. Click **Install** to confirm the installation.
     ![](./images/final-install.png  " ")
 
-13. Once the installation is complete, click on **Run Application** to run the application.
+22. Once the installation is complete, click **Run Application** to run the application.
 
     ![](./images/run-app.png  " ")
 
-14. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP instance and then click on **Sign In**.
+23. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP instance and then click **Sign In**.
 
     ![](./images/mluser-app-signin.png  " ")
 
+24. The Alpha Office application opens. 
     ![](./images/alpha_office.png  " ")
 
-## Task 3: Run the application and review on-the-fly prediction/scoring
 
-1.  On the Alpha Office homepgae, select **Customer Walk-in** from the menu.
+## Task 3: Run the Application and Review on-the-fly prediction/scoring
+
+1.  On the Alpha Office home page, select **Customer Walk-in** from the menu.
 
     ![](./images/customer-walkin.png  " ")
 
@@ -267,9 +271,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/choose-file.png  " ")
 
-    ![](./images/037.png  " ")
-
-8.  Select **Load To - Existing Table** and choose **Table - UPLOAD\_CUSTOMERS** from the drop down menu and select **Load Data**. Once the data is appended to the table, close the popup.
+8.  Select **Load To - Existing Table** and choose **Table Name - UPLOAD\_CUSTOMERS** from the drop down menu and select **Load Data**. Once the data is appended to the table, close the popup.
 
     ![](./images/existing-file.png  " ")
 
@@ -301,9 +303,9 @@ This lab assumes you have completed the following labs:
 
 13. Select **Overall Credit Profile**. This provides an overall measure of the credit across the entire 100k credit database. This scoring of 100k customers with 10 variables takes less than a second. *This shows Alpha Office has 12k customers with a 100 percent probability of good credit, 22k customers with a 50.7 probability of good credit, and 66k customers with a 1.2 percent probability of good credit*. (Note: your values may differ slightly.)
 
-    ![](./images/overall-profile.png  " ")
+    ![](./images/overall-profile-1.png  " ")
 
-## Task 4: Expose the ml model as a REST end point so any application can call it
+## Task 4: Expose the Machine Learning Model as a REST End Point so any Application can Call it
 
 1.  Select the **Home** button from the menu at the bottom of the screen. (Note: If you do not see the menu bar at the bottom of the page, switch to Oracle APEX tab which was opened earlier in the browser.)
 
@@ -313,7 +315,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/select-workshop.png  " ")
 
-3.  Select **RESTFul Services**.
+3.  Select **RESTful Services**.
 
     ![](./images/restful.png  " ")
 
@@ -337,11 +339,12 @@ This lab assumes you have completed the following labs:
     - URI Template: *credit_scoring_100k\_v/:wealth/:income*
 
     ![](./images/create-template.png  " ")
+
 8. Next, click on **Create Handler**.
 
     ![](./images/click-create-handler.png  " ")
 
-8.  Be sure to select **Method - GET** and **Source Type - Query One Row**, and enter the following SQL query in the worksheet and select **Create Handler**.
+9.  Be sure to select **Method - GET** and **Source Type - Query One Row** and enter the following SQL query in the worksheet and select **Create Handler**.
 
     ````
     <copy>
@@ -351,7 +354,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/create-handler.png  " ")
 
-9.  Copy **Full URL** and paste it in your browser. Replace the parameters **:wealth - Rich** and **:income - 20000** respectively and hit enter. We are passing the wealth and income variables to the prediction model. Note these are just two of the many variables we could pass to the model (just add additional ones).
+10.  Copy **Full URL** and paste it in your browser. Replace the parameters **:wealth - Rich** and **:income - 20000** respectively and hit enter. We are passing the wealth and income variables to the prediction model. Note these are just two of the many variables we could pass to the model (just add additional ones).
 
     ![](./images/copy-url.png  " ")
 
@@ -362,5 +365,5 @@ This concludes this lab and this workshop.
 ## Acknowledgements
 
 - **Author** - Derrick Cameron
-- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, June 2020
-- **Last Updated By/Date** - Anoosha Pilli, Product Manager, DB Product Management, March 2021
+- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr; Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development, October 2022

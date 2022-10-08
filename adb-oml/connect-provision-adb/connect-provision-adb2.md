@@ -137,7 +137,7 @@ You now have created your first ATP instance.
 
     ![](./images/ml-user-created.png " ")
 
-## Task 4: Grant Privileges to ADW ML_USER to access Database Actions
+## Task 4: Grant Privileges to ADW ML_USER to Access Database Actions
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
@@ -232,7 +232,7 @@ You now have created your first ATP instance.
 
     ![](./images/atp-ml-user-created.png " ")
 
-## Task 6: Grant Privileges to ATP ML_USER to access Database Actions
+## Task 6: Grant Privileges to ATP ML_USER to Access Database Actions
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
@@ -302,7 +302,7 @@ Download the compressed install file that contains data files and custom OML Not
 
     ![](./images/060.png  " ")
 
-## Task 8: Upload the data files to ADW ML_USER
+## Task 8: Upload the Data Files to ADW ML_USER
 
 1. On the tab with your ADW instance, click **Database Actions**.
 

@@ -121,19 +121,19 @@ This lab assumes you have completed the following labs:
 
     ![](./images/service-console.png  " ")
 
-3.  Leave the default option (Instant Wallet) and click **Download wallet** on the Database Connection screen.
+4.  Leave the default option (Instant Wallet) and click **Download wallet** on the Database Connection screen.
 
     ![](./images/download-wallet.png  " ")
 
-4.  Specify a password of your choice for the wallet. You will need this password when connecting to the database later. Click **Download** to download the wallet file to your machine.
+5.  Specify a password of your choice for the wallet. You will need this password when connecting to the database later. Click **Download** to download the wallet file to your machine.
 
     ![](./images/wallet-password.png  " ")
 
-5.  Unzip the downloaded wallet file, and note the `cwallet.sso` file, you will need it later in this lab.
+6.  Unzip the downloaded wallet file, and note the `cwallet.sso` file, you will need it later in this lab.
 
     ![](./images/unzip-wallet.png  " ")
 
-6. Click **Close** on the Database Connection screen.
+7. Click **Close** on the Database Connection screen.
 
 ## Task 3: Create a Bucket and Upload Your Data
 
@@ -219,7 +219,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
     ![](./images/atp-admin-sql-developer.png " ")
 
-7. With the ADMIN username in ATP Database Actions, create a credential to copy your ADW wallet from Object Storage to the DATA\_PUMP\_DIR, which will be used later. Specify the credentials:
+7. With the ADMIN username in ATP Database Actions, create a credential to copy your ADW wallet from Object Storage to the DATA\_PUMP\_DIR, which will use later. Specify the credentials:
 
     - Username: The username will be the OCI Username you noted earlier (which is not the same as your database username).
     - Password: The password will be the OCI Object Store Auth Token you just generated.
@@ -239,7 +239,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
     ![](./images/adwc-credential.png  " ")
 
-8.  Create another credential for the ADW database. For the **Username - ADMIN**, provide the autonomous database instance **Password - WELcome__1234**. This is your database ADMIN username and password. This will be used in the further steps.
+8.  Create another credential for the ADW database. For the **Username - ADMIN**, provide the autonomous database instance **Password - WELcome__1234**. This is your database ADMIN username and password. This will be used in further steps.
 
     ````
     <copy>
@@ -309,7 +309,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
     ![](./images/adwlink-test.png  " ")
 
-## Task 6: Copy tables from ADW to ATP
+## Task 6: Copy Tables from ADW to ATP
 
 1.  First, copy the credit\_scoring\_100k table into ML\_USER in ATP. Normally, this table would already exist in the production system. We could have loaded this table to ATP in Lab 1 when we loaded the table into ADW. But, since we were going to create this database link, we can just copy it from ADW. Run the following statement to copy credit\_scoring\_100k table into ML\_USER in ATP.
 
@@ -333,7 +333,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
 ## Task 7: Import the ML model
 
-1.  Copy the SQL worksheet URL from the browser and paste it into another tab.
+1.  Copy the Database Actions SQL worksheet URL from the browser and paste it into another tab.
 
     ![](./images/replace-admin.png  " ")
 
