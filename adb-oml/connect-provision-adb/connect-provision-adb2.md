@@ -291,7 +291,7 @@ You now have created your first ATP instance.
 
     ![](./images/storage-privileges.png " ")
 
-## Task 5: Download Custom Lab Files
+## Task 7: Download Custom Lab Files
 Download the compressed install file that contains data files and custom OML Notebooks that are used further in this workshop.
 
 1.  Click the link below to download the install file.
@@ -302,7 +302,7 @@ Download the compressed install file that contains data files and custom OML Not
 
     ![](./images/060.png  " ")
 
-## Task 6: Upload the data files to ADW ML_USER
+## Task 8: Upload the data files to ADW ML_USER
 
 1. On the tab with your ADW instance, click **Database Actions**.
 

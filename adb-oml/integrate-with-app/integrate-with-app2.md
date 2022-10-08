@@ -90,7 +90,7 @@ This lab assumes you have completed the following labs:
 
     ````
     <copy>
-    create or replace view ml_user.credit_scoring_100k_v as select a.first_name, 
+    create or replace view ml_user.credit_scoring_100k_v as select a.first_name,
     a.last_name, b.*
     from ml_user.customer_names a, credit_scoring_100k b
     where a.customer_id(+)= b.customer_id;
@@ -117,7 +117,7 @@ This lab assumes you have completed the following labs:
     , max_cc_spent_amount number
     , max_cc_spent_amount_prev number
     , residental_status varchar2(26)
-    , likely_good_credit_pcnt AS (round((100*(prediction_probability(n1_class_model, 'Good Credit' USING 
+    , likely_good_credit_pcnt AS (round((100*(prediction_probability(n1_class_model, 'Good Credit' USING
         wealth
     , customer_dmg_segment
     , income
@@ -364,4 +364,3 @@ This concludes this lab and this workshop.
 - **Author** - Derrick Cameron
 - **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, June 2020
 - **Last Updated By/Date** - Anoosha Pilli, Product Manager, DB Product Management, March 2021
-

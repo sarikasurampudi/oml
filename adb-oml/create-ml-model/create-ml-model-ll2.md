@@ -324,7 +324,7 @@ Arom the previous tasks, we learned how simple it is to add content to your note
 
     ![](./images/import.png  " ")
 
-##Task 6 View Notebook options
+## Task 6: View Notebook options
 Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
 
 1.  Click the **Targeting Customers That Complete All Payments\_V4\_1** notebook to open it.

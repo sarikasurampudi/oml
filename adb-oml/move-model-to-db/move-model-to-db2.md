@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In the previous lab, you created a machine learning model that can predict customer credit. Congratulations! But you’re not finished. It’s a good model, but models have to be deployed into production systems, they have to positively impact the business, and too many machine learning projects fail at this point. We are going to spend the next two labs making sure you deploy this model so that Alpha Office employees can use it in their day to day work.
+In the previous lab, you created a machine learning model that can predict customer credit. Congratulations! But you’re not done yet. Tt's a good model, but models must be deployed into production systems and have a positive impact on the business, and far too many machine learning projects fail at this stage. We'll spend the next lab making sure you deploy this model so that Alpha Office employees can use it on a daily basis.
 
-The first step is to move the model from where it was developed into a production transaction processing database where it will be accessible to the Client Service application. This lab will take you through that process.
+The first step is to move the model from where it was developed into a production transaction processing database where the Client Service application can access it. This lab will walk you through the steps.
 
 Estimated lab time: 20 - 30 minutes
 
@@ -22,7 +22,7 @@ In this lab, you will:
 
 - In ATP:
     - Create a new ML\_USER and grant that user access to the SQL Developer Web, and to storage.
-    - Create a database link that will be used to copy (pull) export of the ml model from ADW to ATP.
+    - Create a database link that will be used to copy (pull) export of the machine learning model from ADW to ATP.
     - Copy the model from ADW to ATP.
     - Log in with ML\_USER and import the ml model.
     - Create a virtual column on the table that applies the model to rows in the table.
@@ -36,31 +36,32 @@ This lab assumes you have completed the following labs:
 
 ## Task 1: Export the machine learning model
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and navigate to your instance.
+1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and
 
     ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
+2. Navigate to your instance.
     ![](./images/adw-instance.png " ")
 
-2.  On the **Tools** tab of your ADW instance, click on **Open Database Actions**.
+3. Click **Database Actions**.
 
     ![](./images/tools.png " ")
 
     ![](./images/open-database-actions.png  " ")
 
-3.  Provide the **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**.
+4.  The initialization screen appears. If prompted, log in with **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**. If you are signed in with a different user, click the profile icon on the top right, and click **Sign Out**.
 
     ![](images/ml-user-next.png)
 
     ![](images/ml-user-sign-in.png)
 
-4. From the Database Actions menu, choose **SQL**.
+5. From the Database Actions menu, choose **SQL**. The worksheet opens for you to edit.
 
     ![](./images/sql.png " ")
 
     ![](./images/ml-user-sql-developer.png " ")
 
-5.  Create a temporary table to hold the data mining model.
+6.  Create a temporary table to hold the data mining model.
 
     ````
     <copy>
@@ -70,7 +71,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/temp.png  " ")
 
-6.  Confirm the machine learning model that was built. This has been done in lab 1 and lab 2 by executing the steps in the Credit Scoring notebook and Targeting Customers That Complete All Payments Notebook respectively.
+7.  Confirm the machine learning model that was built. This has been done in Lab 1 and Lab 2 by running the steps in the Credit Scoring notebook and Targeting Customers That Complete All Payments Notebook respectively.
 
     ````
     <copy>
@@ -80,7 +81,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/ml-model-created.png  " ")
 
-7.  Export the ML model to this temporary table. The model will be stored in a binary large object.
+8.  Export the machine learning model to this temporary table. The model will be stored in a binary large object.
 
     ````
     <copy>
@@ -99,7 +100,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/export-ml-model.png  " ")
 
-8.  Confirm the model was exported by looking at the length of the blob (you can't see the binary data). Note your length may differ slightly.
+9.  Confirm the model was exported by looking at the length of the blob (you can't see the binary data). Note your length may differ slightly.
 
     ````
     <copy>
@@ -526,5 +527,3 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 - **Author** - Derrick Cameron
 - **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, June 2020
 - **Last Updated By/Date** - Anoosha Pilli, Product Manager, DB Product Management, March 2021
-
-
