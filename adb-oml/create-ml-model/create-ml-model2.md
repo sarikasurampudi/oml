@@ -88,9 +88,7 @@ This lab assumes you have completed the following labs:
 
 You can add text and code to your notebook to customize it.  Follow these steps to edit your OML Notebook.
 
-1.  Click the **gear** icon in the upper right. We must set the interpreter binding to connect to the ADW database instance and run queries. Be sure to select at least one of the **services** (High, Medium, or Low (or all)) and click **Save**.
-
-2. Click on the **gear** icon in the upper right. We must set the interpreter binding if we're going to connect to the ADW database and run queries. Select the medium and markdown interpreters. You can deselect items by clicking them, changing them from blue to white.
+1. Click on the **gear** icon in the upper right. We must set the interpreter binding if we're going to connect to the ADW database and run queries. Select the medium and markdown interpreters. You can deselect items by clicking them, changing them from blue to white  and click **Save**.
 
     ![](./images/gear.png  " ")
 
@@ -101,7 +99,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     - %python - used to run Python code.
     - %r - used to run the R code.
 
-4.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
+2.  Paste the following into the first paragraph. Then click on the **arrow** to run the code (format the text in this case.). Note that it displays the formatted text, and adds a new paragraph. Notebooks save automatically.
 
     ````
     <copy>
@@ -116,13 +114,13 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
     ![](./images/051.png  " ")
 
-5.  Sometimes we just want the result (formatted text in this case), and not the code. Click on the **show editor** icon to hide the code.
+3.  Sometimes we just want the result (formatted text in this case), and not the code. Click on the **show editor** icon to hide the code.
 
     ![](./images/052.png  " ")
 
     ![](./images/053.png  " ")
 
-6.  In the next paragraph overwrite the %md with the following code. Click the play icon to run this paragraph.
+4.  In the next paragraph overwrite the %md with the following code. Click the play icon to run this paragraph.
 
     ````
     <copy>
@@ -138,11 +136,11 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
     ![](./images/select-mluser-table.png  " ")
 
-7.  To add a title, click the **gear** icon and select **Show title**.
+5.  To add a title, click the **gear** icon and select **Show title**.
 
     ![](./images/show-title.png  " ")
 
-8.  Click the **Untitled** field and enter the following into the title.
+6.  Click the **Untitled** field and enter the following into the title.
 
     ````
     <copy>
@@ -153,7 +151,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     ![](./images/edit-title.png  " ")
     ![](./images/057.png  " ")
 
-9.  Enter the following in the next paragraph.
+7.  Enter the following in the next paragraph.
       ````
       <copy>
       %sql
@@ -164,27 +162,27 @@ You can add text and code to your notebook to customize it.  Follow these steps 
       </copy>
       ````
 
-![](./images/enter-paragraph.png  " ")
+    ![](./images/enter-paragraph.png  " ")
 
 
-10. Click the play icon to run the script and review the data by mode of job contacts and income.
+8. Click the play icon to run the script and review the data by mode of job contacts and income.
 
     ![](./images/select-query-output.png  " ")
 
-10. To view a bar chart presentation of the data, click the **bar chart** icon.
+9. To view a bar chart presentation of the data, click the **bar chart** icon.
 
     ![](./images/bar-chart.png  " ")
 
-11. Click **settings** and remove `CUSTOMER_ID` from the keys field and `AGE SUM` from the values field.
+10. Click **settings** and remove `CUSTOMER_ID` from the keys field and `AGE SUM` from the values field.
 
     ![](./images/settings.png  " ")
 
 
-12. Drag and drop `OCCUPATION` into **keys** and `CUSTOMER_ID` into the **values** fields. Review the results. Hide the settings by clicking on the **settings** label again.
+11. Drag and drop `OCCUPATION` into **keys** and `CUSTOMER_ID` into the **values** fields. Review the results.
     ![](./images/drag-and-drop.png  " ")
 
 
-13. To hide the settings click settings again.
+12. To hide the settings click settings again.
     ![](./images/hide-settings.png  " ")
 
     So how does all this help us build machine learning models, collaborate with others, and review and share the results/findings?
@@ -196,10 +194,10 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     - A visual pallet to display data and ml results.
     - A shared platform where discussion, documentation, execution, and results are presented together.
 
-14. Finally, let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame.
+13. Finally, let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame.
     ![](./images/click-examples.png  " ")
 
-15. Select the notebook with an algorithm of interest. In this example, open the **OML4SQL Anomaly Detection** example and go through it. In the search box, type “anomaly” to see the notebooks illustrating this technique.
+14. Select the notebook with an algorithm of interest. In this example, open the **OML4SQL Anomaly Detection** example and go through it. In the search box, type “anomaly” to see the notebooks illustrating this technique.
 
     ![](./images/click-anamoly-detection.png  " ")
 
@@ -207,9 +205,9 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
 ## Task 3: Import the Workshop Notebook
 
-From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
+From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments_v6.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting\_customers\_that\_complete\_all\_payments\_v6.json](files/targeting_customers_that_complete_all_payments_v4.json?download=1).
+1. Download the notebook [targeting customers that complete all payments](./files/Targeting Customers That Complete All Payments_v6.json?download=1).
 
 2.  Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
@@ -227,7 +225,7 @@ From the previous tasks, we learned how simple it is to add content to your note
 ##Task 4 View Notebook options
 Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
 
-1.  Click the **Targeting Customers That Complete All Payments** notebook to open it.
+1.  Click the **Targeting Customers That Complete All Payments\_V4\_1** notebook to open it.
     ![](./images/step4.4-023.png  " ")
 
 2.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
@@ -246,18 +244,15 @@ Before you start working on the imported notebooks. Let's explore some options i
      ![](./images/click-ok.png  " ")
 
 6.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
-Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
 
     ![](./images/step4.8-027.png  " ")
-
-    ![](./images/step4.9-029.png  " ")
 
 7. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
      ![](./images/step4.9-030.png  " ")
 
      ![](./images/step4.9-031.png  " ")
 
-## Task 4: About this Notebook
+## Task 5: About this Notebook
 
 The rest of this lab will be done interactively in the notebook. This step discusses the result of each section of the notebook.
 
@@ -274,12 +269,14 @@ The rest of this lab will be done interactively in the notebook. This step discu
     ![](./images/nb5.png  " ")
 
 4. Optionally, we can create Histograms.
+    ![](./images/histograms.png  " ")
 
 5. Here, we are building a model to identify key variables that most influence the target attribute by running the Attribute Importance machine learning technique. 
 
     ![](./images/nb6.png  " ")
 
 6. View the attributes that independently influence the target MAX\_CC\_SPENT\_AMOUNT.
+    ![](./images/target_max_cc_spent.png  " ")
 
 7. Now, split the data into Train and Test data sets. This example has an automatic data preparation parameter in the model building step. We’ll first drop any model with the same name and then build and evaluate a classification model to predict the column CREDIT\_SCORE\_BIN.
 
@@ -298,14 +295,16 @@ The rest of this lab will be done interactively in the notebook. This step discu
     ![](./images/nb10.png  " ")
 
 11. Let's create a new table CREDIT\_SCORE\_NEW\_PREDICTIONS to view other data visualization tools. Drop the table if it already exists. 
+    ![](./images/nb_create_new_prediction.png  " ")
 
 12. The next step scores and ranks the customers who are married, occupation is "Professional", indicating the loan type, and education level among other attributes. You can substitute the filters. 
+    ![](./images/nb_score_customers.png  " ")
 
 13. Let's apply the model in real-time and make a prediction with a single record. Also, create a new view to include the CUSTOMER\_SCORING\_100K\_PREDICT\_V data with the generated predictions.
 
     ![](./images/nb11.png  " ")
 
-14. Now, verify the CUSTOMER\_SCORING\_100k\_PREDICT\_V view.
+14. Optionally, you can update and verify the CUSTOMER\_SCORING\_100k\_PREDICT\_V view.
 
     ![](./images/nb12.png  " ")
 

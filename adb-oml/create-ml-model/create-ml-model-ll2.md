@@ -308,9 +308,9 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
 ## Task 5: Import ML Notebook
 
-Arom the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
+Arom the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments_v6.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting customers that complete all payments v6.json](files/targeting_customers_that_complete_all_payments_v4_ll.json?download=1).
+1. Download the notebook [targeting customers that complete all payments_v6.json](./files/Targeting Customers That Complete All Payments_v6_ll.json?download=1).
 
 2.   Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
@@ -327,105 +327,82 @@ Arom the previous tasks, we learned how simple it is to add content to your note
 ##Task 6 View Notebook options
 Before you start working on the imported notebooks. Let's explore some options in OML Notebooks.
 
-1.  Click the **Targeting Customers That Complete All Payments** notebook to open it.
+1.  Click the **Targeting Customers That Complete All Payments\_V4\_1** notebook to open it.
 		    ![](./images/step4.4-023.png  " ")
 
 2.  Before you use the **Targeting Customers That Complete All Payments** notebook, you need to set the interpreter binging. Click on the gear icon.
-
-		    ![](./images/step4.5-024.png  " ")
+    ![](./images/step4.5-024.png  " ")
 
 3.  Select the **orcl\_high** interpreter, drag and drop it to reorder and then click **Save**.
-
-		    ![](./images/gear2.png  " ")
+    ![](./images/gear2.png  " ")
 
 4.  Click the **play** icon to run all paragraphs in the notebook.
-
-		    ![](./images/step4.7-026.png  " ")
+    ![](./images/step4.7-026.png  " ")
 
 5. A confirmation window appears. Click **OK** to run all paragraphs. The paragraphs run one by one displaying the status next to the title.
 		     ![](./images/click-ok.png  " ")
 
 6.  Click on the **Show/hide the code** icon to show the output and to view the code and the formatted text.
-		Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
-
-		    ![](./images/step4.8-027.png  " ")
-
-		    ![](./images/step4.9-029.png  " ")
-
-7. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
-		     ![](./images/step4.9-030.png  " ")
-
-		     ![](./images/step4.9-031.png  " ")
-
-5.  Select the **Targeting Customers That Complete All Payments** notebook.
-
-    ![](./images/select-credit-notebook.png  " ")
-
-6.  Before you start working the **Targeting Customers That Complete All Payments** you need to set the interpreter binding. Click on the gear icon.
-
-    ![](./images/step4.5-024.png  " ")
-
-7.  Select the **orcl_high** interpreter, drag and drop it to reorder and then **Save**.
-
-    ![](./images/gear2.png  " ")
-
-8.  Click on the **arrow** icon to run all paragraphs in the notebook.
-
-    ![](./images/step4.7-026.png  " ")
-
-    ![](./images/click-ok.png  " ")
-
-9.  Click on the **output** icon to show the output. To view the code and the formatted text, click on **show/hide the code** icon. Ensure that all the paragraphs are in **Finished** state and then click on **output** icon.
 
     ![](./images/step4.8-027.png  " ")
 
-    ![](./images/step4.9-029.png  " ")
-
-    ![](./images/step4.9-030.png  " ")
-
+7. Click the **Show/hide the output** icon. Ensure that all the paragraphs show **FINISHED** status and then click **Show/hide the output** icon.
     ![](./images/step4.9-031.png  " ")
+
 
 ## Task 7: About this Notebook
 
-The rest of this lab will be done interactively in the notebook. This step discusses the result of each portion of the notebook.
+The rest of this lab will be done interactively in the notebook. This step discusses the result of each section of the notebook.
 
-1. This graph illustrates Good\_Credit customers who complete all their payments are hard to find.
+1. This graph illustrates viewing customers with “Good Credit” who complete all their payments are hard to find.
 
     ![](./images/nb3.png  " ")
 
-2. This section illustrates how we can graph our understanding of the data.
+2. This section illustrates how we can explore the data. The pie charts here show MARITAL and OCCUPATION, respectively, from a few selected attributes.
 
     ![](./images/nb4.png  " ")
 
-    ![](./images/nb5.png  " ")
+4. Optionally, we can create Histograms.
+    ![](./images/histograms.png  " ")
 
-3. This Attribute Importance model identifies the key variables that most influence the target attribute.
+5. Here, we are building a model to identify key variables that most influence the target attribute by running the Attribute Importance machine learning technique. 
 
     ![](./images/nb6.png  " ")
 
-4. Now, split the data into Train and Test data sets. Drop, then Build and Evaluate the Classification Model.
+6. View the attributes that independently influence the target MAX\_CC\_SPENT\_AMOUNT.
+    ![](./images/target_max_cc_spent.png  " ")
+
+7. Now, split the data into Train and Test data sets. This example has an automatic data preparation parameter in the model building step. We’ll first drop any model with the same name and then build and evaluate a classification model to predict the column CREDIT\_SCORE\_BIN.
 
     ![](./images/nb7.png  " ")
 
-5. Drop, build and evaluate multiple OML models for comparison.
+8. Drop and then build and evaluate multiple OML Classification models to compare the accuracy of the model. 
 
     ![](./images/nb8.png  " ")
 
-6. Join model outputs e.g. cumulative gains chart to view and assess model quality.
+9. Join the model outputs in a table. Here, the table ALL\_LIFT\_DATA contains cumulative gains output from all the models. Plot a cumulative gains chart to view and assess the model quality.
 
     ![](./images/nb9.png  " ")
 
-7. Now, apply the model to make predictions.
+10. Now, apply the model to make predictions on customers who are likely to be “GOOD CREDIT” and complete their payments.
 
     ![](./images/nb10.png  " ")
 
-8. Apply the model to a single record to make a prediction.
+11. Let's create a new table CREDIT\_SCORE\_NEW\_PREDICTIONS to view other data visualization tools. Drop the table if it already exists. 
+    ![](./images/nb_create_new_prediction.png  " ")
+
+12. The next step scores and ranks the customers who are married, occupation is "Professional", indicating the loan type, and education level among other attributes. You can substitute the filters. 
+    ![](./images/nb_score_customers.png  " ")
+
+13. Let's apply the model in real-time and make a prediction with a single record. Also, create a new view to include the CUSTOMER\_SCORING\_100K\_PREDICT\_V data with the generated predictions.
 
     ![](./images/nb11.png  " ")
 
-9. Verify the table or view.
+14. Optionally, you can update and verify the CUSTOMER\_SCORING\_100k\_PREDICT\_V view.
 
     ![](./images/nb12.png  " ")
+
+ This way, the Alpha office can approach customers who can complete payments for their purchases.
 
 [Please proceed to the next lab](#next).
 
