@@ -310,7 +310,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
 Arom the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments_v6.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting customers that complete all payments_v6.json](./files/Targeting Customers That Complete All Payments_v6_ll.json?download=1).
+1. Download the notebook [targeting customers that complete all payments_v6.json](/files/targeting_customers_that_complete_all_payments_v6.json?download=1).
 
 2.   Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
