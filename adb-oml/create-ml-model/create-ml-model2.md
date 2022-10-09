@@ -207,7 +207,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
 From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments\_v6.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
-1. Download the notebook [targeting customers that complete all payments](/files/targeting_customers_that_complete_all_payments_v6_ll.json?download=1).
+1. Download the notebook [targeting customers that complete all payments](/files/targeting_customers_that_complete_all_payments_v6.json?download=1).
 
 2.  Click the main menu, expand **Project** and click **Notebooks** to navigate to the Notebooks page.
 
@@ -315,5 +315,5 @@ The rest of this lab will be done interactively in the notebook. This step discu
 ## Acknowledgements
 
 - **Author** - Derrick Cameron
-- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning
+- **Contributors** - Anoosha Pilli, Peter Jeffcock, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr; Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning
 - **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development, October 2022
