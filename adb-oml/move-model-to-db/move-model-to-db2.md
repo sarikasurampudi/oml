@@ -34,7 +34,7 @@ This lab assumes you have completed the following labs:
 - Connect and Provision ADB
 - Create a Machine Learning Model
 
-## Task 1: Export the machine learning model
+## Task 1: Export the Machine Learning Model
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and
 
