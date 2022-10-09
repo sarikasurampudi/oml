@@ -217,7 +217,7 @@ From the previous tasks, we learned how simple it is to add content to your note
 
     ![](./images/021.png  " ")
 
-4.  Go to the directory where you downloaded the install file in Lab 1 and import both the **targeting customers that complete all payments\_v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
+4.  Go to the directory where you downloaded the notebook and import the **targeting customers that complete all payments\_v6.json** notebook. You'll see a success message. Dismiss the message by clicking **X**.
 
     ![](./images/import.png  " ")
 
