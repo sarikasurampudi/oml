@@ -38,7 +38,7 @@ This lab assumes you have completed the following labs:
 - Create a Machine Learning Model
 - Migrate ML Model to ATP
 
-## Task 1: Prepare data for the lab in ATP
+## Task 1: Prepare Data for the Lab in ATP
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
 
