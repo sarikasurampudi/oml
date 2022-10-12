@@ -358,7 +358,7 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/import-model.png  " ")
 
-5.  Confirm the machine learning model was imported imported by running the following code.
+5.  Confirm the machine learning model was imported by running the following code.
 
     ````
     <copy>
