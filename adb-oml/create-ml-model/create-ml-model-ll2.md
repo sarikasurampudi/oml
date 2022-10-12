@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the lab where you’re going to do the work of building and training a machine learning model that will help Alpha Office.
+In this lab, you will build a machine learning model that will help Alpha Office.
 
 Estimated lab time: 20 - 30 minutes
 
@@ -24,12 +24,12 @@ This lab uses a decision tree algorithm which is a classification technique. If 
 
 [](youtube:IkOz2rrB7hU)
 
-In this lab, you will use OML Notebooks to do this work. The lab will help you create a new notebook, and also import an existing one with all the code, descriptions, and examples that you need. You will then step through that notebook, examining the code, data, and visualizations and, most importantly, running each step to populate the database.
+In this lab, you will use Apache Zeppelin notebook to do this work. The lab will help you create a new notebook, and also import an existing one with all the code, descriptions, and examples that you need. You will then step through that notebook, examining the code, data, and visualizations and, most importantly, running each step to populate the database.
 
 ### Objectives
 
-- Import an OML notebook.
-- Become familiar with Oracle Machine Learning Algorithms.
+- Import an Apache Zeppelin notebook.
+- Become familiar with Oracle Machine Learning algorithms.
 - Create a machine learning model to determine factors that predict good credit.
 
 ### Prerequisites
