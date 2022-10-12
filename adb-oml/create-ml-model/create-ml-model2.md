@@ -32,7 +32,7 @@ This lab assumes you have completed the following labs:
 - Login to Oracle Cloud/Sign Up for Free Tier Account
 - Connect and Provision ADB
 
-## Task 1: Create ML Notebook
+## Task 1: Create Machine Learning Notebook
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
