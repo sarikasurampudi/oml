@@ -239,7 +239,7 @@ This lab assumes you have completed the following labs:
 
 ## Task 3: Run the Application and Review on-the-fly prediction/scoring
 
-1.  On the Alpha Office home page, select **Customer Walk-in** from the menu.
+1.  On the Alpha Office homepage, select **Customer Walk-in** from the menu.
 
     ![](./images/customer-walkin.png  " ")
 
