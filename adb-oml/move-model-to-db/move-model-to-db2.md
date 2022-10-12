@@ -108,98 +108,8 @@ This lab assumes you have completed the following labs:
 
     ![](./images/blob-length.png  " ")
 
-## Task 2: Create ML User in ATP
 
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
-
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
-
-    ![](./images/atp-instance.png " ")
-
-2.  Select **Tools** on the Autonomous Database Details page.
-
-    ![](./images/atp-tools.png " ")
-
-3.  Select **Open Oracle ML User Administration** under the tools.
-
-    ![](./images/atp-open-ml-admin.png " ")
-
-4. Sign in as **Username - ADMIN** with the password you used when you created your ATP instance.
-
-    ![](./images/atp-ml-admin-login.png  " ")
-
-6.  Click **Create** to create a new ML user.
-
-    ![](./images/atp-create.png  " ")
-
-7. On the Create User form, enter **Username - ML\_USER**, an e-mail address (you can use admin@oracle.com), un-check **Generate password**, and enter a password you will remember. You can use the same password you used for the ADMIN account. Then click **Create**.
-
-    ![](./images/atp-ml-user.png  " ")
-
-8. Notice that the **ML\_USER** is created.
-
-    ![](./images/atp-ml-user-created.png " ")
-
-## Task 3: Grant Privileges to ML_USER to Access Database Actions
-
-1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and
-
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
-
-2. Navigate to your ATP instance.
-    ![](./images/atp-instance.png " ")
-
-3. Click **Database Actions**.
-
-    ![](./images/atp-open-database-actions.png  " ")
-
-4. On the Database Actions login page, log in with your ATP credentials, provide the **Username - ADMIN** and click **Next**. Then provide the <if type="freetier">**Password** you created for the ATP instance </if><if type="livelabs">password **WELcome__1234**</if> and click **Sign in**.
-
-    ![](./images/ml-admin.png " ")
-
-    ![](./images/ml-admin-password.png " ")
-
-5. From the Database Action menu, select **SQL**.
-
-    ![](./images/sql.png " ")
-
-6. Dismiss the Help by clicking on the **X** in the popup.
-
-    ![](./images/click-x.png  " ")
-
-7.  By default, only the ADMIN user can use Database Actions. To enable ML\_USER to use it, you need to enter the following and run the procedure to grant Database Actions access to ML\_USER.
-
-    ````
-    <copy>
-    BEGIN
-      ORDS_ADMIN.ENABLE_SCHEMA(
-        p_enabled => TRUE,
-        p_schema => 'ML_USER',
-        p_url_mapping_type => 'BASE_PATH',
-        p_url_mapping_pattern => 'ml_user',
-        p_auto_rest_auth => TRUE
-      );
-      COMMIT;
-    END;
-    /
-    </copy>
-    ````
-
-    ![](./images/grant-mluser-access.png " ")
-
-    ![](./images/mluser-access-granted.png " ")
-
-8.  Grant storage privileges to ML\_USER.
-
-    ````
-    <copy>
-    alter user ml_user quota 100m on data;
-    </copy>
-    ````
-
-    ![](./images/storage-privileges.png " ")
-
-## Task 4: Download ADW Credentials Wallet
+## Task 2: Download ADW Credentials Wallet
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and
 
@@ -226,7 +136,7 @@ This lab assumes you have completed the following labs:
 
 7. Click **Close** on the Database Connection screen.
 
-## Task 5: Create a Bucket and Upload Your Data
+## Task 3: Create a Bucket and Upload Your Data
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Storage**, and select **Buckets**.
 
@@ -256,7 +166,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/copy-uri-path.png  " ")
 
-## Task 6: Generate the Auth Token
+## Task 4: Generate the Auth Token
 
 To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Store. The communication between the database and the object store relies on the Swift protocol and the OCI user Auth Token.
 
@@ -278,7 +188,7 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/copy-token.png  " ")
 
-## Task 7: Copy Machine Learning Models between ADW and ATP
+## Task 5: Copy Machine Learning Models between ADW and ATP
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
 
@@ -392,7 +302,7 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/adwlink-test.png  " ")
 
-## Task 8: Copy Tables from ADW to ATP
+## Task 6: Copy Tables from ADW to ATP
 
 1.  First, copy the credit\_scoring\_100k table into ML\_USER in ATP. Normally, this table would already exist in the production system. We could have loaded this table to ATP in Lab 1 when we loaded the table into ADW. But, since we were going to create this database link, we can just copy it from ADW. Run the following statement to copy credit\_scoring\_100k table into ML\_USER in ATP.
 
@@ -414,7 +324,7 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/create-mluser-temp.png  " ")
 
-## Task 9: Import the ML model
+## Task 7: Import the ML Model
 
 1.  Copy the Database Actions SQL worksheet URL from the browser and paste it in another tab. Change the user in the SQL Developer URL from ADMIN to **ml\_user** and hit enter to log in as ML\_USER. Copy the URL to a notepad - you will need it later.
 
