@@ -28,7 +28,7 @@ In this lab, you will:
 - Import data to set up the lab.
 - Import an APEX application.
 - Review the application to see how you can make predictions on the fly.
-- Expose your ml model as a REST endpoint so any application can use it.
+- Expose your machine learning model as a REST endpoint so any application can use it.
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ This lab assumes you have completed the following labs:
 - Login to Oracle Cloud/Sign Up for Free Tier Account
 - Connect and Provision ADB
 - Create a Machine Learning Model
-- Migrate ML Model to ATP
+- Migrate Machine Learning Model to ATP
 
 ## Task 1: Prepare Data for the Lab in ATP
 
