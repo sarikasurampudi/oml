@@ -108,7 +108,7 @@ You now have created your first ADW instance. Now, we are going to work on very 
     ![](./images/atp-available.png  " ")
 You now have created your first ATP instance.
 
-## Task 3: Create ML User in ADW
+## Task 3: Create Machine Learning User in ADW
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
@@ -126,10 +126,10 @@ You now have created your first ATP instance.
 5. Sign in as **Username - ADMIN** and with the password, you used when you created your Autonomous instance.
     ![](./images/ml-login.png  " ")
 
-6. Click **Create** to create a new ML user.
+6. Click **Create** to create a new machine learning user.
     ![](./images/create.png  " ")
 
-7. On the Create User form, enter **Username - ML\_USER**, an e-mail address (you can use admin@oracle.com), un-check **Generate password**, and enter a password you will remember. You can use the same password you used for the ADMIN account. Then click **Create**.
+7. On the Create User form, enter **Username - machine learning\_USER**, an e-mail address (you can use admin@oracle.com), un-check **Generate password**, and enter a password you will remember. You can use the same password you used for the ADMIN account. Then click **Create**.
 
     ![](./images/create-ml-user.png  " ")
 
@@ -201,7 +201,7 @@ You now have created your first ATP instance.
 
 9. Now, on the right, click the ADMIN profile dropdown and click **Sign Out** of the ADMIN account.
 
-## Task 5: Create ML User in ATP
+## Task 5: Create Machine Learning User in ATP
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
