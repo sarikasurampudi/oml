@@ -24,7 +24,7 @@ In this lab, you will:
     - Create a new ML\_USER and grant that user access to the Database Actions, and to storage.
     - Create a database link that will be used to copy (pull) export of the machine learning model from ADW to ATP.
     - Copy the model from ADW to ATP.
-    - Log in with ML\_USER and import the ml model.
+    - Log in with ML\_USER and import the machine learning model.
     - Create a virtual column on the table that applies the model to rows in the table.
 
 ### Prerequisites
@@ -324,9 +324,9 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/create-mluser-temp.png  " ")
 
-## Task 7: Import the ML Model
+## Task 7: Import the Machine Learning Model
 
-1.  Copy the Database Actions SQL worksheet URL from the browser and paste it in another tab. Change the user in the SQL Developer URL from ADMIN to **ml\_user** and hit enter to log in as ML\_USER. Copy the URL to a notepad - you will need it later.
+1.  Copy the Database Actions SQL worksheet URL from the browser and paste it in another tab. Change the user in the Database Actions URL from ADMIN to **ml\_user** and press enter to log in as ML\_USER. Copy the URL to a notepad - you will need it later.
 
     ![](./images/replace-admin.png  " ")
 
@@ -379,7 +379,7 @@ To load data from the Oracle Cloud Infrastructure(OCI) Object Storage you will n
 
     ![](./images/select-model.png  " ")
 
-7.  To make the model prediction available to all applications we will use the Oracle Database's virtual column feature. We will add two new virtual columns - the prediction itself, and the probability that the prediction is correct. *TIP: You can also create a function index in the ml columns (not included here)*. If you wish to use a function index the table must be analyzed to be used in queries. For more information, see ["When to Use Function-Based Indexes"](https://docs.oracle.com/en/database/oracle/oracle-database/21/adfns/indexes.html#GUID-44AD4D28-A056-4977-B2F7-AC1BC50EDC87).
+7.  To make the model prediction available to all applications we will use the Oracle Database's virtual column feature. We will add two new virtual columns - the prediction itself, and the probability that the prediction is correct. *TIP: You can also create a function index in the machine learning columns (not included here)*. If you wish to use a function index the table must be analyzed to be used in queries. For more information, see ["When to Use Function-Based Indexes"](https://docs.oracle.com/en/database/oracle/oracle-database/21/adfns/indexes.html#GUID-44AD4D28-A056-4977-B2F7-AC1BC50EDC87).
 
     ````
     <copy>
