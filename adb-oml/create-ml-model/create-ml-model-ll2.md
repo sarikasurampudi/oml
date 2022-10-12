@@ -12,25 +12,23 @@ Watch this short video to preview how to build a machine learning model.
 
 ### About Oracle Machine Learning
 
-Simplifying greatly, you can split machine learning into two parts: the process of building and training a model so it is ready to work; putting that model to work in production systems, applications, and processes. In general, training a machine learning model takes significant computing resources. You should not run that kind of work in an existing data warehouse or data mart, without clearing it ahead of time because it’s possible that model training could use too many resources and impact SLAs. You definitely don’t want to build and train a model in any kind of critical transactional system for the same reason.
+Simplifying greatly, you can separate the machine learning process into three parts: data preparation, model building, and putting that model to work in production systems, like applications, dashboards, and business processes. In general, training a machine learning model on large volume data – depending on the algorithm selected – can take significant computing resources. You should not run that kind of work in an existing data warehouse, data mart, or transactional systems without consulting your administrator to avoid impacting SLAs.
 
-For this Alpha Office scenario, we provision two different autonomous databases. The autonomous data warehouse is used to build and train your model. Think of it as a stand-in for your own data warehouse or data mart. Alternatively, given how easy it is to provision a data mart, think of this ADW as the best way for you to do machine learning without impacting anybody else in the organization. Setting up a dedicated data mart for machine learning may be the right thing for you to do outside of this lab.
+For this Alpha Office scenario, we focus on the modeling and deployment process and provision two different autonomous databases. The autonomous data warehouse is used to build your model. Think of it as a stand-in for your own data warehouse or data mart. Alternatively, given how easy it is to provision a data mart, think of this ADW as the best way for you to do machine learning without impacting production systems. Setting up a dedicated data mart for machine learning may be the right thing for you to do outside of this lab.
 
-But it’s not just about training the model - you also have to deploy it, and there are some options. You could deploy a model into a data warehouse where it’s available for analytics. Or maybe you want to deploy it into a production transaction processing system so that you can score each new transaction. Either way, you are going to need to know how to export and import a model. So we show you that in this workshop using two different databases.
+But it’s not just about building the model - you also need to deploy it, and there are some options. You could deploy a model into a data warehouse where it’s available for analytics. Or maybe you want to deploy it into a production transaction processing system so that you can score each new transaction. Either way, you will need to know how to export and import a model. So, we show you that in this lab using two different databases.
 
 What Alpha Office wants is to deploy this machine learning model in a production database that supports their Client Service application. When an existing customer comes into the branch, we can pull up their name and check their credit in real-time. The marketing department can also load batch data into this system and run a process to score a new set of customers in bulk. So, this setup of just two different services allows you to build, train, and deploy a machine learning model into an application so that customer-facing and marketing employees can work with it.
-
-We are trying to help Alpha Office predict the credit and payment suitability of their customers. We can use machine learning to help us here because we already have a set of customers with known credit and payment status. This is what we are going to use to train a model that will predict for new customers if their credit is suitable.
 
 This lab uses a decision tree algorithm which is a classification technique. If these are new to you, here’s a [presentation](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/adbml/o/Machine_Learning_Introduction.pdf) and a short video below that explains machine learning, classification, and decision trees at a high level.
 
 [](youtube:IkOz2rrB7hU)
 
-In this lab, you will use Apache Zeppelin notebooks to do this work. The lab will help you create a new notebook, and also import an existing one with all the code, descriptions, and examples that you need. You will then step through that notebook, examining the code, data, and visualizations and, most importantly, executing each step to populate the database.
+In this lab, you will use OML Notebooks to do this work. The lab will help you create a new notebook, and also import an existing one with all the code, descriptions, and examples that you need. You will then step through that notebook, examining the code, data, and visualizations and, most importantly, running each step to populate the database.
 
 ### Objectives
 
-- Import an Apache Zeppelin notebook.
+- Import an OML notebook.
 - Become familiar with Oracle Machine Learning Algorithms.
 - Create a machine learning model to determine factors that predict good credit.
 
@@ -40,7 +38,7 @@ This lab assumes you have completed the following labs:
 - Login to Oracle Cloud/Sign Up for Free Tier Account
 - Connect and Provision ADB
 
-## Task 1: Create ML User in ADW
+## Task 1: Create Machine Learning User in ADW
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse** and navigate to your ADW instance.
 
@@ -60,7 +58,7 @@ This lab assumes you have completed the following labs:
 
     ![](./images/ml-login.png  " ")
 
-6.  Click **Create** to create a new ML user.
+6.  Click **Create** to create a new machine learning user.
 
     ![](./images/create.png  " ")
 
@@ -137,7 +135,7 @@ Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**
 9. Now, on the right, click the ADMIN profile dropdown and click **Sign Out** of the ADMIN account.
 
 
-## Task 3: Create ML Notebook
+## Task 3: Create a Machine Learning Notebook
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse** and navigate to your instance.
 
@@ -294,7 +292,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
     - A collaborative shared workspace for model development.
     - A direct connection to all the data in your Autonomous Database that can scale to petabytes.
     - A platform for preparing data for model ingestion.
-    - A visual pallet to display data and ml results.
+    - A visual pallet to display data and machine learning results.
     - A shared platform where discussion, documentation, execution, and results are presented together.
 
 13. Finally, let's review some examples. Click the cloud menu and click **Examples**. You can also navigate to the **Home** dashboard and click **Examples** from the Quick Actions frame.
@@ -306,7 +304,7 @@ You can add text and code to your notebook to customize it.  Follow these steps 
 
     ![](./images/anamoly-detection.png  " ")
 
-## Task 5: Import ML Notebook
+## Task 5: Import Machine Learning Notebook
 
 From the previous tasks, we learned how simple it is to add content to your notebook and run the code. In this task, let's import custom machine learning notebooks and review them. The install file that you downloaded in Lab 1 has custom notebook _Targeting Customers That Complete All Payments\_v6.json_. The notebook contains steps that are followed during data exploration and machine learning model building. You must run all the steps in these notebooks if you wish to continue with Lab 3 and Lab 4. Running the steps takes only a few minutes.
 
