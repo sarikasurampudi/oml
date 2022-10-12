@@ -1,4 +1,4 @@
-# Build a Machine Learning Model
+Database Actions# Build a Machine Learning Model
 
 ## Introduction
 
@@ -12,7 +12,7 @@ Watch this short video to preview how to build a machine learning model.
 
 ### About Oracle Machine Learning
 
-Simplifying greatly, you can separate the machine learning process into three parts: data preparation, model building, and putting that model to work in production systems, like applications, dashboards, and business processes. In general, training a machine learning model on large volume data – depending on the algorithm selected – can take significant computing resources. You should not run that kind of work in an existing data warehouse, data mart, or transactional systems without consulting your administrator to avoid impacting SLAs.
+Simplifying greatly, you can separate the machine learning process into three parts: data preparation, model building, and putting that model to work in production systems, like applications, dashboards, and business processes. In general, training a machine learning model on large volume data – depending on the algorithm selected – can take computing resources. You should not run that kind of work in an existing data warehouse, data mart, or transactional systems without consulting your administrator to avoid impacting SLAs.
 
 For this Alpha Office scenario, we focus on the modeling and deployment process and provision two different autonomous databases. The autonomous data warehouse is used to build your model. Think of it as a stand-in for your own data warehouse or data mart. Alternatively, given how easy it is to provision a data mart, think of this ADW as the best way for you to do machine learning without impacting production systems. Setting up a dedicated data mart for machine learning may be the right thing for you to do outside of this lab.
 
@@ -101,7 +101,7 @@ Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**
 
     ![](./images/click-x.png  " ")
 
-7.  By default, only the ADMIN user can use the SQL Developer Web. To enable ML\_USER to use it, enter the following and click the **Run Statement** button to grant SQL developer web access to ML\_USER.
+7.  By default, only the ADMIN user can use Database Actions. To enable ML\_USER to use it, enter the following and click the **Run Statement** button to grant Database Actions access to ML\_USER.
 
     ````
     <copy>
