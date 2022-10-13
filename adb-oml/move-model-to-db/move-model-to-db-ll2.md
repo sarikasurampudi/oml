@@ -2,8 +2,9 @@
 
 ## Introduction
 
-In the previous lab, you created a machine learning model that can predict customer credit. Congratulations! But you’re not finished. It’s a good model, but models often need to be deployed to production systems to impact the business. Unfortunately, too many machine learning projects fail at this deployment step. We are going to spend the next two labs making sure you deploy this model so that Alpha Office employees can use it in their day-to-day work. 
-Since we have a separate production system, our first step is to move the model from where it was developed into a production transaction processing database where it will be accessible to the Client Service application. This lab will take you through that process.
+In the previous lab, you created a machine learning model that can predict customer credit. Congratulations! But you’re not done yet. It's a good model, but models must be deployed into production systems and have a positive impact on the business, and far too many machine learning projects fail at this stage. We'll spend the next lab making sure you deploy this model so that Alpha Office employees can use it on a daily basis.
+
+The first step is to move the model from where it was developed into a production transaction processing database where the Client Service application can access it. This lab will walk you through the steps.
 
 Estimated lab time: 20 - 30 minutes
 

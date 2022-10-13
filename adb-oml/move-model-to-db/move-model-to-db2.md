@@ -21,7 +21,6 @@ In this lab, you will:
     - Download the credential wallet and upload it to object storage
 
 - In ATP:
-    - Create a new ML\_USER and grant that user access to the Database Actions, and to storage.
     - Create a database link that will be used to copy (pull) export of the machine learning model from ADW to ATP.
     - Copy the model from ADW to ATP.
     - Log in with ML\_USER and import the machine learning model.
