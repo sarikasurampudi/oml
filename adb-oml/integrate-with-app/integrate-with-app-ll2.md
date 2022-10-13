@@ -36,7 +36,7 @@ This lab assumes you have completed the following labs:
 - Login to Oracle Cloud/Sign Up for Free Tier Account
 - Connect and Provision ADB
 - Create a Machine Learning Model
-- Migrate machine learning model to ATP
+- Migrate Machine Learning Model to ATP
 
 ## Task 1: Download the Custom Files
 

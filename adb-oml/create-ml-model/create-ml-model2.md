@@ -1,4 +1,4 @@
-# Build a Machine Learning Model
+# Create a Machine Learning Model
 
 ## Introduction
 

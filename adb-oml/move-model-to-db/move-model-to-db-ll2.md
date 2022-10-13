@@ -1,4 +1,4 @@
-# Deploy the Machine Learning Model into ATP
+# Migrate Machine Learning Model to ATP
 
 ## Introduction
 
