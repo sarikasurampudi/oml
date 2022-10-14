@@ -38,4 +38,4 @@ In this workshop you will:
 - **Authors/Contributors** - Derrick Cameron, Leah Bracken, Charlie Berger
 - **Contributors** - Mark Hornick, Sherry LaMonica, Marcos Arancibia, Anoosha Pilli, Arabella Yao, Ayden Smith, Jeffrey Malcolm Jr, LiveLabs QA
 - **Last Updated By/Date** - Sarika Surampudi, October 2022
-- **Workshop Expiration Date** - March 31, 2022
+- **Workshop Expiration Date** - June 30, 2023
