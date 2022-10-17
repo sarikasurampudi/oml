@@ -42,7 +42,7 @@ This lab assumes you have completed the following labs:
 
 1.  Click the install file from the link in this step.
 
-    [install.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/natdcshjumpstartprod/b/adbml/o/install.zip)
+    [install.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/n/adwc4pm/b/OML-Resources/o/install.zip)
 
 2.  Save the install.zip to a download directory and then unzip the file.
 
