@@ -58,11 +58,11 @@ First, we are going to create an ADW Instance.
 
 5.  Under **Configure the database**, accept the default values for **Choose database version** and **Storage (TB)** and **OCPU Count**.
 
-    ![Configure the Database](./images/009.png  " ")
+    ![Configure the Database](./images/configure.png  " ")
 
 6.  Add a password. Copy the password down in a notepad, you will need it later in labs.
 
-    ![Add password](./images/010.png  " ")
+    ![Add password](./images/password.png  " ")
 
 7.  In **Choose network access**, keep the default access type **Allow secure access from everywhere**. Under **Choose a license type**, select **License Included** and click **Create Autonomous Database**. Leave the **Provide contacts for operational notifications and announcements** field blank.
 
@@ -93,10 +93,10 @@ You now have created your first ADW instance. Now, we are going to work on very 
     ![Select the options](./images/provision-atp.png  " ")
 
 6.  Under **Configure the database**, accept the default values for **Choose database version** , **Storage (TB)**, and **OCPU Count**.
-    ![Configure the Database](./images/009.png  " ")
+    ![Configure the Database](./images/configure.png  " ")
 
 7.  Add a password. Copy the password in a notepad, you will need it later in labs.
-    ![Add password](./images/010.png  " ")
+    ![Add password](./images/password.png  " ")
 
 8. In **Choose network access**, keep the default access type **Secure access from everywhere**. Under **Choose License and Oracle Database Edition**, select **Bring Your Own License (BYOL)**. The **Oracle Database Enterprise Edition** option gets selected automatically. Click **Create Autonomous Database**. Leave the **Provide contacts for operational notifications and announcements** field blank.
 
@@ -300,7 +300,7 @@ Download the compressed install file that contains data files and custom OML Not
 
 2.  Save the install.zip to a download directory and then unzip the file.
 
-    ![Save and unzip the file](./images/060.png  " ")
+    ![Save and unzip the file](./images/save-file.png  " ")
 
 ## Task 8: Upload the Data Files to ADW ML_USER
 

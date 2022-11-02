@@ -277,7 +277,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     - service\_name
     - ssl\_server\_cert\_dn
 
-    ![Note the fields](./images/039.png  " ")
+    ![Note the fields](./images/note-fields.png  " ")
 
 11.  Specify the **hostname**, **service_name** and **ssl\_server\_cert\_dn** values you noted earlier, to create a database link. This allows you to copy data from ADW to ATP (in fact, bi-directional).
 

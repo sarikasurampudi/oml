@@ -46,7 +46,7 @@ This lab assumes you have completed the following labs:
 
 2.  Save the install.zip to a download directory and then unzip the file.
 
-    ![Save the file](./images/060.png  " ")
+    ![Save the file](./images/save-file.png  " ")
 
 ## Task 2: Prepare data for the lab in ATP
 
