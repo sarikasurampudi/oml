@@ -37,28 +37,26 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
 
 2. Navigate to your instance.
-     ![](./images/adw-instance.png " ")
+     ![Navigate to your instance](./images/adw-instance.png " ")
 
 3.  Click **Database Actions**.
 
-    ![](./images/tools.png " ")
-
-    ![](./images/open-database-actions.png  " ")
+    ![Database Actions](./images/open-database-actions.png  " ")
 
 4.  The initialization screen appears. If prompted, log in with **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**. If you are signed in with a different user, click the profile icon on the top right, and click **Sign Out**.
 
-    ![](images/ml-user-next.png)
+    ![Login](images/ml-user-next.png)
 
-    ![](images/ml-user-sign-in.png)
+    ![Password](images/ml-user-sign-in.png)
 
 5. From the Database Actions menu, choose **SQL**. The worksheet opens for you to edit.
 
-    ![](./images/sql.png " ")
+    ![Click SQL](./images/sql.png " ")
 
-    ![](./images/ml-user-sql-developer.png " ")
+    ![SQL worksheet](./images/ml-user-sql-developer.png " ")
 
 6.  Create a temporary table to hold the data mining model.
 
@@ -68,7 +66,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/temp.png  " ")
+    ![create a table](./images/temp.png  " ")
 
 7.  Confirm the machine learning model that was built. This has been done in Lab 1 and Lab 2 by running the steps in the Credit Scoring notebook and Targeting Customers That Complete All Payments Notebook respectively.
 
@@ -78,7 +76,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/ml-model-created.png  " ")
+    ![Check the machine learning models](./images/ml-model-created.png  " ")
 
 8.  Export the machine learning model to this temporary table. The model will be stored in a binary large object.
 
@@ -97,7 +95,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/export-ml-model.png  " ")
+    ![Export the model to the new table](./images/export-ml-model.png  " ")
 
 9.  Confirm the model was exported by looking at the length of the blob (you can't see the binary data). Note your length may differ slightly.
 
@@ -107,33 +105,33 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/blob-length.png  " ")
+    ![Check the length of the blob](./images/blob-length.png  " ")
 
 
 ## Task 2: Download ADW Credentials Wallet
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
 
 2.  Navigate to your instance.
-     ![](./images/adw-instance.png " ")
+     ![Navigate to your instance](./images/adw-instance.png " ")
 
 3. Click **DB Connection**.
 
-    ![](./images/service-console.png  " ")
+    ![DB Connections](./images/service-console.png  " ")
 
 4.  Leave the default option (Instant Wallet) and click **Download wallet** on the Database Connection screen.
 
-    ![](./images/download-wallet.png  " ")
+    ![Download wallet](./images/download-wallet.png  " ")
 
 5.  Specify a password of your choice for the wallet. You will need this password when connecting to the database later. Click **Download** to download the wallet file to your machine.
 
-    ![](./images/wallet-password.png  " ")
+    ![Provide a password](./images/wallet-password.png  " ")
 
 6.  Unzip the downloaded wallet file, and note the `cwallet.sso` file, you will need it later in this lab.
 
-    ![](./images/unzip-wallet.png  " ")
+    ![Note the .sso file](./images/unzip-wallet.png  " ")
 
 7. Click **Close** on the Database Connection screen.
 
@@ -141,34 +139,34 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Storage**, and select **Buckets**.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/storage-buckets.png " ")
+	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/storage-buckets.png " ")
 
 2.  Choose the compartment and click **Create Bucket**.
 
-    ![](./images/create-bucket.png " ")
+    ![Create a storage bucket](./images/create-bucket.png " ")
 
 3. Name the bucket - **adwc** in your compartment (not ManagedCompartmentForPaas). Leave the other fields with the default selection and click **Create**.
 
-    ![](./images/create-adwc-bucket.png  " ")
+    ![Enter the name](./images/create-adwc-bucket.png  " ")
 
 4.  Select the **adwc** bucket.
 
-    ![](./images/choose-adwc-bucket.png  " ")
+    ![Select the bucket](./images/choose-adwc-bucket.png  " ")
 
 5. Scroll to the bottom and click **Upload**.
 
-    ![](./images/upload-object.png  " ")
+    ![Click Upload](./images/upload-object.png  " ")
 
 6. Drag and drop or click on **select files** to upload the **cwallet.sso** file from the wallet zip file we downloaded from the ADW instance earlier and click **Upload**.
-    ![](./images/upload-wallet.png  " ")
+    ![Select the .sso file and upload](./images/upload-wallet.png  " ")
 
 7. After the file is uploaded, click **Close** to close the Upload Objects screen.
 8. On the menu of the **cwallet.sso** object, click **View Object Details**.
 
-    ![](./images/view-object-details.png  " ")
+    ![View the object details](./images/view-object-details.png  " ")
 
 9. Copy the URL Path to a text editor, we will need it later in this lab.
-    ![](./images/copy-uri-path.png  " ")
+    ![Copy the URL](./images/copy-uri-path.png  " ")
 
 10. Click **Cancel** to dismiss the screen.
 
@@ -178,48 +176,48 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
 1.   Go to the Profile menu on the top right corner and click  **User Settings** to view user details.
 
-    ![](./images/user-settings.png  " ")
+    ![User Settings](./images/user-settings.png  " ")
 
 2.  Remember the username as you will need it in the next step.
 
-    ![](./images/user-name.png  " ")
+    ![Note the name](./images/user-name.png  " ")
 
 3.  On the left side of the page, under Resources, click **Auth Tokens**, and then **Generate Token**.
 
-    ![](./images/generate-auth-token.png  " ")
+    ![Generate a token](./images/generate-auth-token.png  " ")
 
 4. In the Description field, enter **adwc_token** and click **Generate Token**. *Note: Be sure to copy it to a text editor as you won't be able to see it again.*
 
-    ![](./images/adwc-token.png  " ")
+    ![Generate the token](./images/adwc-token.png  " ")
 
 5. Click **Copy** and save it in a text editor as you won't be able to see it again. Click **Close** to dismiss the screen.
-    ![](./images/copy-token.png  " ")
+    ![Copy the token](./images/copy-token.png  " ")
 
 ## Task 5: Copy Machine Learning Models between ADW and ATP
 
 1.  Click the  **Navigation Menu** in the upper left, navigate to Oracle Database, select **Autonomous Transaction Processing**, and choose your compartment.
 
-    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
+    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
 
 2. Navigate to your ATP instance.
-     ![](./images/atp-instance.png " ")
+     ![Navigate to your instance](./images/atp-instance.png " ")
 
 3.  Click **Database Actions**.
 
-      ![](./images/atp-open-database-actions.png  " ")
+      ![Database Actions](./images/atp-open-database-actions.png  " ")
 
 4.  If prompted, provide the **Username - ADMIN** and click **Next**.
 
-    ![](images/ml-admin.png)
+    ![Login](images/ml-admin.png)
 
 5. Provide the password for your ADMIN user - **Password - WELcome__1234** and click **Sign in**.
-    ![](images/ml-admin-password.png)
+    ![Password](images/ml-admin-password.png)
 
 6. From the Database Actions menu, click **SQL**. The SQL worksheet opens.
 
-    ![](./images/atp-sql.png " ")
+    ![Click SQL](./images/atp-sql.png " ")
 
-    ![](./images/atp-admin-sql-developer.png " ")
+    ![SQL worksheet opens](./images/atp-admin-sql-developer.png " ")
 
 7. With the ADMIN username in ATP Database Actions, create a credential to copy your ADW wallet from Object Storage to the DATA\_PUMP\_DIR, which will use later. Specify the credentials:
 
@@ -239,7 +237,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/adwc-credential.png  " ")
+    ![Create credential](./images/adwc-credential.png  " ")
 
 8.  Create another credential for the ADW database. For the **Username - ADMIN**, provide the autonomous database instance **Password - WELcome__1234**. This is your database ADMIN username and password. This will be used in further steps.
 
@@ -256,7 +254,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/adw-credential.png  " ")
+    ![Create another credential for ADW user](./images/adw-credential.png  " ")
 
 9.  Run this code snippet by replacing the **object\_uri** with the **URL Path** you copied earlier. This copies the wallet path to the ATP's DATA\_PUMP\_DIR. When we create the database link in the next steps, this wallet is required.
 
@@ -272,14 +270,14 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/get-object.png  " ")
+    ![Copy the wallet path by running the code](./images/get-object.png  " ")
 
 10.  From the downloaded ADW zip wallet file, make note of the following values from the `tnsnames.ora` file to a notepad which will be needed in this step. (It is recommended to use notepad if there is no application supported to open the file.)
     - hostname
     - service\_name
     - ssl\_server\_cert\_dn
 
-    ![](./images/039.png  " ")
+    ![Note the fields](./images/039.png  " ")
 
 11.  Specify the **hostname**, **service_name** and **ssl\_server\_cert\_dn** values you noted earlier, to create a database link. This allows you to copy data from ADW to ATP (in fact, bi-directional).
 
@@ -299,7 +297,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/database-link.png  " ")
+    ![Create a Database link](./images/database-link.png  " ")
 
 12. Test the database link by retrieving the date from the remote ADW instance.
 
@@ -309,7 +307,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/adwlink-test.png  " ")
+    ![Test the link](./images/adwlink-test.png  " ")
 
 ## Task 6: Copy Tables from ADW to ATP
 
@@ -321,7 +319,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/create-table.png  " ")
+    ![Copy the table to ATP](./images/create-table.png  " ")
 
 2.  We also need to copy the machine learning model, which is in the temp table (as a blob). To copy the temp table run the following statement.
 
@@ -331,24 +329,24 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/create-mluser-temp.png  " ")
+    ![Copy the machine learning model](./images/create-mluser-temp.png  " ")
 
-## Task 7: Import the ML model
+## Task 7: Import the Machine Learning model
 
 1.  Copy the Database Actions SQL worksheet URL from the browser and paste it into another tab.
 
-    ![](./images/replace-admin.png  " ")
+    ![Copy the URL](./images/replace-admin.png  " ")
 
 2.  Change the user in the Database Actions URL from ADMIN to **ml\_user** and press enter to log in as ML\_USER. Copy the URL to a text editor, you will need it later.
-    ![](./images/ml-user-replaced.png  " ")
+    ![Change the user in the URL](./images/ml-user-replaced.png  " ")
 
 3. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP Instance. Click **Sign in**.
 
-    ![](./images/mluser-signin.png  " ")
+    ![Login](./images/mluser-signin.png  " ")
 
 4. Dismiss the Help by clicking on the X in the popup.
 
-    ![](./images/close-pop.png " ")
+    ![Dismiss Help](./images/close-pop.png " ")
 
 5.  Import your model by running the following code and ignore the error message.
 
@@ -366,7 +364,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/import-model.png  " ")
+    ![Import your model](./images/import-model.png  " ")
 
 6.  Confirm the machine learning model was imported by running the following code.
 
@@ -376,7 +374,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/test-model.png  " ")
+    ![Confirm the import was successful](./images/test-model.png  " ")
 
 7.  Test the model by running a prediction query.
 
@@ -387,7 +385,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/select-model.png  " ")
+    ![Test the model by running predictions](./images/select-model.png  " ")
 
 8.  To make the model prediction available to all applications, we will use the Oracle Database's virtual column feature. We will add two new virtual columns - the prediction itself, and the probability that the prediction is correct. *TIP: You can also create a function index in the machine learning columns (not included here).* If you wish to use a function index the table must be analyzed to be used in queries. For more information, see ["When to Use Function-Based Indexes"](https://docs.oracle.com/en/database/oracle/oracle-database/21/adfns/indexes.html#GUID-44AD4D28-A056-4977-B2F7-AC1BC50EDC87).
 
@@ -422,7 +420,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/alter-table.png  " ")
+    ![Alter the table](./images/alter-table.png  " ")
 
 9.  Select some data to view predictions.
 
@@ -432,7 +430,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
     </copy>
     ````
 
-    ![](./images/select-columns.png  " ")
+    ![Select data to see predictions](./images/select-columns.png  " ")
 
 [Please proceed to the next lab](#next).
 

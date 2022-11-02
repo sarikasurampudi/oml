@@ -42,47 +42,47 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
-    ![](./images/atp-instance.png " ")
+    ![Navigate to your instance](./images/atp-instance.png " ")
 
 2.  Click **Database Actions**.
 
-    ![](./images/atp-open-database-actions.png  " ")
+    ![Database Actions](./images/atp-open-database-actions.png  " ")
 
 3.  Provide the **Username - ML\_USER** and click **Next**. Then provide the password for your ML\_USER and click **Sign in**.
 
-    ![](images/atp-mluser-login.png)
+    ![Login](images/atp-mluser-login.png)
 
-    ![](images/atp-mluser-password.png)
+    ![Password](images/atp-mluser-password.png)
 
 4. From the Database Actions menu, click **SQL**. The SQL worksheet opens.
 
-    ![](./images/atp-sql.png " ")
+    ![Cick SQL](./images/atp-sql.png " ")
 
-    ![](./images/sql-worksheet.png " ")
+    ![Dismiss Help](./images/sql-worksheet.png " ")
 
 5.  To show how an application would use machine learning predictions we will add some customer names to the original credit\_scoring\_100k data set. Click on the more options icon, select **Data Loading** and then select **Upload Data Into New Table**.
 
-    ![](./images/upload-data.png  " ")
+    ![Upload data to a new table](./images/upload-data.png  " ")
 
 6.  Click **Select files**, upload **customer\_names.csv** file from the install.zip you downloaded earlier and click **Next**.
 
-    ![](./images/select-files-to-upload.png  " ")
+    ![Select the custom file](./images/select-files-to-upload.png  " ")
 
-    ![](./images/click-next.png  " ")
+    ![Check the progress of the file upload](./images/click-next.png  " ")
 
 7.  Change the data type of **CUSTOMER\_ID - Number**. Change the lengths of **CUSTOMER\_ID - 6**, **FIRST\_NAME - 100** and **LAST\_NAME to 100** and click **Next** .
 
-    ![](./images/edit-types.png  " ")
+    ![Change the parameters](./images/edit-types.png  " ")
 
 8.  Once the DDL Code is generated, click **Finish**.
 
-    ![](./images/click-finish.png  " ")
+    ![Click Finish](./images/click-finish.png  " ")
 
 9. Uploading the data may take time, click **OK** to close the popup.
 
-    ![](./images/uploading-ok.png " ")
+    ![Click OK](./images/uploading-ok.png " ")
 
 10.  Create a view that combines the names with the credit\_scoring\_100k data set.
 
@@ -95,7 +95,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/create-view.png  " ")
+    ![Run script](./images/create-view.png  " ")
 
 11.  Create a new *upload_customers* table. This will be used in the application to show how newly loaded records can be scored on the fly.
 
@@ -143,206 +143,206 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/create-a-table.png  " ")
+    ![Create a new table](./images/create-a-table.png  " ")
 
 ## Task 2: Import the APEX Application
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**, choose your compartment and navigate to your ATP instance.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
-    ![](./images/atp-instance.png " ")
+    ![Navigate to your instance](./images/atp-instance.png " ")
 
 2.  Click on **Tools** and click **Open APEX**.
 
-    ![](./images/apex.png " ")
+    ![Tools and click Open APEX](./images/apex.png " ")
 
 3.  Enter your ADMIN **Password** and click **Sign In to Administration**.
 
-    ![](./images/apex-password.png  " ")
+    ![Password](./images/apex-password.png  " ")
 
 4.  You will be prompted to create a workspace. Click **Create Workspace**.
 
-    ![](./images/create-workspace.png  " ")
+    ![Create Workspace](./images/create-workspace.png  " ")
 
 5.  Click **Existing Schema** on the Create Workshop screen.
-     ![](./images/existing-schema.png  " ")
+     ![Click Existing Schema](./images/existing-schema.png  " ")
 
 6.  In the next screen, click the field provided for **Database User**. Enter **ML\_USER** in the field and click on the search icon. 
-    ![](./images/database-user.png  " ")
+    ![Search for the user](./images/database-user.png  " ")
 
-    ![](./images/user-search.png  " ")
+    ![Search](./images/user-search.png  " ")
 
 7. Select **ML\_USER** from the from the search results. The next screen displays the **Create Workspace** screen with **Database Username** and auto-populated **Workspace Name**. 
-    ![](./images/select-ml-user.png  " ")
+    ![Select the user](./images/select-ml-user.png  " ")
 
-    ![](./images/autopopulated-workspace.png  " ")
+    ![Review the fields](./images/autopopulated-workspace.png  " ")
 
 8. Enter **Workspace Name - ML\_CREDIT\_APP**, **Workspace Username - ML\_USER**, and provide a **Workspace Password**. For convenience, enter the ATP instance ADMIN password. Click **Create Workspace**.
-       ![](./images/create-new-workspace.png  " ")
+       ![Provide the details for the fields and set a password](./images/create-new-workspace.png  " ")
 
 9. Your APEX workspace is ready to build an application! 
-    ![](./images/workspace-created.png  " ")
+    ![APEX workspace](./images/workspace-created.png  " ")
 
 10. Click **admin** in the top right corner and then click **Sign out** to sign out of ADMIN user.
-    ![](./images/sign-out.png  " ")
+    ![Sign out of ADMIN](./images/sign-out.png  " ")
 
 11. When the popup appears, click **Return to Sign In Page**.
-    ![](./images/return-signin.png  " ")
+    ![Sign in](./images/return-signin.png  " ")
 
 12. Log in to the **ML\_CREDIT\_APP** as an **ML\_USER**. Enter **Workspace - ML\_CREDIT\_APP**, **Username - ML\_USER**, and **Password** you created for the ATP instance, and then click **Sign In**.
-        ![](./images/mluser-apex-signing.png  " ")
+        ![Login](./images/mluser-apex-signing.png  " ")
 
 13. Your ML\_USER workspace opens. 
-    ![](./images/workspace-opens.png  " ")
+    ![User workspace opens](./images/workspace-opens.png  " ")
 
 14. Select **App Builder**.
 
-    ![](./images/app-builder.png  " ")
+    ![Click App Builder](./images/app-builder.png  " ")
 
 15.  Select **Import**
 
-    ![](./images/import.png  " ")
+    ![Import](./images/import.png  " ")
 
 16.  To import file, click the plus icon next to Drag and Drop and select **f100.sql** file from your install zip folder that you downloaded in Lab 1. Leave all other fields with their default values. 
 
-    ![](./images/import-file.png  " ")
+    ![Select the custom file](./images/import-file.png  " ")
 
 17. Once the file is uploaded, the file name appears under the Drag and Drop field. Click **Next**.
-      ![](./images/click-next2.png  " ")
+      ![Next](./images/click-next2.png  " ")
 
 18. Click **Next** to confirm file import.
-    ![](./images/confirm-file-import.png  " ")
+    ![Confirm the file](./images/confirm-file-import.png  " ")
 
 19. To install database application, accept the defaults and click **Install Application**.
 
-    ![](./images/install-app.png  " ")
+    ![Install Application](./images/install-app.png  " ")
 
 20. Click **Next** to installation the application.
 
-    ![](./images/install-next.png  " ")
+    ![Click Next](./images/install-next.png  " ")
 
 21. Click **Install** to confirm the installation.
-    ![](./images/final-install.png  " ")
+    ![Click Install](./images/final-install.png  " ")
 
 22. Once the installation is complete, click **Run Application** to run the application.
 
-    ![](./images/run-app.png  " ")
+    ![Run the application](./images/run-app.png  " ")
 
 23. Log in as ML\_USER, enter **Username - ML\_USER** and **Password** you created for the ATP instance and then click **Sign In**.
 
-    ![](./images/mluser-app-signin.png  " ")
+    ![Login](./images/mluser-app-signin.png  " ")
 
 24. The Alpha Office application opens. 
-    ![](./images/alpha_office.png  " ")
+    ![Alpha Office page opens](./images/alpha_office.png  " ")
 
 
 ## Task 3: Run the Application and Review on-the-fly prediction/scoring
 
 1.  On the Alpha Office homepage, select **Customer Walk-in** from the menu.
 
-    ![](./images/customer-walkin.png  " ")
+    ![Select Customer Walk-in](./images/customer-walkin.png  " ")
 
 2. Select **Lastname**, and then **Customer Id**. Note that the credit score prediction and the probability of that estimate calculations are done as data is queried.
 
-    ![](./images/select-ln-fn.png  " ")
+    ![Select the Lastname and Customer ID](./images/select-ln-fn.png  " ")
 
-    ![](./images/data-selection.png  " ")
+    ![Predictions](./images/data-selection.png  " ")
 
 3.  Next, we will upload new customers and score those as a batch. Select **Home** item from the menu at the bottom of the page. (Note: If you do not see the menu bar at the bottom of the page, switch to Oracle APEX tab which was opened earlier in the browser.)
 
-    ![](./images/home.png  " ")
+    ![Upload new customer](./images/home.png  " ")
 
 4.  Select **SQL Workshop**.
 
-    ![](./images/select-sql-workshop.png  " ")
+    ![SQL Workshop](./images/select-sql-workshop.png  " ")
 
 5.  Select **Utilities**.
 
-    ![](./images/utilities.png  " ")
+    ![Utilities](./images/utilities.png  " ")
 
 6.  Select **Data Workshop**.
 
-    ![](./images/data-workshop.png  " ")
+    ![Data Workshop](./images/data-workshop.png  " ")
 
 7.  Select **Load Data** and then select **Choose File**. Select the **upload\_customers.xlsx** file from your install zip file in downloads folder.
 
-    ![](./images/apex-load-data.png  " ")
+    ![Load data](./images/apex-load-data.png  " ")
 
-    ![](./images/choose-file.png  " ")
+    ![Upload the file](./images/choose-file.png  " ")
 
 8.  Select **Load To - Existing Table** and choose **Table Name - UPLOAD\_CUSTOMERS** from the drop down menu and select **Load Data**. Once the data is appended to the table, close the popup.
 
-    ![](./images/existing-file.png  " ")
+    ![Select Existing Table and click Table field](./images/existing-file.png  " ")
 
-    ![](./images/select-upload-customers.png  " ")
+    ![Search for the table](./images/select-upload-customers.png  " ")
 
-    ![](./images/load-customer-data.png  " ")
+    ![Click Load Data](./images/load-customer-data.png  " ")
 
-    ![](./images/close-application.png  " ")
+    ![Check the confirmation message](./images/close-application.png  " ")
 
 9.  In Oracle APEX, select **App Builder** and then select **Alpha Office**.
 
-    ![](./images/select-app-builder.png  " ")
+    ![App Builder](./images/select-app-builder.png  " ")
 
-    ![](./images/select-alpha-office.png  " ")
+    ![Alpha Office](./images/select-alpha-office.png  " ")
 
 10. Click **Run Application** to run the application.
 
-    ![](./images/run-aplha-app.png  " ")
+    ![Run the application](./images/run-aplha-app.png  " ")
 
 11. In Alpha Office, click on **Review Uploaded Customers** from the menu to review the uploaded customers and note the predictions.
 
-    ![](./images/review-uploaded-data.png  " ")
+    ![Review the uploaded customers](./images/review-uploaded-data.png  " ")
 
-    ![](./images/note-predictions.png  " ")
+    ![Check the predictions](./images/note-predictions.png  " ")
 
 12. Select **Customer Upload Summary** from the menu. This provides a summary measure of the uploaded customer number of new good credit versus other credit customers. *This shows there were 40 customers with 100 percent probability of good credit, 83 customers with a 50.7 percent probability of good credit, and 277 customers with a 1.2 percent probability of good credit.* (Note: your values may differ slightly.)
 
-    ![](./images/cust-upload-summary.png  " ")
+    ![Add a summary](./images/cust-upload-summary.png  " ")
 
 13. Select **Overall Credit Profile**. This provides an overall measure of the credit across the entire 100k credit database. This scoring of 100k customers with 10 variables takes less than a second. *This shows Alpha Office has 12k customers with a 100 percent probability of good credit, 22k customers with a 50.7 probability of good credit, and 66k customers with a 1.2 percent probability of good credit*. (Note: your values may differ slightly.)
 
-    ![](./images/overall-profile-1.png  " ")
+    ![Provide overall credit profile](./images/overall-profile-1.png  " ")
 
 ## Task 4: Expose the Machine Learning Model as a REST End Point so any Application can Call it
 
 1.  Select the **Home** button from the menu at the bottom of the screen. (Note: If you do not see the menu bar at the bottom of the page, switch to Oracle APEX tab which was opened earlier in the browser.)
 
-    ![](./images/click-home-menu.png  " ")
+    ![Home](./images/click-home-menu.png  " ")
 
 2.  Select **SQL Workshop**.
 
-    ![](./images/select-workshop.png  " ")
+    ![SQL Workshop](./images/select-workshop.png  " ")
 
 3.  Select **RESTful Services**.
 
-    ![](./images/restful.png  " ")
+    ![Select RESTful Services](./images/restful.png  " ")
 
-    ![](./images/restful2.png  " ")
+    ![Page opens](./images/restful2.png  " ")
 
 4.  Select **Modules** on the left, and then click on **Create Module**.
 
-    ![](./images/select-modules.png  " ")
+    ![Create a module](./images/select-modules.png  " ")
 
 5.  Enter the following and select **Create Module**.
     - Module Name - *Predict Credit*
     - Base Path - */credit/*
 
-    ![](./images/create-module2.png  " ")
+    ![Enter the details](./images/create-module2.png  " ")
 
 6.  Select **Create Template** to create a template.
 
-    ![](./images/select-create-template.png  " ")
+    ![Create Template](./images/select-create-template.png  " ")
 
 7.  Enter the following and select **Create Template**.
     - URI Template: *credit_scoring_100k\_v/:wealth/:income*
 
-    ![](./images/create-template.png  " ")
+    ![Enter the details](./images/create-template.png  " ")
 
 8. Next, click on **Create Handler**.
 
-    ![](./images/click-create-handler.png  " ")
+    ![Click Create Handler](./images/click-create-handler.png  " ")
 
 9.  Be sure to select **Method - GET** and **Source Type - Query One Row** and enter the following SQL query in the worksheet and select **Create Handler**.
 
@@ -352,13 +352,13 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-    ![](./images/create-handler.png  " ")
+    ![Run the SQL query](./images/create-handler.png  " ")
 
 10.  Copy **Full URL** and paste it in your browser. Replace the parameters **:wealth - Rich** and **:income - 20000** respectively and hit enter. We are passing the wealth and income variables to the prediction model. Note these are just two of the many variables we could pass to the model (just add additional ones).
 
-    ![](./images/copy-url.png  " ")
+    ![Copy the URL](./images/copy-url.png  " ")
 
-    ![](./images/rich.png  " ")
+    ![Inspect the URL](./images/rich.png  " ")
 
 This concludes this lab and this workshop.
 
