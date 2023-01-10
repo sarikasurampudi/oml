@@ -27,14 +27,14 @@ Estimated Time: 15 minutes
     <copy>./OML-Services/Postman/Postman</copy>
     ````
 
-    ![Launch Postman](images/launch-postman.jpg)
+    ![Launch Postman](images/automl-screenshot-20.jpg)
 
   Postman registration is not necessary for this workshop therefore you can choose Skip on the login page.
 
-     ![Launch Postman](images/postman-login-page.jpg)
+     ![Launch Postman](images/automl-screenshot-20a.jpg)
   You can close the scratchpad banner and hide the sidebar for a cleaner view.
 
-  ![Launch Postman](images/postman-clear-popup.jpg)
+  ![Launch Postman](images/automl-screenshot-21.jpg)
 
 
 ### Task 1.2: Authorize OML Services User
@@ -50,7 +50,7 @@ Estimated Time: 15 minutes
   Use the following URL structure to access the REST endpoints:
 
   ````
-  https://<oml-cloud-service-location-url>.oraclecloudapps.com
+  https://**<oml-cloud-service-location-url>**.oraclecloudapps.com
   ````
 
   Where:
@@ -59,16 +59,13 @@ Estimated Time: 15 minutes
 #### Obtain the `oml-cloud-service-location-url` URL
 
   * In the Autonomous Database instance details page. Click on the Service Console button.
-  ![ADB-instance-home](images/adb-homepage-dbactions.jpg)
+  ![ADB-instance-home](images/prerequisites-screenshot-22.jpg)
 
-  * The service console is opened.
-  ![ADB-DB-Actions](images/dbactions-homepage.jpg)
-
-  * Click on the menu on the top left side on the page and scroll to the right to the **Related Services** section. Click on the **Oracle Machine Learning RESTful services**.
-  ![ADB-DB-Actions](images/dbactions-menu-oml-restful.jpg)
+  * The service console is opened. Go to the Development section in the left side.
+  ![ADB-service-console](images/prerequisites-screenshot-23.jpg)
 
   * In the Development section, notice the **Oracle Machine Learning RESTful services** section.
-  ![ADB-service-console](images/oml-restful-urls.jpg)
+  ![ADB-service-console](images/prerequisites-screenshot-X23.jpg)
 
     The 2 important URLs from this section:
       + The URL to obtain a REST authentication token for OML-provided REST APIs:
@@ -99,7 +96,7 @@ Estimated Time: 15 minutes
   --header 'Accept: application/json'
   ````
 
-  ![Postman token headers](images/postman-token-headers.jpg)
+  ![Postman token headers](images/automl-screenshot-22.jpg)
 
   In the Body tab, pick RAW format and enter the following:
 
@@ -112,19 +109,19 @@ Estimated Time: 15 minutes
   }
   </copy>
   ````
-  ![Postman token body](images/postman-token-body.jpg)
+  ![Postman token body](images/automl-screenshot-23.jpg)
 
   Click **Send**
 
   The response in JSON format and it contains the access token:
 
-  ![Postman token](images/postman-token.jpg)
+  ![Postman token](images/automl-screenshot-24.jpg)
 
   Choose the display format in RAW and copy the token starting from ``:"``  up until ``==``. In the above example the token is:
 
   >{"accessToken":"**eyJhbGci....6zIw==**","expiresIn":3600,"tokenType":"Bearer"}
 
-  ![Postman token copy](images/postman-token-raw.jpg)
+  ![Postman token copy](images/automl-screenshot-25.jpg)
 
 
 ### Task 1.3:  Use REST calls to predict customer classification
@@ -137,7 +134,7 @@ Estimated Time: 15 minutes
 
   Open a new POSTMAN tab.
 
-  ![New Postman Tab](images/postman-add-tab.jpg)
+  ![New Postman Tab](images/automl-screenshot-26.jpg)
 
   Enter the following details:
 
@@ -152,7 +149,7 @@ Estimated Time: 15 minutes
    - Replace **`<oml-cloud-service-location-url>`** with your URL.
    - Replace **`<model_URI>`** with the model URI that we defined in Task 3: **``classsvmg``**
 
-  ![Postman Model Score](images/postman-model-score-url.jpg)
+  ![Postman Model Score](images/automl-screenshot-27.jpg)
 
   In the header Tab enter the details:
 
@@ -161,11 +158,11 @@ Estimated Time: 15 minutes
 
     ````
 
-  ![Postman Model Score Header](images/postman-model-score-header.jpg)
+  ![Postman Model Score Header](images/automl-screenshot-28.jpg)
 
   In the Authorization tab pick **Bearer Token** and paste the token copied above in the field.
 
-  ![Postman Model Score Access](images/postman-model-score-token.jpg)
+  ![Postman Model Score Access](images/automl-screenshot-29.jpg)
 
   In the Body tab enter the Fran Hobs data in RAW format.
 
@@ -209,11 +206,11 @@ Estimated Time: 15 minutes
     </copy>
     ````
 
-  ![Postman Model Score Fran Hobs](images/postman-model-score-body.jpg)
+  ![Postman Model Score Fran Hobs](images/automl-screenshot-30.jpg)
 
   Click **Send**.
 
-  ![Postman Model Score Fran Hobs Result](images/postman-model-score-results-fh.jpg)
+  ![Postman Model Score Fran Hobs Result](images/automl-screenshot-31.jpg)
 
   Notice the result in JSON format shows the probability for this customer to be in each group:
   + For HIGH is ``6.998515445640917E-4``  therefore it is  ``0.0006998515445640917`` which is 0.0006% a very small probability.
@@ -264,7 +261,7 @@ Estimated Time: 15 minutes
       </copy>
       ````
 
-  ![Postman Model Score Al Frank Result](images/postman-model-score-results-af.jpg)
+  ![Postman Model Score Al Frank Result](images/automl-screenshot-32.jpg)
 
 
   Notice the result in JSON format shows the probability for this customer to be in each group:
@@ -316,7 +313,7 @@ Estimated Time: 15 minutes
     </copy>
     ````
 
-  ![Postman Model Score ELLIOT PADGETT Result](images/postman-model-score-results-ep.jpg)
+  ![Postman Model Score ELLIOT PADGETT Result](images/automl-screenshot-33.jpg)
 
 
   Notice the result in JSON format shows the probability for this customer to be in each group:
@@ -546,3 +543,8 @@ To access OML Services using the REST API, you must provide an access token. To 
 * **Authors** -  Andrei Manoliu, Milton Wan
 * **Contributors** - Rajeev Rumale
 * **Last Updated By/Date** -  Andrei Manoliu, December 2021
+
+## Need Help?
+Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
+
+If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.
