@@ -90,7 +90,7 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 To create a user account:
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the Cloud menu on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
 
 	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
@@ -222,4 +222,4 @@ This completes the task of creating the CUSTOMERS360 table. You may now **procee
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, June 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, October 2023
