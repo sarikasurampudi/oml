@@ -26,11 +26,11 @@ In this lab, you will learn how to:
 
  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" notebook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
    
-   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
+   ![Go to main Notebooks](images/go-back-to-notebooks.png " ")
    
-   Click the **Lab 3** notebook to view it.
+3. Click the **Lab 3** notebook to view it.
    
    <if type="freetier">
    ![Open Lab 3 notebook ft](images/click-on-lab3-ft.png " ") </if>
@@ -94,4 +94,4 @@ After you reach the end of Lab 3, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** -  Marcos Arancibia, August 2023
+* **Last Updated By/Date** -  Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
