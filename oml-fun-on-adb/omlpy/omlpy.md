@@ -37,37 +37,33 @@ With OML4Py, you can create Python proxy objects that can be used to access, ana
 
 This step illustrates how you can access the OML4Py Classification DT (1) notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT (1) notebook was created based on the example template of the OML4Py Classification Decision Tree.
 
-1. Click the Cloud menu icon ![Hamburger Icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page. Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
+1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page. 
 
-	![Left pane navigation to Notebooks through Cloud menu icon.](images/hamburger-notebooks.png)
+	![Left pane navigation to Notebooks through Cloud menu icon.](images/left-nav-pane-notebooks.png)
+
+Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
+
+![Homepage Notebooks.](images/homepage-notebooks.png)
 
 2. The Notebook page opens with the list of notebooks available. Click the OML4Py Classification DT (1) notebook to open it.
 
-	![List of Notebooks available.](images/list-notebooks-available.png)
+	![List of Notebooks available.](images/open-classification-dt.png)
 
-3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click the gear icon ![Gear Icon](images/gear-icon.png) on the top right corner of the notebook to view and set the interpreter binding order.
+3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon.
 
-	![Illustration for getting the configuration for interpreter](images/getting-configuration-interpreter.png)
+	![Illustration for getting the configuration for interpreter](images/classification-dt-nbtype-icon.png)
 
-	You can change the order of the interpreter bindings by clicking and dragging an entry above or below others (turns from white to blue). You can also deselect a binding to disable it (turns from blue to white). This does not require dragging the enabled interpreters above the disabled ones.
-
-	![Illustration for configuring interpreter](images/configuring-interpreter.png)
-
-	Click **Save** to set the interpreter bindings.
-
-4. Click the play icon next to the title of the notebook to run all paragraphs.
+	
+4. Click the play icon at the top to run all paragraphs.
 
 	![Illustration for running all paragraph](images/run-all-paragraphs.png)
 
-5. Click **OK** to confirm in the confirmation dialogue.
+5. Click **Confirm** to confirm in the confirmation dialogue.
+	
+	![Illustration for confirmation of running all paragraph](images/confirmation-run-all-paragraphs.png)
 
-	![Confirmation for running all paragraph](images/confirmation-run-all-paragraphs.png)
-
-6. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
-
-	![Illustration for pending on a paragraph](images/pending-paragraph.png)
-
-	![Illustration for finished on a paragraph](images/finished-paragraph.png)
+6. The paragraphs start running one by one. The status and the output are displayed at the bottom of the paragraph. Hover your cursor over the paragraph to view the time taken to complete the run.
+	
 
 In this step, the iris data set is used for illustrative purposes to load the data into a temporary database table. Such temporary tables are automatically deleted when the OML Notebook connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 To use OML4Py, you must first import the `oml` module and the Pandas library. Use the `oml.push` function to create a temporary table.
