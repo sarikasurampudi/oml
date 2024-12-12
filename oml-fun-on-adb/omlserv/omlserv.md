@@ -54,23 +54,23 @@ This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
 * An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
-    * OML server URL
+    * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
 
 ## Task 1: Authenticate Your User Account with Your Autonomous Database Instance to Use OML Services
 
 1.  This lab uses OCI Cloud Shell. To access the OCI Cloud Shell, select your compartment and click on the Cloud Shell icon.
 
-	 ![Autonomous Database instance](images/oci-cloud-shell-1-new.png)
+	 ![Autonomous Database instance](images/oci-cloud-shell-1-new1.png)
 
    On clicking the Cloud Shell icon, the OCI Cloud Shell command prompt is displayed in the lower half of the console as illustrated in the image below.
 
-  ![OCI Cloud Shell command prompt](images/oci-cloud-shell-2-new.png)
+  ![OCI Cloud Shell command prompt](images/oci-cloud-shell-2-new2.png)
 
 2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the ``-d`` option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
     * Your OML user name
     * Your OML password
-    * OML server URL
+    * `oml-cloud-service-location-url`
 
    Here is the syntax:
 
@@ -78,85 +78,90 @@ This lab assumes you have:
      <copy>
      curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json'\
      -d '{"grant_type":"password", "username":"'${oml_username}'", "password":"'${oml_password}'"}'\
-     "<OML server URL>/omlusers/api/oauth2/v1/token"
+     "<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
      </copy>
      ```
 
-   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+   In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID.  
+   
+### Task 1.1: Get the `oml-cloud-service-location-url` to Obtain Your REST Authentication Token
 
-  ![Database Actions](images/database-actions.png)
+You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access **Database actions** and obtain the url:
 
-   On the Database Actions page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
+1. On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
 
-  ![Related Services tab](images/omls-related-services.png)
+   ![Database Actions](images/dbactions-view-all-dbactions.png)
+      
+2. The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-   On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
+   ![Related Services tab](images/omls-related-services.png)
 
-  ![Oracle Machine Learning RESTful services](images/omls-url.png)
+3. On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
 
-   Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
+   ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+4. Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
 
     ```
     <copy>export oml_username=OMLUSER
     export oml_password=AAbbcc123456
-    export omlserver=<omlserver url></copy>
-
+    export omlservice=<oml-cloud-service-location-url></copy>
     ```
 
-   In the command above,
+    In the command above,
 
-     * OMLUSER is your OML user name.
-     * AAbbcc123456 is your OML password.
-     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it.
+    * OMLUSER is your OML user name.
+    * AAbbcc123456 is your OML password.
+    * `oml-cloud-service-location-url` is the URL that you copied from the ADB console, without the /omlusers/ segment in it.
 
-   An example of omlserver URL is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
-     * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
-     * `omllabs` is the database name, and
-     * `adb.us-ashburn-1.oraclecloudapps.com` is the region name.
+  An example of `oml-cloud-service-location-url` is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
+    * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
+    * `omllabs` is the database name, and
+    * `adb.us-ashburn-1.oraclecloudapps.com` is the region name.
 
-   Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
+5. Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
 
     ```
-    <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "${omlserver}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
+    <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "${omlservice}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
     </copy>
     ```
 
-   Successfully running the command above results in a token string that is saved to the variable ``token``. To visually inspect the token, run the command below:
+6. Successfully running the command above results in a token string that is saved to the variable ``token``. To visually inspect the token, run the command below:
 
     ```
     <copy>echo $token</copy>
-
     ```
 
-   Running the command above should display the token string. Note that the token string displayed below is truncated for security reasons.
+    Running the command above should display the token string. Note that the token string displayed below is truncated for security reasons.
 
     ```
     eyJhbGci... KLbI1wQ==
-
     ```
 
-3. A token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour.
+7. A token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour.
 
-     Here's the command for refreshing a token:
+   Here's the command for refreshing a token:
 
     ```
-    <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "${omlserver}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
+    <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "${omlservice}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
     ```
 
-    To visually inspect the token, run the command below:
+7. To visually inspect the token, run the command below:
 
     ```
     <copy>echo $token</copy>
 
     ```
 
-4. You can also revoke a token. You cannot use or refresh a token you have revoked. For this Workshop, do not perform this step. The syntax is provided for your reference.
+8. You can also revoke a token. You cannot use or refresh a token you have revoked. 
+
+    > **Note:** For this Workshop, do not perform this step. The syntax is provided for your reference.
 
     ```
-    <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlserver}/omlusers/api/oauth2/v1/token/revoke"</copy>
+    <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlservice}/omlusers/api/oauth2/v1/token/revoke"</copy>
     ```
 
-   Running the command above produces a result similar to this:
+  Running the command above produces a result similar to this:
 
     ```
     HTTP/1.1 200 OK
@@ -191,7 +196,7 @@ This lab assumes you have:
    Run the curl command to view the APIs.
 
     ```
-    <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "${omlserver}/omlmod/v1/api" | head -n 50</copy>
+    <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "${omlservice}/omlmod/v1/api" | head -n 50</copy>
 
     ```
 
@@ -230,7 +235,7 @@ This lab assumes you have:
 2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 5, your account should include deployed models. Refer back to Lab 5 Using OML AutoML UI  to know how to quickly create and save a model.
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer ${token}" "${omlserver}/omlmod/v1/models" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer ${token}" "${omlservice}/omlmod/v1/models" | jq</copy>
 
     ```
 
@@ -269,7 +274,7 @@ This lab assumes you have:
 3. View a model's details by providing its name in the REST API call. In this case, the model name is `NaiveBayes_CUST360`.
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlserver}/omlmod/v1/models?modelName=NaiveBayes_CUST360" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlservice}/omlmod/v1/models?modelName=NaiveBayes_CUST360" | jq</copy>
 
     ```
 
@@ -311,7 +316,7 @@ This lab assumes you have:
 
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlserver}/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlservice}/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
 
     ```
 
@@ -353,11 +358,11 @@ This lab assumes you have:
 1. Get model endpoint details for the model that you created in the preceding lab (Lab 4). Use the following values:
 
     * authentication token=generated in Task 1 or if expired then a refreshed or regenerated token
-    * omlserver= OML server URL that you copied from the ADB console (in Task 1 Step 2), without the /omlusers/ segment in it. This URL is already saved to the ``omlserver`` variable so you don't have to copy it again. An example of an OML server URL is https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com. In this example URL, ``aabbcc123456xyz`` is the tenancy ID, ``db2`` is the database name and ``adb.us-ashburn-1.oraclecloudapps.com`` is the region name.
+    * omlservice= `oml-cloud-service-location-url` that you copied from the ADB console (in Task 1 Step 2), without the /omlusers/ segment in it. This URL is already saved to the ``omlservice`` variable so you don't have to copy it again. An example of an OML server URL is https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com. In this example URL, ``aabbcc123456xyz`` is the tenancy ID, ``db2`` is the database name and ``adb.us-ashburn-1.oraclecloudapps.com`` is the region name.
     * model URI=`nb_cust360` (To get the URI for the model that you want the endpoint for, log in to OML Notebooks, go to the Models page,  Deployed tab.)
 
     ```
-    <copy>curl -X GET "${omlserver}/omlmod/v1/deployment/nb_cust360" --header "Authorization: Bearer $token" | jq</copy>
+    <copy>curl -X GET "${omlservice}/omlmod/v1/deployment/nb_cust360" --header "Authorization: Bearer $token" | jq</copy>
 
     ```
 
@@ -445,7 +450,7 @@ This lab assumes you have:
 
     ```
     <copy>
-    curl -X POST "${omlserver}/omlmod/v1/deployment/${model_URI}/score" \
+    curl -X POST "${omlservice}/omlmod/v1/deployment/${model_URI}/score" \
     --header "Authorization: Bearer ${token}" \
     --header 'Content-Type: application/json' \
     -d '{"topNdetails":n,"inputRecords":[{"XXX":value,"YYY":value}]}'| jq
@@ -455,7 +460,7 @@ This lab assumes you have:
   In the syntax above, the parameter `topNdetails` is optional. It fetches the top n prediction details for the record you are scoring. Prediction details refer to the attributes or features that impact a prediction. In the following example,  you specify the model URI `nb_cust360` and a valid token generated in Task 1. The model was built using the Supplementary Demographics data set. To score with a single record, for XXX use `YRS_RESIDENCE` with the value of 10 and for YYY  use `Y_BOX_GAMES` with a value of 0. You want to predict the probability that the person associated with this record will purchase the affinity card.
 
     ```
-   <copy>curl -X POST "${omlserver}/omlmod/v1/deployment/nb_cust360/score"  --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json'  -d '{"inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0}]}' | jq</copy>
+   <copy>curl -X POST "${omlservice}/omlmod/v1/deployment/nb_cust360/score"  --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json'  -d '{"inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0}]}' | jq</copy>
 
     ```
 
@@ -487,7 +492,7 @@ This lab assumes you have:
     * `topNdetails` = 3
 
     ```
-    <copy>curl -X POST "${omlserver}/omlmod/v1/deployment/nb_cust360/score" --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json' -d '{"topNdetails":3, "inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0},{"YRS_RESIDENCE":5,"Y_BOX_GAMES":1}]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/deployment/nb_cust360/score" --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json' -d '{"topNdetails":3, "inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0},{"YRS_RESIDENCE":5,"Y_BOX_GAMES":1}]}' | jq</copy>
 
     ```
 
@@ -557,7 +562,7 @@ This lab assumes you have:
 
     ```
     <copy>
-    curl -X POST "${omlserver}/omlmod/v1/cognitive-text/keywords" \
+    curl -X POST "${omlservice}/omlmod/v1/cognitive-text/keywords" \
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer ${token}" \
     --data '{
@@ -576,7 +581,7 @@ This lab assumes you have:
    Run the following command to obtain the top 2 most relevant keywords in the provided text string.
 
     ```
-    <copy>curl -X POST "${omlserver}/omlmod/v1/cognitive-text/keywords" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/cognitive-text/keywords" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
 
     ```
 
@@ -604,7 +609,7 @@ This lab assumes you have:
 4. Next, get a summary of the same text string that you passed in the previous step by using the summary endpoint. Run the following command:
 
     ```
-    <copy>curl -X POST "${omlserver}/omlmod/v1/cognitive-text/summary" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/cognitive-text/summary" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
 
     ```
 
@@ -672,7 +677,7 @@ To deploy and score an ONNX format regression model:
 
       ```
       <copy>
-      zip -r modelName.zip modelName.onnx, metadata.json and label.txt
+      zip -r modelName.zip modelName.onnx, metadata.json, label.txt
       </copy>
       ```
     The zip file must contain the following files:
@@ -921,14 +926,15 @@ To score a mini batch:
 
     ```
 
-3. Run the bash script file test.sh: 
+3. Run the bash script file `test.sh`: 
 
     ```
     <copy>
-    Run script test.sh$ 
-    ./test.sh
+    ./test.sh 
     </copy>
+
     ```
+
 
 4. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
 
@@ -1052,6 +1058,20 @@ To create and run a data bias detection job:
     "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
     </copy>
     ``` 
+
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
+
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
+
+      ![Related Services tab](images/omls-related-services.png)
+
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
@@ -1307,6 +1327,21 @@ To create a data monitoring job:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
+
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
+
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
+
+      ![Related Services tab](images/omls-related-services.png)
+
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
@@ -1334,31 +1369,58 @@ To create a data monitoring job:
         --header 'Content-Type: application/json' \
         --data '{
           "jobSchedule": {
-              "jobStartDate": "2024-11-11T20:30:26Z",            # job start date and time 
-              "repeatInterval": "FREQ=HOURLY",                   # job frequency
-              "jobEndDate": "2024-11-19T23:30:26Z",              # job end date and time
-              "maxRuns": "10"                                    # max runs within the schedule
+
+              "jobStartDate": "2024-11-11T20:30:26Z",             
+              "repeatInterval": "FREQ=HOURLY",                   
+              "jobEndDate": "2024-11-19T23:30:26Z",              
+              "maxRuns": "10"                                    
           },
           "jobProperties": {
-              "jobName": "HouseholdPowerDataMonitoring",         # job name
-              "jobType": "DATA_MONITORING",                      # job type; DATA_MONITORING
-              "disableJob": false,                               # flag to disable the job at submission
-              "outputData": "householdPowerConsumption",         # table where the job results will be saved in the format {jobID}_{outputData}
-              "baselineData": "HOUSEHOLD_POWER_BASE",            # table/view containing baseline data 
-              "newData": "HOUSEHOLD_POWER_NEW",                  # table/view with new data to compare against baseline
-              "inputSchemaName": "OMLUSER",                      # database schema that owns the input table/view
-              "outputSchemaName": "OMLUSER",                     # database schema that owns the output table/view
-              "jobDescription": "Monitor household power",       # job description
-              "jobServiceLevel": "LOW",                          # Autonomous Database service level; either LOW, MEDIUM, or HIGH
-              "timeColumn": "DATES",                             # date or timestamp column in newData
-              "startDate": "2008-01-01T00:00:00Z",               # the start date of the monitoring in the new data
-              "endDate": "2010-11-26T00:00:00Z",                 # the end date of the monitoring in the new data
-              "frequency": "Year",                               # the time window unit on which monitoring is performed on the new data
-              "threshold": 0.8,                                  # threshold to trigger drift alert
-              "recompute": false,                                # flag to determine whether to replace the output table
-              "caseidColumn": null,                              # case identifier column in the baseline and new data
-              "anchorColumn": null,                              # anchor column for bivariate analysis
-              "featureList": [                                   # features to perform data monitoring on
+              "jobName": "HouseholdPowerDataMonitoring",         
+              "jobType": "DATA_MONITORING",                      
+              "disableJob": false,                      
+              "outputData": "householdPowerConsumption",         
+              "baselineData": "HOUSEHOLD_POWER_BASE",             
+              "newData": "HOUSEHOLD_POWER_NEW",                  
+              "inputSchemaName": "OMLUSER",                      
+              "outputSchemaName": "OMLUSER",                     
+              "jobDescription": "Monitor household power",       
+              "jobServiceLevel": "LOW",                          
+              "timeColumn": "DATES",                             
+              "startDate": "2008-01-01T00:00:00Z",               
+              "endDate": "2010-11-26T00:00:00Z",                 
+              "frequency": "Year",                               
+              "threshold": 0.8,                                  
+              "recompute": false,                                
+              "caseidColumn": null,                              
+              "anchorColumn": null,                              
+              "featureList": [                                   
+              "jobStartDate": "2024-11-11T20:30:26Z",             
+              "repeatInterval": "FREQ=HOURLY",                   
+              "jobEndDate": "2024-11-19T23:30:26Z",              
+              "maxRuns": "10"                                    
+          },
+          "jobProperties": {
+              "jobName": "HouseholdPowerDataMonitoring",         
+              "jobType": "DATA_MONITORING",                      
+              "disableJob": false,                               
+              "outputData": "householdPowerConsumption",         
+              "baselineData": "HOUSEHOLD_POWER_BASE",             
+              "newData": "HOUSEHOLD_POWER_NEW",                  
+              "inputSchemaName": "OMLUSER",                      
+              "outputSchemaName": "OMLUSER",                     
+              "jobDescription": "Monitor household power",       
+              "jobServiceLevel": "LOW",                          
+              "timeColumn": "DATES",                             
+              "startDate": "2008-01-01T00:00:00Z",               
+              "endDate": "2010-11-26T00:00:00Z",                 
+              "frequency": "Year",                               
+              "threshold": 0.8,                                  
+              "recompute": false,                                
+              "caseidColumn": null,                              
+              "anchorColumn": null,                              
+              "featureList": [                                   
+
                   "GLOBAL_ACTIVE_POWER",
                   "GLOBAL_REACTIVE_POWER",
                   "VOLTAGE",
@@ -1412,7 +1474,7 @@ _Sample Response:_
 
     ```
     <copy>
-    $ export jobid='OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1'  # save the job ID to a single-quoted variable
+    $ export jobid='OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1'  
 
     $ curl -X GET "<oml-cloud-service-location-url>/omlmod/v1/jobs/${jobid}"  \
          --header 'Accept: application/json' \
@@ -1485,12 +1547,11 @@ _Sample Response:_
 
 
 
-4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties` parameters. 
 
+4. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
 
+4. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
 
-
-5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
 
   _Example to query the output table associated with this example:_
   
@@ -1550,6 +1611,22 @@ To monitor your models:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` - This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
+
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
+
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
+
+      ![Related Services tab](images/omls-related-services.png)
+
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+
+
 2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. 
 
   _Example of a `GET` Request to obtain the `modelId`:_
@@ -1582,33 +1659,60 @@ To monitor your models:
           --header 'Content-Type: application/json' \
           --data '{
               "jobSchedule": {
-              "jobStartDate": "2024-11-10T00:30:07Z",           # job start date and time 
-              "repeatInterval": "FREQ=DAILY",                   # job frequency
-              "jobEndDate": "2024-11-15T20:50:06Z",             # job end date and time 
-              "maxRuns": "5"                                    # max runs within the schedule
+              "jobStartDate": "2024-11-10T00:30:07Z",            
+              "repeatInterval": "FREQ=DAILY",                   
+              "jobEndDate": "2024-11-15T20:50:06Z",              
+              "maxRuns": "5"                                    
           },
           "jobProperties": {
-              "jobName": "MY_MODEL_MONITOR1",                         # job name
-              "jobType": "MODEL_MONITORING",                          # job type; MODEL_SCORING
-              "disableJob": false,                                    # flag to disable the job at submission
-              "jobServiceLevel": "LOW",                               # Autonomous Database service level; either LOW, MEDIUM, and HIGH
-              "inputSchemaName": "OMLUSER",                           # database schema that owns the input table/view
-              "outputSchemaName": "OMLUSER",                          # database schema that owns the output table
-              "outputData": "Global_Active_Power_Monitor",            # table where the job results will be saved in the format {jobID}_{outputData}
-              "jobDescription": "Global active power monitoring job", # job description
-              "baselineData": "HOUSEHOLD_POWER_BASE",                 # table/view containing baseline data 
-              "newData": "HOUSEHOLD_POWER_NEW",                       # table/view with new data to compare against baseline
-              "frequency": "Year",                                    # time window unit that the monitoring is done on in the new data
-              "threshold": 0.15,                                      # threshold to trigger drift alert
-              "timeColumn": "DATES",                                  # date or timestamp column in newData
-              "startDate": "2008-01-01T00:00:00Z",                    # the start date and time of monitoring in the new data
-              "endDate": "2010-11-26T00:00:00Z",                      # the end date and time of monitoring in the new data
-              "caseidColumn": null,                                   # case identifier column in the baseline and new data
-              "performanceMetric": "MEAN_SQUARED_ERROR",              # metric used to measure model performance
-              "modelList": [                                          # model ID or list of model IDs to be monitored
+              "jobName": "MY_MODEL_MONITOR1",                         
+              "jobType": "MODEL_MONITORING",                          
+              "disableJob": false,                                    
+              "jobServiceLevel": "LOW",                               
+              "inputSchemaName": "OMLUSER",                           
+              "outputSchemaName": "OMLUSER",                          
+              "outputData": "Global_Active_Power_Monitor",            
+              "jobDescription": "Global active power monitoring job", 
+              "baselineData": "HOUSEHOLD_POWER_BASE",                  
+              "newData": "HOUSEHOLD_POWER_NEW",                       
+              "frequency": "Year",                                    
+              "threshold": 0.15,                                      
+              "timeColumn": "DATES",                                  
+              "startDate": "2008-01-01T00:00:00Z",                    
+              "endDate": "2010-11-26T00:00:00Z",                      
+              "caseidColumn": null,                                   
+              "performanceMetric": "MEAN_SQUARED_ERROR",              
+              "modelList": [                                          
                   "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
               ],
-              "recompute": false                                      # flag to determine whether to overwrite the results table
+              "recompute": false                                      
+              "jobStartDate": "2024-11-10T00:30:07Z",            
+              "repeatInterval": "FREQ=DAILY",                   
+              "jobEndDate": "2024-11-15T20:50:06Z",              
+              "maxRuns": "5"                                    
+          },
+          "jobProperties": {
+              "jobName": "MY_MODEL_MONITOR1",                         
+              "jobType": "MODEL_MONITORING",                          
+              "disableJob": false,                                    
+              "jobServiceLevel": "LOW",                               
+              "inputSchemaName": "OMLUSER",                           
+              "outputSchemaName": "OMLUSER",                          
+              "outputData": "Global_Active_Power_Monitor",            
+              "jobDescription": "Global active power monitoring job", 
+              "baselineData": "HOUSEHOLD_POWER_BASE",                  
+              "newData": "HOUSEHOLD_POWER_NEW",                       
+              "frequency": "Year",                                    
+              "threshold": 0.15,                                      
+              "timeColumn": "DATES",                                  
+              "startDate": "2008-01-01T00:00:00Z",                    
+              "endDate": "2010-11-26T00:00:00Z",                      
+              "caseidColumn": null,                                   
+              "performanceMetric": "MEAN_SQUARED_ERROR",              
+              "modelList": [                                          
+                  "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
+              ],
+              "recompute": false                                      
           }
       }' | jq
     </copy>
