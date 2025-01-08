@@ -27,13 +27,13 @@ This lab assumes you have:
 
 1. Click the hamburger icon ![Hamburger image](images/hamburger.png) to open the left navigation menu and click **Notebooks**.
 
-2. The Notebooks page opens with all the notebooks listed in it. Click the **OML4SQL Time Series ESM (1)** notebook to open it.
+2. The Notebooks page opens with all the notebooks listed in it. Click the **OML4SQL Time Series ESM** notebook to open it.
 
     ![Notebooks listed](images/notebooklist.png)
 
-3. The _OML4SQL Time Series ESM (1)_ notebook opens in the notebook editor. Click the gear icon to view and set the interpreter binding order.
+3. The _OML4SQL Time Series ESM_ notebook opens in the notebook editor. Click the gear icon to view and set the interpreter binding order.
 
-4. Click the play icon next to the **OML4SQL Time Series ESM (1)** title to run all paragraphs of the notebook.
+4. Click the play icon next to the **OML4SQL Time Series ESM** title to run all paragraphs of the notebook.
 
   ![Run all paragraphs](images/timeseries-run-all-paragraphs.png)
 
@@ -297,4 +297,4 @@ This completes the prediction step. The model has successfully forecast sales fo
 
 * **Author** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning;  Marcos Arancibia, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Marcos Arancibia, January 2025
