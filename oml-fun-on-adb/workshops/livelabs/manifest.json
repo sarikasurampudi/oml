@@ -1,6 +1,15 @@
 {
     "workshoptitle": "Oracle Machine Learning Fundamentals on Oracle Autonomous Database",
     "help": "livelabs-help-**enterarea**_us@oracle.com",
+    "include": {
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
+        "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"       
+    },
     "tutorials": [
         {
             "title": "Introduction",
@@ -13,11 +22,10 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
+            "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
             "type": "livelabs",
-            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-            "filename": "../../oml-notebooks/oml-notebooks.md"
-        },
+            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+        },                        
         {
             "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
             "type": "livelabs",
@@ -39,14 +47,24 @@
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
+            "title": "Lab 6: Introduction to Oracle Machine Learning Monitoring",
+            "type": "livelabs",
+            "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
+        },
+        {
+            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
             "type": "livelabs",
             "filename": "../../omlserv/omlserv.md"
         },
         {
+            "title": "Lab 8: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
+            "type": "livelabs",
+            "filename": "/common/building-blocks/blocks/oml/oml-conda/oml-conda.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
         }
     ]
 }

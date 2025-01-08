@@ -30,8 +30,9 @@ Estimated Lab Time: 15 minutes
 * In the Autonomous Database instance detail page, click on the **Database Actions** button.
 ![ADB instance dbactions](images/adb-homepage-dbactions.jpg)
 
-* The Database Actions launchpad page is now open and connected by default with the ADMIN user. Here we have multiple tools available to easily manage and use the database, develop new applications or REST modules, or manage data inside the database.
-In the Database Actions launchpad scroll to the Administration section and click **DATABASE USERS**.
+* Database actions provides browser-based tools for your Autonomous Database, including tools for user management, SQL worksheets to run queries, Data Studio to load and export data, and more.
+
+* Click **DATABASE USERS**.
 ![ADB db users](images/dbactions-database-users.jpg)
 
 * In the User Management page, we see ADMIN as the current user and other predefined users.
@@ -81,19 +82,15 @@ Click on the **+ Create User** button on the right side to create another user.
 * The file is parsed and a preview is displayed on the screen. Check the preview and click **Next**.
 ![ADB web SQL data load file parse](images/sqldeveloper-dataload-filedesc.jpg)
 
-* The Table Definition screen.
-![ADB web SQL data load destination table](images/sqldeveloper-dataload-tabledesc.jpg)
-
-Here, you should update the following:
+* In the Table Definition screen you should update the following:
  - Change the target Schema to **OMLUSER**
  - Change the target Table Name to **CUSTOMER_INSURANCE**
-
+  
 You can keep the default Create New Table option and mapping options.
 
-Click **All Files**.
+ * Click **Upload File**.
+![ADB web SQL data load destination table](images/sqldeveloper-dataload-tabledesc.jpg)
 
-* Notice the details on the file loading changed. Click the green run button on the Data Loading process.
-![ADB web SQL data load run](images/sqldeveloper-dataload-run.jpg)
 
 * The status changes to Running.
 ![ADB web SQL data load run status running](images/sqldeveloper-dataload-running.jpg)
@@ -115,4 +112,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Authors** -  Andrei Manoliu, Milton Wan
 * **Contiributors** - Rajeev Rumale, Mark Hornick, Sherry LaMonica
-* **Last Updated By/Date** -  Andrei Manoliu, December 2022
+* **Last Updated By/Date** -  Andrei Manoliu, May 2024

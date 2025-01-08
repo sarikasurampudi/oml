@@ -1,21 +1,21 @@
-# Introduction to Oracle Machine Learning Notebooks
+# Introduction to Oracle Machine Learning Notebooks Classic
 
 ## Introduction
 
-This lab walks you through the steps to sign into Oracle Machine Learning, create an Oracle Machine Learning (OML) notebook from scratch, create an OML notebook based on the example template notebooks, and create jobs to schedule notebooks to run at specific day and time.
+This lab walks you through the steps to sign into Oracle Machine Learning, create an Oracle Machine Learning (OML) Notebook Classic from scratch, create an OML Notebook Classic based on the example template notebooks, and create jobs to schedule notebooks to run at specific day and time.
 
 Estimated Time: 15 minutes
 
-### About Oracle Machine Learning Notebooks
+### About Oracle Machine Learning Notebooks Classic
 
-Oracle Machine Learning Notebooks is a collaborative user interface supporting data scientists, analysts, developers, and DBAs. You can work with SQL, PL/SQL, Python, and R in the same notebook—using the most appropriate language for the problem at hand. You can also view notebook changes by team members in real time, interactively. Data science team members can explicitly share notebooks and version notebooks as well as schedule notebooks to run at a set time or a repeating schedule. By virtue of being included in Oracle Autonomous Database, machine learning functionality is automatically provisioned and managed. Through Oracle Machine Learning Notebooks, you have access to the in-database algorithms and analytics functions to explore and prepare data, build and evaluate models, score data, and deploy solutions.
+Oracle Machine Learning Notebooks Classic is a collaborative user interface supporting data scientists, analysts, developers, and DBAs. You can work with SQL, PL/SQL, Python, and R in the same notebook—using the most appropriate language for the problem at hand. You can also view notebook changes by team members in real time, interactively. Data science team members can explicitly share notebooks and version notebooks as well as schedule notebooks to run at a set time or a repeating schedule. By virtue of being included in Oracle Autonomous Database, machine learning functionality is automatically provisioned and managed. Through Oracle Machine Learning Notebooks, you have access to the in-database algorithms and analytics functions to explore and prepare data, build and evaluate models, score data, and deploy solutions.
 
 ### Objectives
 
 In this lab, you will learn how to:
 * Sign into Oracle Machine Learning User Interface
-* Create an Oracle Machine Learning notebook from scratch
-* Create a notebook based on an example template
+* Create an Oracle Machine Learning Notebook Classic from scratch
+* Create a Notebook Classic based on an example template
 * Check and update the interpreter binding settings for a notebook
 * Schedule a notebook to run at a specific time using the Jobs interface
 
@@ -27,11 +27,11 @@ This lab assumes you have:
 
 ## Task 1: Sign into Oracle Machine Learning User Interface
 
-A notebook is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks using Oracle Machine Learning Notebooks, which is accessed through the Oracle Machine Learning user interface on Oracle Autonomous Database.
+A Notebook Classic is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks using Oracle Machine Learning Notebooks, which is accessed through the Oracle Machine Learning user interface on Oracle Autonomous Database.
 
 <if type="freetier">
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the Cloud menu on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
 
 	![ADB in OCI](images/adw.png)
 
@@ -43,7 +43,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	![ADW Service Console](images/database-actions.png)
 
-4. On the Database Actions page, go to the Development section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
+4. On the Database Actions page, go to the Development tab and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
 	![Development option in ADW Service Console](images/adb-dev-oml.png)
 
@@ -53,7 +53,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	![Oracle Machine Learning UI Sign in page](images/omluser-signin.png)
 
-	This opens the Oracle Machine Learning home page.
+	This opens the Oracle Machine Learning user interface home page.
 	![Notebooks option in OML homepage](images/homepage.png)
 </if>
 
@@ -62,11 +62,11 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
    ![Launch Workshop](images/launch-workshop.png)
 
-2. On the **Get Started - LiveLabs login** page, click **View Login Info** at the top left. 
+2. On the **Get Started - LiveLabs login** page, click **View Login Info** at the top left.
 
 	![ADB in OCI](images/get-started-page-livelabs.png)
 
-3. In the panel that opens with the **Reservation Information**, click at the bottom of the panel on the **OML Notebooks** link. 
+3. In the panel that opens with the **Reservation Information**, click at the bottom of the panel on the **OML Notebooks** link.
 
 	![ADB in OCI](images/livelabs-reservation-info.png)
 
@@ -79,19 +79,20 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 </if>
 This completes the task of accessing Oracle Machine Learning user interface.
 
-## Task 2: Create a Notebook and define paragraphs using the md, SQL, PL/SQL, Python, and R interpreters
+## Task 2: Create a Notebook Classic and define paragraphs using the md, SQL, PL/SQL, Python, and R interpreters
 
 To create a notebook:
 
-1. On the Oracle Machine Learning home page, click **Notebooks**. The Notebooks page opens. Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **Notebooks**.
+1. On the Oracle Machine Learning user interface, click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Expand Projects and then click **Notebooks Classic**.
 
-	![Notebooks option in hamburger](images/hamburger-notebooks.png)
+	![Notebooks option in hamburger](images/oml-classic-leftnav.png)
+>> Note: Observe the entry **Notebooks** on the left navigation menu. To learn how to use Oracle Machine Learning Notebooks - an enhanced web-based notebook platform, refer to [Get Started with Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B).
 
-2. On the Notebooks page, click **Create**. The Create Notebook dialog opens.
+2. On the Notebooks Classic page, click **Create**. The Create Notebook dialog opens.
 
-	<if type="livelabs">![Create Notebook dialog](images/create-notebook.png) </if>
+	<if type="livelabs"> ![Create Notebook dialog](images/create-notebook-classic.png)</if>
 
-	<if type="freetier"> ![Create Notebook dialog](images/create-notebook-freetier.png) </if>
+	<if type="freetier"> ![Create Notebook dialog](images/create-notebook-classic-freetier.png)</if>
 
 3. In the Name field, enter **Test Notebook**.
 
@@ -296,7 +297,7 @@ This task demonstrates how to create notebooks based on Example templates. You w
 
 This step demonstrates how to create the OML4Py Classification notebook based on the OML4Py Classification DT (Decision Tree) Example template:
 
-1. Go to the Examples page by clicking the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. On the left navigation menu, click **Templates** and then click **Examples**.
+1. Go to the Examples page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. On the left navigation menu, click **Templates** and then click **Examples**.
 
 	![Oracle Machine Learning home page](images/hamburger-examples.png)
 
@@ -315,11 +316,11 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 
 	![Create Classification DT notebook from example template](images/create-notebook-classification.png)
 
-4. Once the notebook is created, the message _Notebook "OML4PY Classification DT (1)" created in project "OMLUSER Project"_ is displayed, as shown in the screenshot. The notebook is now available in the Notebooks page.
+4. Once the notebook is created, the message _Notebook "OML4PY Classification DT (1)" created in project "OMLUSER Project"_ is displayed, as shown in the screenshot. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
 	![Create notebook message](images/notebook-created-message.png)
 
-5. To view the notebook that you just created, click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
+5. To view the notebook that you just created, click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
 	![Notebooks in left navigation menu](images/notebooks-left-nav-pane.png)
 
@@ -334,10 +335,10 @@ This completes the task of creating a notebook from an Example template.
 
 These steps demonstrate how to create the Time Series notebook based on the Example template:
 
-7. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. If you choose to go to the home page, then click **Home** on the left navigation pane, and then click **Examples**.
+7. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. If you choose to go to the home page, then click **Home** on the left navigation pane, and then click **Examples**.
 
-	<if type="livelabs"> ![Go to Examples](images/goto-examples.png) </if>
-	<if type="freetier"> ![Go to Examples](images/goto-examples-freetier.png) </if>
+	<if type="livelabs"> ![Go to Examples](images/notebook-listed.png) </if>
+	<if type="freetier"> ![Go to Examples](images/notebooks-3.png) </if>
 
 8. Navigate to the **OML4SQL Time Series ESM** example template notebook. You may type ESM in the search box on the upper right corner of the page to get a list of the ESM-related notebooks. Click the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
 
@@ -349,11 +350,11 @@ These steps demonstrate how to create the Time Series notebook based on the Exam
 
 	![Create Time Series notebook from example template](images/create-notebook-time-series.png)
 
-10. Once the notebook is created, the message _Notebook "OML4SQL Time Series ESM (1)" created in project "OMLUSER Project"_ is displayed. The notebook is now available in the Notebooks page.
+10. Once the notebook is created, the message _Notebook "OML4SQL Time Series ESM (1)" created in project "OMLUSER Project"_ is displayed. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
 	![Time Series notebook message](images/esm-notebook-message.png)
 
-11. To view the notebook, click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
+11. To view the notebook, click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
 	![Notebooks in left navigation menu](images/notebooks-left-nav-pane-esm.png)
 
@@ -385,7 +386,7 @@ This is the initial binding order of the interpreters. You can change the order 
 	> **Note:** The interpreter binding order that is set for a notebook applies to all the paragraphs in that notebook. However, you can override the binding of an individual paragraph also. This is an advanced topic, and is not covered in this workshop.
 
 In this step, you learn how to set the interpreter bindings:
-1. Go to the Notebooks page by clicking the hamburger icon on the top left corner of the page. On the left navigation menu, click **Notebooks**.
+1. Go to the Notebooks page by clicking the Cloud menu icon on the top left corner of the page. On the left navigation menu, click **Notebooks**.
 
 	![hamburger](images/hamburger-gen.png)
 
@@ -421,7 +422,7 @@ Jobs allow you to schedule the running of notebooks. On the Jobs page, you can c
 
 To create a job:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu, and click **Jobs** to go to the Jobs page. You can also go to Jobs from the Oracle Machine Learning home page by clicking **Jobs**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu, and click **Jobs** to go to the Jobs page. You can also go to Jobs from the Oracle Machine Learning home page by clicking **Jobs**.
 
 	![hamburger](images/hamburger-gen.png)
 
@@ -477,4 +478,4 @@ This completes the task of creating a job. You may now **proceed to the next lab
 
 * **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, June 2024

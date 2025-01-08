@@ -19,8 +19,8 @@ In this lab, you will learn how to:
 * Create an experiment
 * Edit and adjust experiment settings
 * View the leaderboard and other settings
-* Deploy models to Oracle Machine Learning Services
-* View Oracle Machine Learning Models menu with deployed metadata and endpoint JSON
+* Deploy a model to Oracle Machine Learning Services
+* View Oracle Machine Learning Models menu with deployed metadata and REST endpoint
 * Create a notebook for the top model
 * View generated notebook and individual paragraphs
 
@@ -36,24 +36,24 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 1. Sign into Oracle Machine Learning user interface (following Lab1, Task 1 instructions).
 
-2. On your Oracle Machine Learning home page, click **AutoML** in the Quick Actions section.
+2. On your Oracle Machine Learning user interface home page, click **AutoML** in the Quick Actions section.
 
 	![home page](images/homepage-automl.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML**. This opens the AutoML Experiments page.
+	Alternatively, you can click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
 
-	![home page](images/hamburger-automl-homepage.png)
+	![AutoML UI in left navigation pane](images/left-nav-pane-automl.png)
 
-## Task 2: Create an Experiment
+## Task 2: Create and Run an AutoML UI Experiment
 
 An Experiment is as a work unit that contains the definition of data source, prediction target, and prediction type along with optional settings. After an Experiment runs successfully, it presents you a list of machine learning models in the leader board. You can select any model for deployment, or use it to create a notebook based on the selected model.
 When creating an Experiment, you must define the data source and the target of the experiment.
 
-When creating an experiment, you must specify the data source and the target of the experiment. An AutoML experiment can process columns with data type ``VARCHAR2`` greater than 4K , ``CHAR``, ``CLOB``, ``BLOB``, and ``BFILE`` as text. Note that columns with data type ``VARCHAR2`` less than 4K are considered as categorical. 
+When creating an experiment, you must specify the data source and the target of the experiment. An AutoML experiment can process columns with data type ``VARCHAR2`` greater than 4K , ``CHAR``, ``CLOB``, ``BLOB``, and ``BFILE`` as text. Note that columns with data type ``VARCHAR2`` less than 4K are considered as categorical.
 
 To create an Experiment:
 
-1. Click **AutoML** on your Oracle Machine Learning home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click AutoML. The AutoML Experiments page opens.
+1. Click **AutoML** on your Oracle Machine Learning user interface home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click **AutoML Experiments**. The AutoML Experiments page opens.
 
 	![home page](images/homepage-automl.png)
 
@@ -93,9 +93,16 @@ To create an Experiment:
 	*  **High** level gives the greatest parallelism but significantly limits the number of concurrent jobs.
 	*  **Medium** level enables some parallelism but allows greater concurrency for job processing.
 
-> **Note:** Changing the database service level setting on the Always Free Tier will have no effect since there is a 1 OCPU limit. However, if you increase the OCPUs allocated to your autonomous database, then you can increase the Database Service Level to Medium or High.
+	> **Note:** Changing the database service level setting on the Always Free Tier will have no effect since there is a 1 OCPU limit. However, if you increase the OCPUs allocated to your autonomous database, then you can increase the Database Service Level to Medium or High.
 
-13. Leave the other settings under **Additional Settings** as is, and click **Start** and then **Faster Results** to trigger the AutoML UI experiment to run.
+13. Leave the default algorithms selected. 
+
+14. Under **Model Name Handling**, select:
+
+	* **Create unique names for each run:** Select this option to generate model names that are unique. Selecting this option also gives you the choice to select or deselect the option Drop models from the previous run.
+	* **Drop models from the previous run:** Select this option to drop the models that were generated in the prior experiment runs. Deselect this option to retain the models that were generated in the prior runs. These models are available in the user schema.
+
+15. Now scroll up the page, and click **Start.** Click **Faster Results** to trigger the AutoML UI experiment to run.
 
 	![Experiment Start options](images/faster-results.png)
 
@@ -111,21 +118,22 @@ When an experiment starts running, the status is displayed in a progress bar. Wh
 
 ![Experiment Progress bar](images/exp-progress-bar.png)
 
+## Task 3: View an AutoML UI Experiment
 The Leader Board displays the top performing models relative to the model metric selected along with the algorithm and accuracy. Here,  you will view the additional metrics Precision, Recall, ROC AUC for the models:
 
-14. Scroll down the Customer 360 experiments page to view the Leader Board section. The top three algorithms for this experiment are Naive Bayes, Random Forest and Support Vector Machine (Linear).
+1. Scroll down the Customer 360 experiments page to view the Leader Board section. The top three algorithms for this experiment are Naïve Bayes, Random Forest and Support Vector Machine (Linear).
 
 	>**Note:** Only when the experiment is completed, can you perform any of these actions listed here, including metrics 	selection.
 
 	![Leader Board](images/leaderboard-1.png)
 
-15. Click on the Naive Bayes model row, and not on the model. This highlights the model row in blue. Click **Metrics**. The **Select Additional Metrics** dialog opens.
+2. Click on the Naive Bayes model row, and not on the model. This highlights the model row in blue. Click **Metrics**. The **Select Additional Metrics** dialog opens.
 
 	> **Note:** The additional metrics can be selected once the experiment has completed.
 
 	![Leader Board options](images/leaderboard-options.png)
 
-16. In the Select Additional Metrics dialog, click **Precision, Recall, ROC AUC**, and then click the close icon to close the dialog.
+3. In the Select Additional Metrics dialog, click **Precision, Recall, ROC AUC**, and then click the close icon to close the dialog.
 
 	![Select Additional Metrics dialog](images/select-metrics.png)
 
@@ -133,13 +141,13 @@ The Leader Board displays the top performing models relative to the model metric
 
 	![Leader Board showing selected metrics](images/leaderboard-2.png)
 
-17. Click on any row in the Leader Board to enable the options - **Deploy, Rename**, and **Create Notebook**. Note that these options are greyed out if you do not click on the rows.
+4. Click on any row in the Leader Board to enable the options - **Deploy, Rename**, and **Create Notebook**. Note that these options are greyed out if you do not click on the rows.
 
-18. Click on the Naive Bayes model row (and not on the model), and then click **Rename**. In the Rename Model dialog, enter `NB_Customer360` to rename the auto generated model name for Naive Bayes. Click **OK**.  	
+5. Click on the Naïve Bayes model row (and not on the model), and then click **Rename**. In the Rename Model dialog, enter `NB_Customer360` to rename the auto generated model name for Naive Bayes. Click **OK**.  	
 
 	![Rename model](images/rename-model.png)
 
-19. Click **OK**. A confirmation message is displayed once the renaming is complete.
+6. Click **OK**. A confirmation message is displayed once the renaming is complete.
 
 	![Leaderboard showing renamed model](images/model-renamed-msg.png)
 
@@ -147,25 +155,25 @@ The Leader Board displays the top performing models relative to the model metric
 
 	![Leaderboard showing renamed model](images/renamed-model.png)
 
-20. Click on any model name to view the model details in the Model Detail dialog. Click **Prediction Impacts** and **Confusion Matrix** tab in the dialog to view the respective details, as shown in the screenshots below:
+7. Click on any model name to view the model details in the Model Detail dialog. Click **Prediction Impacts** and **Confusion Matrix** tab in the dialog to view the respective details, as shown in the screenshots below:
 
-* **Prediction Impact:** Displays the importance of the attributes in terms of the target prediction of the models. In this lab, the attribute HOUSEHOLD_SIZE has the highest impact on target prediction. Move your cursor over the prediction impact chart for each attribute to view the values.
+	* **Prediction Impact:** Displays the importance of the attributes in terms of the target prediction of the models. In this lab, the attribute HOUSEHOLD_SIZE has the highest impact on target prediction. Move your cursor over the prediction impact chart for each attribute to view the values.
 
-	![View Prediction Impact](images/prediction-impact.png)
+		![View Prediction Impact](images/prediction-impact.png)
 
-* **Confusion Matrix:** Characterizes the accuracy of a model, including the types of errors made. It is computed by OML AutoML UI on a random subset of the original data (based on the cross-validation process) to help assess the model quality. Because our target is binary, the results are classified into true positive (actual = predicted = 1), true negative (actual = predicted = 0), false positive (actual = 0, predicted = 1) and false negative (actual = 1, predicted = 0).
+	* **Confusion Matrix:** Characterizes the accuracy of a model, including the types of errors made. It is computed by OML AutoML UI on a random subset of the original data (based on the cross-validation process) to help assess the model quality. Because our target is binary, the results are classified into true positive (actual = predicted = 1), true negative (actual = predicted = 0), false positive (actual = 0, predicted = 1) and false negative (actual = 1, predicted = 0).
 
-	> Note: The values shown here represent percentages of the test data that correspond to each of the confusion matrix entries.
+		> Note: The values shown here represent percentages of the test data that correspond to each of the confusion matrix entries.
 
-	![View Confusion Matrix](images/confusion-matrix.png)
+		![View Confusion Matrix](images/confusion-matrix.png)
 
-21. To go back to the AutoML Experiments page, scroll up the page and click **<-Experiments**.
+8. To go back to the AutoML Experiments page, scroll up the page and click **<-Experiments**.
 
 	![Go to Experiments page](images/goto_exp.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML** on the left navigation menu.
+	Alternatively, you can click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML Experiments** on the left navigation menu.
 
-## Task 3: Deploy Top Model to Oracle Machine Learning Services
+## Task 4: Deploy a Top Model to Oracle Machine Learning Services
 
 When you deploy a model using the Oracle Machine Learning AutoML UI, you create an Oracle Machine Learning Services endpoint for scoring. Oracle Machine Learning Services extends Oracle Machine Learning functionality to support model deployment and model lifecycle management for in-database OML models through REST APIs.
 
@@ -173,9 +181,7 @@ When you deploy a model using the Oracle Machine Learning AutoML UI, you create 
 
 To deploy a model:  
 
-1. Go to the AutoML Experiments page by clicking the hamburger icon on the top left corner of the page. Click **AutoML** on the left navigation menu.  
-
-	![home page](images/hamburger-gen.png)
+1. Go to the AutoML Experiments page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation pane, and then clicking **AutoML Experiments.**  Alternatively, you can also click **<-Experiments** to directly open the **AutoML Experiments** page.  
 
 	![home page](images/hamburger-automl.png)
 
@@ -207,13 +213,13 @@ To deploy a model:
 
 	![Deploy Model option in Leader Board](images/model-deployed-message.png)
 
-This completes the task of deploying the top model Naive Bayes to Oracle Machine Learning Services.
+This completes the task of deploying the top model Naïve Bayes to Oracle Machine Learning Services.
 
-## Task 4: View Oracle Machine Learning Models with Deployed Metadata and REST Endpoint
+## Task 5: View Oracle Machine Learning Models with Deployed Metadata and REST Endpoint
 
 The deployed models are listed under **Deployments** on the Models page. To view the metadata of the deployed model **NaiveBayes_CUST360**:
 
-1. To go to Deployments, click the hamburger icon ![hamburger icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning home page.
+1. To go to Deployments, click the Cloud menu icon ![hamburger icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning UI home page.
 
   ![Models](images/models-option.png)
 
@@ -235,11 +241,11 @@ The deployed models are listed under **Deployments** on the Models page. To view
 
 This completes the task of viewing the metadata of the deployed model, and its endpoint.
 
-## Task 5: Create a Notebook for the Top Model
+## Task 6: Create a Notebook for the Top Model
 
 You can create notebooks based on the top models produced in the experiment. This provides the code to build a model with the same settings for the selected model. This option is helpful if you want to use the code to re-create a similar machine learning model. To create a notebook:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML Experiments**.
 
 	![Experiments page](images/model-to-exp.png)
 
@@ -247,7 +253,7 @@ You can create notebooks based on the top models produced in the experiment. Thi
 
 	![Experiments page](images/open-customers-360.png)
 
-2. Scroll down to the Leader Board, click on the Naive Bayes model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Create Notebook**. The Create Notebook dialog opens.
+2. Scroll down to the Leader Board, click on the Naïve Bayes model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Create Notebook**. The Create Notebook dialog opens.
 
  	![Create Notebook option in Leader Board](images/create-notebook-lb.png)
 
@@ -263,19 +269,19 @@ You can create notebooks based on the top models produced in the experiment. Thi
 
 This completes the task of creating the notebook **Customer 360 NB (1)** based on the Naive Bayes model that is created by the AutoML experiment **Customers 360**.
 
-## Task 6: View Generated Notebook and Individual Paragraphs
+## Task 7: View Generated Notebook and Individual Paragraphs
 
 To view the generated notebook Customer 360:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks**.
 
 	![Notebooks](images/hamburger-notebooks1.png)
 
 2. The Notebooks page opens with all the notebooks listed in it. Click the **Customer 360 NB (1)** notebook to open it.
 
- 	<if type="livelabs"> ![Generated Notebook](images/notebooks-listed-final.png) </if>
+ 	<if type="livelabs"> ![Generated Notebook](images/notebooks-list-livelabs.png) </if>
 
-	<if type="freetier"> ![Generated Notebook](images/notebooks-5.png) </if>
+	<if type="freetier"> ![Generated Notebook](images/notebooks-list-freetier.png) </if>
 
 3. The generated notebook _Customer 360 NB (1)_  opens in the notebook editor. Click the gear icon on the upper right corner of the notebook to view and set the interpreter binding order.
 
@@ -327,4 +333,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, December 2024

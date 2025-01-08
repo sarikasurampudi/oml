@@ -2,13 +2,14 @@
 
 ## Introduction
 
-This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous Database (ADB), the SH schema and associated data sets are easily accessible.
+This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn.datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous Database (ADB), the SH schema and associated data sets are easily accessible.
 
 Estimated Time: 30 minutes
 
 ### About Oracle Machine Learning for Python(OML4Py)
 
-Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database and Database Cloud Service with separate installation. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
+Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database licenses and Base Database Service with separate installation. Oracle Machine Learning empowers data scientists with Python by leveraging the database as a high-performance computing environment. Database tables and views are accessed through oml.DataFrame proxy objects with overloaded functionality that produces SQL, transparently behind the scenes. The in-database machine learning algorithms are exposed through a native Python API and produce the same first-class, in-database machine learning models as the OML4SQL API. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
+
 
 ### Objectives
 
@@ -31,43 +32,34 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Table
 
-With OML4Py, you can create Python proxy objects that can be used to access, analyze, and manipulate data that reside in the database. OML4Py uses these proxy objects and transparently translates many standard Python functions into SQL. First access the OML4Py Classification DT (1) notebook and then create the database table.
+With OML4Py, you can create Python proxy objects that can be used to access, analyze, and manipulate data that reside in the database. OML4Py uses these proxy objects and transparently translates many standard Python functions into SQL. First access the OML4Py Classification DT notebook and then create the database table.
 
-### Access the OML4Py Classification DT (1) notebook
+### Access the OML4Py Classification DT notebook
 
-This step illustrates how you can access the OML4Py Classification DT (1) notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT (1) notebook was created based on the example template of the OML4Py Classification Decision Tree.
+This step illustrates how you can access the OML4Py Classification DT notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT notebook was created based on the example template of the OML4Py Classification Decision Tree.
 
-1. Click the hamburger icon ![Hamburger Icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page. Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
+1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page.
+	![Left pane navigation to Notebooks through Cloud menu icon.](images/left-nav-pane-notebooks.png)
+	Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
+	![Homepage Notebooks.](images/homepage-notebooks.png)
 
-	![Left pane navigation to Notebooks through hamburger icon.](images/hamburger-notebooks.png)
+2. The Notebook page opens with the list of notebooks available. Click the OML4Py Classification DT notebook to open it.
 
-2. The Notebook page opens with the list of notebooks available. Click the OML4Py Classification DT (1) notebook to open it.
+	![List of Notebooks available.](images/open-classification-dt.png)
 
-	![List of Notebooks available.](images/list-notebooks-available.png)
+3. The OML4Py Classification DT notebook opens up in the notebook editor. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon.
 
-3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click the gear icon ![Gear Icon](images/gear-icon.png) on the top right corner of the notebook to view and set the interpreter binding order.
+	![Illustration for getting the configuration for interpreter](images/classification-dt-nbtype-icon.png)
 
-	![Illustration for getting the configuration for interpreter](images/getting-configuration-interpreter.png)
-
-	You can change the order of the interpreter bindings by clicking and dragging an entry above or below others (turns from white to blue). You can also deselect a binding to disable it (turns from blue to white). This does not require dragging the enabled interpreters above the disabled ones.
-
-	![Illustration for configuring interpreter](images/configuring-interpreter.png)
-
-	Click **Save** to set the interpreter bindings.
-
-4. Click the play icon next to the title of the notebook to run all paragraphs.
+4. Click the play icon at the top to run all paragraphs.
 
 	![Illustration for running all paragraph](images/run-all-paragraphs.png)
 
-5. Click **OK** to confirm in the confirmation dialogue.
+5. Click **Confirm** to confirm in the confirmation dialogue.
 
-	![Confirmation for running all paragraph](images/confirmation-run-all-paragraphs.png)
+	![Illustration for confirmation of running all paragraph](images/confirmation-run-all-paragraphs.png)
 
-6. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
-
-	![Illustration for pending on a paragraph](images/pending-paragraph.png)
-
-	![Illustration for finished on a paragraph](images/finished-paragraph.png)
+6. The paragraphs start running one by one. The status and the output are displayed at the bottom of the paragraph. Hover your cursor over the paragraph to view the time taken to complete the run.
 
 In this step, the iris data set is used for illustrative purposes to load the data into a temporary database table. Such temporary tables are automatically deleted when the OML Notebook connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 To use OML4Py, you must first import the `oml` module and the Pandas library. Use the `oml.push` function to create a temporary table.
@@ -81,9 +73,8 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	import pandas as pd
 	import oml
 
-	pd.set_option('display.max_rows', 500)
-	pd.set_option('display.max_columns', 500)
-	pd.set_option('display.width', 1000)
+	import warnings
+	warnings.simplefilter(action='ignore', category=FutureWarning)
 	</copy>
 	```
 
@@ -92,6 +83,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	```
 	<copy>
 	%python
+
 	from sklearn.datasets import load_iris
 	import pandas as pd
 
@@ -118,6 +110,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	```
 	<copy>
 	%python
+
 	try:
 		oml.drop(table='IRIS')
 	except:
@@ -133,9 +126,9 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	The output is as follows:
 	![Columns,Shape and Top rows of IRIS.](images/description-iris.png)
 
-## Task 3: Create a Proxy Object for a Database Object
+## Task 3: Create a Proxy Object for a Database Table
 
-1. Use the `oml.sync` function to create a Python object as a proxy for a database table or view. The `oml.sync` function returns an `oml.DataFrame` object or a dictionary of `oml.DataFrame` objects. The `oml.DataFrame` object returned by `oml.sync` is a proxy for the database object.  
+1. Use the `oml.sync` function to create a Python object as a proxy for a database table or view. The `oml.sync` function returns an `oml.DataFrame` object or a dictionary of `oml.DataFrame` objects. The `oml.DataFrame` object returned by `oml.sync` is a proxy for the database object.
 
 	```
 	<copy>
@@ -146,7 +139,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	</copy>
 	```
 	In this step, you are viewing a few rows from the SUPPLEMENTARY_DEMOGRAPHICS table using the overloaded `head()` function.
-	
+
 	![Top rows of DEMO.](images/rows-demo.png)
 
 ## Task 4: Explore the Data
@@ -166,7 +159,7 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 	The output is (4500, 14).
 	```
 
-2. Use the transparency layer function `describe()` to calculate descriptive statistics that summarize the central tendency, dispersion, and shape of the DEMO table in each numeric column.Note that all computations are computed in the database and only the summary results are returned to the Python client, in this case, the notebook. Eliminating the need to move data greatly increases scalability.  A few rows of the output are displayed using the `z.show` function.
+2. Use the transparency layer function `describe()` to calculate descriptive statistics that summarize the count, mean, standard deviation and other key aspects of the DEMO table in each numeric column.Note that all computations are computed in the database and only the summary results are returned to the Python client, in this case, the notebook. Eliminating the need to move data greatly increases scalability.  A few rows of the output are displayed using the `z.show` function.
 
 	```
 		<copy>
@@ -178,7 +171,7 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 		</copy>
 	```
 
-	![Statistical details of DEMO.](images/statistical-data-demo.png)
+	![Statistical details of DEMO.](images/statistical-data-demo01.png)
 
 3. Use the `crosstab()` function to perform cross-column analysis of an `oml.DataFrame` object. The crosstab method computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.  In this example, the crosstab function displays the distribution of `AFFINITY_CARD` response types.
 
@@ -192,7 +185,7 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 
 	![Crosstab of attribute AFFINITY_CARD.](images/crosstab-affinity-card.png)
 
-4. Run the following script to view the distribution of `HOUSEHOLD_SIZE` according to `AFFINITY_CARD` response types with the following setting. Click on the **Bar chart**, then click on **settings**. Drag the fields to titles as `HOUSEHOLD_SIZE` to **keys**, `AFFINITY_CARDS`  to **groups**, and count to **values**. Click on **Stacked** to get the required view.
+4. Use the `crosstab()` function to view the distribution of `HOUSEHOLD_SIZE` and `AFFINITY_CARD` with the following setting. Click on the **Settings**, then add the fields `HOUSEHOLD_SIZE` and `AFFINITY_CARDS` to the title **Group By**.
 
 	```
 	<copy>
@@ -206,7 +199,8 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 
 ## Task 5: Prepare the Data
 
-In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based on a subset of the original `DEMO`, then select the necessary columns for further analysis, display a few rows of the `DEMO_DF` `oml.DataFrame`, and split your data into TRAIN and TEST sets in preparation for building the machine learning model.
+In this step, you will create a new `oml.DataFrame` called `DEMO_DF` by selecting specific columns from the existing `DEMO` `oml.DataFrame`. Next, you will display a few rows of the `DEMO_DF` `oml.DataFrame`. Finally, you will split the data into TRAIN and TEST sets in preparation for building the machine learning model.
+
 1. Use the `DEMO` proxy object to create a new proxy object `DEMO_DF` by selecting the necessary columns. Run the following script:
 
 	```
@@ -232,8 +226,16 @@ In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based o
 	![Top rows of DEMO_DF.](images/rows-demo-df.png)
 
 3. In this example, you are randomly splitting the `DEMO_DF` data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The split method splits the data referenced by the `oml.DataFrame` proxy object `DEMO_DF` into two new `oml.DataFrame` proxy objects, TRAIN, and TEST.  
-   
-   Furthermore the machine learning algorithms require the separation of the target column `Y` from the input columns `X`.  In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
+
+	**_NOTE:_**
+
+	The target variable (y) can be an OML object or a string.
+	- If target variable (y) is a single-column OML object, the target values specified by y must be compatible with the input data (x), meaning they should have the same structure (e.g., the same number of rows).
+	- If target variable (y) is a string, it represents the name of the column in x that contains the target values (labels) for the model. In this case, x is expected to include a column with the name specified by y, which will be used as the target for training or prediction.
+
+	To learn more, see [Define the Target Variable](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4py/2-23ai&id=MLPUG-GUID-00EC5BC0-4D23-4410-88AE-1E1C5B2CB16D).
+
+   In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
 
 	```
 	<copy>
@@ -247,7 +249,7 @@ In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based o
 	</copy>
 	```
 
-Since we’ll be using automatic data preparation provided by the in-database algorithms, no further data preparation is required.
+	Since we’ll be using automatic data preparation provided by the in-database algorithms, no further data preparation is required.
 
 ## Task 6: Build Your Model
 
@@ -274,18 +276,18 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 	The `oml.dt` class uses the Decision Tree algorithm for classification and a model object `dt_mod` is created with the default parameter settings.  The **fit** function builds the Decision Tree model according to the training data and parameter settings.
 
 
-	
+
 
 		Model Name: DT_CLAS_MODEL
- 
+
 		Model Owner: OMLUSER
- 
+
 		Algorithm Name: Decision Tree
- 
+
 		Mining Function: CLASSIFICATION
- 
+
 		Target: AFFINITY_CARD
- 
+
 		Settings:
     	                setting name            setting value
 		0                      ALGO_NAME       ALGO_DECISION_TREE
@@ -301,23 +303,23 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		10        TREE_TERM_MINPCT_SPLIT                       .1
 		11         TREE_TERM_MINREC_NODE                       10
 		12        TREE_TERM_MINREC_SPLIT                       20
- 
+
 		Global Statistics:
   		attribute name  attribute value
 		0       NUM_ROWS             2725
- 
+
 		Attributes:
 		EDUCATION
 		HOME_THEATER_PACKAGE
-		HOUSEHOLD_SIZE	
+		HOUSEHOLD_SIZE
 		OCCUPATION
 		YRS_RESIDENCE
 		Y_BOX_GAMES
- 
+
 		Partition: NO
- 
+
 		Distributions:
- 
+
     	NODE_ID  TARGET_VALUE  TARGET_COUNT
 		0         0             0          2088
 		1         0             1           637
@@ -348,9 +350,9 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		26       13             1             6
 		27       14             0           536
 		28       14             1            59
- 
+
 		Nodes:
- 
+
     	parent  node.id  row.count  prediction                                              split                                          surrogate                                        full.splits
 		0      0.0        1       1225           0                   (HOUSEHOLD_SIZE IN ("3" "4-5"))                          YRS_RESIDENCE >(3.5E+000))                    (HOUSEHOLD_SIZE IN ("3" "4-5"))
 		1      0.0        4       1500           0          (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))                         YRS_RESIDENCE <=(3.5E+000))           (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))
@@ -367,7 +369,7 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		12     6.0       13        832           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
 		13     6.0       14        595           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
 		14     NaN        0       2725           0                                               None                                               None                                                  (
-	
+
 
 2. To specify model settings and build a Decision Tree model, run the following script :
 
@@ -424,11 +426,11 @@ To evaluate your model you need to score the test data using the model and then 
 	```
 
 2. To evaluate the model, we will pass a proxy `oml.Dataframe` containing predictions and the target columns to a new user-defined function named `evaluate_model` described below, that will produce typical model quality metrics.  
-   
-   For our classification example, you can evaluate your model using Confusion Matrix, Lift Chart, Gains Chart, and ROC curve chart. The Confusion Matrix displays the number of correct and incorrect predictions made with respect to the actual classification in the test data.  It is an **n**-by-**n** matrix where **n** is the number of classes. 
-   
-   A lift chart applies only to binary classifications requiring the designation of the positive class, and it measures the degree to which the predictions of a classification model are better than randomly generated predictions. 
-   
+
+   For our classification example, you can evaluate your model using Confusion Matrix, Lift Chart, Gains Chart, and ROC curve chart. The Confusion Matrix displays the number of correct and incorrect predictions made with respect to the actual classification in the test data.  It is an **n**-by-**n** matrix where **n** is the number of classes.
+
+   A lift chart applies only to binary classifications requiring the designation of the positive class, and it measures the degree to which the predictions of a classification model are better than randomly generated predictions.
+
    The ROC curve also applies to binary classification and requires the designation of the positive class. These are metrics for comparing predicted and actual target values in a classification model, and the area under this curve is another very standard measure of model quality known as AUC (Area Under the Curve).
 
 	Here is a custom script to generate the metrics and charts as described above. Run the below script:
@@ -437,178 +439,191 @@ To evaluate your model you need to score the test data using the model and then 
 	<copy>
 	%python
 
-	def evaluate_model(pred_data='',settings_name={''},name='',target=''):
-	    import numpy as np
-	    import matplotlib.pyplot as plt
-	    from sklearn.metrics import auc
-	    from sklearn.metrics import roc_curve
+def evaluate_model(pred_data='', 
+    settings_name={''}, 
+    name='',
+    target=''
+    ):
+    """Evaluate the models by passing an proxy oml.Dataframe containing Predictions
+     and the target column,
+     The Settings name (for the charts), 
+     The name of the model used (for the charts),
+     Supply the target column name for evaluation
+     for computing the confusion matrix with the test dataset"""
+    import oml
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from sklearn.metrics import auc
+    from sklearn.metrics import roc_curve
 
-	    #Creating the confucion matrix using crosstab function.
-	    conf_matrix = pred_data.crosstab(target,'PREDICTION',pivot=True)
+    conf_matrix = pred_data.crosstab(target,'PREDICTION',pivot=True)
+ 
+    # Extract Statistics from the Confusion Matrix
+    cf_local = conf_matrix.pull()
+    TN = int(cf_local[cf_local[target]==0]['count_(0)'])
+    FN = int(cf_local[cf_local[target]==0]['count_(1)'])
+    TP = int(cf_local[cf_local[target]==1]['count_(1)'])
+    FP = int(cf_local[cf_local[target]==1]['count_(0)'])
+    TPR = TP/(TP+FN)
+    FPR = FP/(FP+TN)
+    TNR = TN/(TN+FP)
+    FNR = FN/(FN+TP)
+    Precision = TP/(TP+FP)
+    Accuracy = (TP+TN)/(TP+TN+FP+FN)
+    NPV = TN/(FN+TN)
+    DetectionRate = TN/(FN+TN)
+    BalancedAccuracy = (TPR+TNR)/2
+    
+    # Estimated AUC via Triangle (not very precise) could be
+    # AUC = (1/2)*FPR*TPR + (1/2)*(1-FPR)*(1-TPR) + (1-FPR)*TPR
+    # Compute real AUC using roc_curve by loading the
+    # data locally and using the roc_curve() function
+    pred_local = pred_data.pull()
+    fpr, tpr, _ = roc_curve(pred_local[[target]],pred_local[['PROBABILITY_OF_1']])
+    AUC = auc(fpr, tpr)
+    opt_index = np.argmax(tpr - fpr)
+    FPR_OPT = fpr[opt_index]
+    TPR_OPT = tpr[opt_index]
+    F1Score = 2*Precision*TPR/(Precision+TPR)
+    MathewsCorrCoef = ((TP*TN)-(FP*FN))/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))**0.5
+    
+    # Store all statistics to export
+    statistics = {'Algorithm' : name,
+                  'Algorithm_setting' : settings_name,
+                  'TN' : TN,
+                  'TP' : TP,
+                  'FP' : FP,
+                  'FN' : FN,
+                  'TPR' : TPR,
+                  'FPR' : FPR,
+                  'TNR' : TNR,
+                  'FNR' : FNR,
+                  'Precision' : Precision,
+                  'Accuracy' : Accuracy,
+                  'NPV' : NPV,
+                  'DetectionRate' : DetectionRate,
+                  'BalancedAccuracy' : BalancedAccuracy,
+                  'AUC' : AUC,
+                  'F1Score' : F1Score,
+                  'MathewsCorrCoef' : MathewsCorrCoef
+                  }
+    # Nice round stats for printing to screen
+    TOTAL = TP+TN+FP+FN
+    TN_P = round((TN/TOTAL*100),2)
+    FP_P = round((FP/TOTAL*100),2)
+    FN_P = round((FN/TOTAL*100),2)
+    TP_P = round((TP/TOTAL*100),2)
+    # Print the output nicely on Zeppelin native Table
+    print("%table CONFUSION MATRIX\tPREDICTED 0\tPREDICTED 1\nACTUAL 0\t"+
+          "True Negative: "+str(TN)+" ("+str(TN_P)+"%)\t"+
+          "False Positive: "+str(FP)+" ("+str(FP_P)+"%)\nACTUAL 1\t"+
+          "False Negative: "+str(FN)+" ("+str(FN_P)+"%)\t"+
+          "True Positive: "+str(TP)+" ("+str(TP_P)+"%)\n"+
+          "Accuracy: "+str(round(Accuracy*100,4))+"%\t"+
+          "AUC: "+str(round(AUC,4))+"\t"+
+          "F1Score: "+str(round(F1Score,4))
+          )
+    
+    # Multiple Charts for Evaluation
+    fig, axes = plt.subplots(nrows=1, ncols=4,figsize=[22,5])
+    ax1, ax2, ax3, ax4 = axes.flatten()
+    fig.suptitle('Evaluation of the '+str(name)+' Model, with settings: '+str(settings_name), size=16)
+    
+    # Statistics
+    ax1.axis('off')
+    
+    # Function to return rounded numbers if the string is float, return
+    # integers otherwise and return characters if not a number
+    def round_if_float(content):
+        try:
+            val = float(content)
+        except ValueError:
+            return(content)
+        else:
+            if val.is_integer():
+                return(int(content))
+            else:
+                return(round(float(content),4))
 
-	    # Extract Statistics from the Confusion Matrix
-	    cf_local = conf_matrix.pull()
-	    TN = int(cf_local[cf_local[target]==0]['count_(0)'])
-	    FN = int(cf_local[cf_local[target]==0]['count_(1)'])
-	    TP = int(cf_local[cf_local[target]==1]['count_(1)'])
-	    FP = int(cf_local[cf_local[target]==1]['count_(0)'])
-	    TPR = TP/(TP+FN)
-	    FPR = FP/(FP+TN)
-	    TNR = TN/(TN+FP)
-	    FNR = FN/(FN+TP)
-	    Precision = TP/(TP+FP)
-	    Accuracy = (TP+TN)/(TP+TN+FP+FN)
-	    NPV = TN/(FN+TN)
-	    DetectionRate = TN/(FN+TN)
-	    BalancedAccuracy = (TPR+TNR)/2
-
-	    # Estimated AUC
-	    pred_local = pred_data.pull()
-	    fpr, tpr, _ = roc_curve(pred_local[[target]],pred_local[['PROBABILITY_OF_1']])
-	    AUC = auc(fpr, tpr)
-	    opt_index = np.argmax(tpr - fpr)
-	    FPR_OPT = fpr[opt_index]
-	    TPR_OPT = tpr[opt_index]
-	    F1Score = 2*Precision*TPR/(Precision+TPR)
-	    MathewsCorrCoef = ((TP*TN)-(FP*FN))/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))**0.5
-
-	    # Store all statistics to export
-	    statistics = {'Algorithm' : name,
-	                  'Algorithm_setting' : settings_name,
-	                  'TN' : TN,
-	                  'TP' : TP,
-	                  'FP' : FP,
-	                  'FN' : FN,
-	                  'TPR' : TPR,
-	                  'FPR' : FPR,
-	                  'TNR' : TNR,
-	                  'FNR' : FNR,
-	                  'Precision' : Precision,
-	                  'Accuracy' : Accuracy,
-	                  'NPV' : NPV,
-	                  'DetectionRate' : DetectionRate,
-	                  'BalancedAccuracy' : BalancedAccuracy,
-	                  'AUC' : AUC,
-	                  'F1Score' : F1Score,
-	                  'MathewsCorrCoef' : MathewsCorrCoef
-	                  }
-	    # Nice round stats for printing to screen
-	    TOTAL = TP+TN+FP+FN
-	    TN_P = round((TN/TOTAL*100),2)
-	    FP_P = round((FP/TOTAL*100),2)
-	    FN_P = round((FN/TOTAL*100),2)
-	    TP_P = round((TP/TOTAL*100),2)
-	    # Print the output nicely on Zeppelin native Table
-	    print("%table CONFUSION MATRIX\tPREDICTED 0\tPREDICTED 1\nACTUAL 0\t"+
-	          "True Negative: "+str(TN)+" ("+str(TN_P)+"%)\t"+
-	          "False Positive: "+str(FP)+" ("+str(FP_P)+"%)\nACTUAL 1\t"+
-	          "False Negative: "+str(FN)+" ("+str(FN_P)+"%)\t"+
-	          "True Positive: "+str(TP)+" ("+str(TP_P)+"%)\n"+
-	          "Accuracy: "+str(round(Accuracy*100,4))+"%\t"+
-	          "AUC: "+str(round(AUC,4))+"\t"+
-	          "F1Score: "+str(round(F1Score,4))
-	          )
-
-	    # Multiple Charts for Evaluation
-	    fig, axes = plt.subplots(nrows=1, ncols=4,figsize=[22,5])
-	    ax1, ax2, ax3, ax4 = axes.flatten()
-	    fig.suptitle('Evaluation of the '+str(name)+' Model, with settings: '+str(settings_name), size=16)
-
-	    # Statistics
-	    ax1.axis('off')
-
-	    # Function to return rounded numbers if the string is float, return
-	    # integers otherwise and return characters if not a number
-	    def round_if_float(content):
-	        try:
-	            val = float(content)
-	        except ValueError:
-	            return(content)
-	        else:
-	            if val.is_integer():
-	                return(int(content))
-	            else:
-	                return(round(float(content),4))
-
-	    for num, name in enumerate(statistics):
-	        ax1.text(0.01,
-	        (-num*0.06+0.94),
-	        "{0}: {1}".format(name,round_if_float(statistics[name])),
-	        ha='left',
-	        va='bottom',
-	        fontsize=12)
-
-	    # Produce Lift Chart
-	    ax2.set_title('Lift Chart')
-	    data = pred_local.sort_values(by='PROBABILITY_OF_1', ascending=False)
-	    data['row_id'] = range(0,0+len(data))
-	    data['decile'] = ( data['row_id'] / (len(data)/10) ).astype(int)
-	    lift = data.groupby('decile')[target].agg(['count','sum'])
-	    lift.columns = ['count', target]
-	    lift['decile'] = range(1,11)
-
-	    data_ideal = pred_local.sort_values(by=target, ascending=False)
-	    data_ideal['row_id'] = range(0,0+len(data))
-	    data_ideal['decile'] = ( data_ideal['row_id'] / (len(data_ideal)/10) ).astype(int)
-	    lift_ideal = data_ideal.groupby('decile')[target].agg(['count','sum'])
-	    lift_ideal.columns = ['count', 'IDEAL']
-	    lift['IDEAL']=lift_ideal['IDEAL']
-
-	    ax2.bar(lift['decile'],lift['IDEAL']/lift['count'],
-	    color='darkorange', label='Ideal')
-	    ax2.bar(lift['decile'],lift[target]/lift['count'],
-	    color='blue', alpha=0.6, label='Model')
-	    ax2.axhline((lift[target]/lift['count']).mean(),
-	    color='grey', linestyle='--', label='Avg TARGET')
-	    ax2.set_ylim(0,1.15)
-	    ax2.set_xlabel('Decile', size=13)
-	    ax2.set_ylabel('Percent of Actual Targets', size=13)
-	    # Print labels.
-	    for dec in lift['decile']:
-	        ax2.text(dec, lift[lift.decile==dec][target]/lift[lift.decile==dec]['count'] + 0.05,
-	        ("%.0f" % int(round((lift[(lift.decile==dec)][target]/lift[lift.decile==dec]['count'])*100,0)))+"%",
-	        ha='center', va='bottom')
-	    ax2.legend(loc="upper right")
-
-	    # Produce Gains Chart
-	    ax3.set_title('Distributions of Predictions')
-	    pred_local[pred_local[target]==1]['PROBABILITY_OF_1'].rename("Target = 1").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
-	    pred_local[pred_local[target]==0]['PROBABILITY_OF_1'].rename("Target = 0").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
-	    ax3.axvline(.5, color='grey', linestyle='--', label='Cutoff at 0.5')
-	    ax3.set_xlim([0,1])
-	    ax3.set_xlabel('Probability of 1', size=13)
-	    ax3.set_ylabel('Density', size=13)
-	    ax3.legend(loc="upper right")
-
-	    # ROC curve Chart
-	    ax4.set_title('ROC Curve')
-	    ax4.plot(fpr, tpr, color='blue', lw=2, label='ROC curve')
-	    ax4.plot(FPR_OPT, TPR_OPT, 'bo', color='orange', markersize=6)
-	    ax4.plot([0, 1], [0, 1], lw=2, linestyle='--', color='grey', label='Random guess')
-	    ax4.annotate('Optimal Cutoff:\nTPR: '+str(round(TPR_OPT,2))+' FPR: '+str(round(FPR_OPT,2)),
-	                 fontsize=11, xy=(FPR_OPT, TPR_OPT), xycoords='data', xytext=(0.98, 0.54),
-	                 textcoords='data',
-	                 arrowprops=dict(facecolor='gray', shrink=0.1, width=2,
-	                                 connectionstyle='arc3, rad=0.3'),
-	                 horizontalalignment='right', verticalalignment='top')
-	    ax4.annotate('AUC ='+str(round(AUC,4)), xy=(0.5, 0.35),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Precision ='+str(round(Precision,4)), xy=(0.45, 0.3),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Recall ='+str(round(TPR,4)), xy=(0.4, 0.25),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Accuracy ='+str(round(Accuracy,4)), xy=(0.35, 0.2),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('F1 Score ='+str(round(F1Score,4)), xy=(0.3, 0.15),
-	                 xycoords='axes fraction', size=13)
-	    ax4.set_xlim([-0.02, 1.02])
-	    ax4.set_ylim([0.0, 1.02])
-	    ax4.set_xlabel('False Positive Rate', size=13)
-	    ax4.set_ylabel('True Positive Rate', size=13)
-	    ax4.legend(loc="lower right")
-
-	    return(statistics, pred_local)
-	_ = evaluate_model(pred_data=RES_DF, settings_name='Gini,Max Depth:7,Min%Node:0.05,Min%Split:0.1', name='Decision Tree', target='AFFINITY_CARD')
+    for num, name in enumerate(statistics):
+        ax1.text(0.01, 
+        (-num*0.06+0.94),
+        "{0}: {1}".format(name,round_if_float(statistics[name])),
+        ha='left', 
+        va='bottom', 
+        fontsize=12)
+    
+    # Produce Lift Chart
+    ax2.set_title('Lift Chart')
+    data = pred_local.sort_values(by='PROBABILITY_OF_1', ascending=False)
+    data['row_id'] = range(0,0+len(data))
+    data['decile'] = ( data['row_id'] / (len(data)/10) ).astype(int)
+    lift = data.groupby('decile')[target].agg(['count','sum'])
+    lift.columns = ['count', target]
+    lift['decile'] = range(1,11)
+    
+    data_ideal = pred_local.sort_values(by=target, ascending=False)
+    data_ideal['row_id'] = range(0,0+len(data))
+    data_ideal['decile'] = ( data_ideal['row_id'] / (len(data_ideal)/10) ).astype(int)
+    lift_ideal = data_ideal.groupby('decile')[target].agg(['count','sum'])
+    lift_ideal.columns = ['count', 'IDEAL']
+    lift['IDEAL']=lift_ideal['IDEAL']
+    
+    ax2.bar(lift['decile'],lift['IDEAL']/lift['count'],
+    color='darkorange', label='Ideal')
+    ax2.bar(lift['decile'],lift[target]/lift['count'],
+    color='blue', alpha=0.6, label='Model')
+    ax2.axhline((lift[target]/lift['count']).mean(), 
+    color='grey', linestyle='--', label='Avg TARGET')
+    ax2.set_ylim(0,1.15)
+    ax2.set_xlabel('Decile', size=13)
+    ax2.set_ylabel('Percent of Actual Targets', size=13)
+    # Print labels.
+    for dec in lift['decile']:
+        ax2.text(dec, lift[lift.decile==dec][target]/lift[lift.decile==dec]['count'] + 0.05, 
+        ("%.0f" % int(round((lift[(lift.decile==dec)][target]/lift[lift.decile==dec]['count'])*100,0)))+"%",
+        ha='center', va='bottom')
+    ax2.legend(loc="upper right")
+    
+    # Produce Gains Chart
+    ax3.set_title('Distributions of Predictions')
+    pred_local[pred_local[target]==1]['PROBABILITY_OF_1'].rename("Target = 1").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
+    pred_local[pred_local[target]==0]['PROBABILITY_OF_1'].rename("Target = 0").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
+    ax3.axvline(.5, color='grey', linestyle='--', label='Cutoff at 0.5')
+    ax3.set_xlim([0,1])
+    ax3.set_xlabel('Probability of 1', size=13)
+    ax3.set_ylabel('Density', size=13)
+    ax3.legend(loc="upper right")
+    
+    # ROC curve Chart
+    ax4.set_title('ROC Curve')
+    ax4.plot(fpr, tpr, color='blue', lw=2, label='ROC curve')
+    ax4.plot(FPR_OPT, TPR_OPT,  color='orange', markersize=6)
+    ax4.plot([0, 1], [0, 1], lw=2, linestyle='--', color='grey', label='Random guess')
+    ax4.annotate('Optimal Cutoff:\nTPR: '+str(round(TPR_OPT,2))+' FPR: '+str(round(FPR_OPT,2)),
+                 fontsize=11, xy=(FPR_OPT, TPR_OPT), xycoords='data', xytext=(0.98, 0.54), 
+                 textcoords='data', 
+                 arrowprops=dict(facecolor='gray', shrink=0.1, width=2,
+                                 connectionstyle='arc3, rad=0.3'), 
+                 horizontalalignment='right', verticalalignment='top')
+    ax4.annotate('AUC ='+str(round(AUC,4)), xy=(0.5, 0.35), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Precision ='+str(round(Precision,4)), xy=(0.45, 0.3), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Recall ='+str(round(TPR,4)), xy=(0.4, 0.25), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Accuracy ='+str(round(Accuracy,4)), xy=(0.35, 0.2),
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('F1 Score ='+str(round(F1Score,4)), xy=(0.3, 0.15), 
+                 xycoords='axes fraction', size=13)
+    ax4.set_xlim([-0.02, 1.02])
+    ax4.set_ylim([0.0, 1.02])
+    ax4.set_xlabel('False Positive Rate', size=13)
+    ax4.set_ylabel('True Positive Rate', size=13) 
+    ax4.legend(loc="lower right")
+    
+    return(statistics, pred_local)
+_ = evaluate_model(pred_data=RES_DF, settings_name='Gini,Max Depth:7,Min%Node:0.05,Min%Split:0.1', name='Decision Tree', target='AFFINITY_CARD')
 	</copy>
 	```
 
@@ -621,6 +636,7 @@ To evaluate your model you need to score the test data using the model and then 
 	```
 	<copy>
 	%python
+
 	dt_mod.score(TEST_X, TEST_Y)
 	</copy>
 
@@ -640,8 +656,9 @@ Having built and evaluated the model, you will now filter scores computed above.
 
 	```
 	<copy>
-	%python  
-	z.show(RES_DF[RES_DF['PROBABILITY_OF_1'] > 0.5][['PREDICTION', 'PROBABILITY_OF_1', 'CUST_ID', 'AFFINITY_CARD','EDUCATION','OCCUPATION', 'HOUSEHOLD_SIZE', 'YRS_RESIDENCE', 'OS_DOC_SET_KANJI','BULK_PACK_DISKETTES']])
+	%python
+
+	z.show(RES_DF[RES_DF['PROBABILITY_OF_1'] > 0.5][['PREDICTION', 'PROBABILITY_OF_1'] + RES_DF.columns].head())
 	</copy>
 	```
 
@@ -665,7 +682,7 @@ Having built and evaluated the model, you will now filter scores computed above.
 
 ## Task 9: Use the SQL Interface to Score Data and Display Prediction Details
 
-You can score data and make similar predictions using the SQL interface. The test data is materialized into `DT_TEST_TABLE` so that you can query it using SQL. The materialized method writes the contents of an Oracle Machine Learning `oml.DataFrame` proxy object (a view, a table, and so on) to an Oracle Database table.
+You can score data and make similar predictions using the SQL interface. The test data is materialized into `DT_TEST_TABLE` so that you can query it using SQL. The materialized method writes the contents of an `oml.DataFrame` proxy object (a view, a table, and so on) to an Oracle Database table.
 
 1. Run the following command to materialize the test dataset:
 
@@ -716,106 +733,114 @@ You can score data and make similar predictions using the SQL interface. The tes
 
 You can save the python objects you create in one python session and load them in another session using the OML4Py datastore. Python objects and OML4Py proxy objects exist only during the current Python session, unless they are saved to a Datastore. OML4Py creates the datastore in the current user’s database schema. Until you delete the datastore and objects, they remain in the database. OML4Py provides functions for managing the objects in the datastore, such as `oml.ds.save`, `oml.ds.load`, `oml.ds.dir`, and others.
 
-1. First insert a new paragraph at the bottom of the Notebook. Click on the gear icon in the top-right corner of the last paragraph. Then, click on **Insert new** in the drop-down list. The default paragraph shows %md indicating that it is a markdown paragraph. To run a Python code, enter %python to change it to a Python paragraph.
+1. To insert a new paragraph, hover at the end of the paragraph and click on the Python icon. The newly created paragraph will be a Python paragraph, prefixed with %python.<!-- Click on the gear icon in the top-right corner of the last paragraph. Then, click on **Insert new** in the drop-down list. The default paragraph shows %md indicating that it is a markdown paragraph. To run a Python code, enter %python to change it to a Python paragraph. -->
 
 	![Drop down-list of setting of a paragraph.](images/setting-paragraph.png)
 
 2. To save one or more python objects to a datastore, use the `oml.ds.save` function. Here the DataFrame object is stored to `ds_pydata` and python model object is stored to `ds_pymodel`.
 	- To save IRIS and res_df `oml.DataFrame` proxy object to the `ds_pydata` datastore, run the script below. Use the `oml.sync()` function to create a python object as a proxy for IRIS table (see Task 3). You can give some descriptive text using the description argument, which will appear when you get information on the datastore.
 
-	```
-	<copy>
-	%python
-	IRIS = oml.sync(table='IRIS')
-	oml.ds.save(objs={'iris':IRIS, 'res_df':RES_DF},name="ds_pydata", description = "python datasets", overwrite=True)
-	</copy>
-	```
+		```
+		<copy>
+		%python
+
+		IRIS = oml.sync(table='IRIS')
+		oml.ds.save(objs={'iris':IRIS, 'res_df':RES_DF},name="ds_pydata", description = "python datasets", overwrite=True)
+		</copy>
+		```
 
 	- Run the below script to save the `dt_mod` model proxy object to the `ds_pymodel` datastore. When the **overwrite**  boolean argument is set to TRUE (overwrite=TRUE), an existing datastore is replaced with a new datastore with the same name when using the `oml.ds.save()` function.
 
-	```
-	<copy>
-	%python
-	oml.ds.save(objs={'dt_mod':dt_mod},name="ds_pymodel",description = "python model", grantable=True, overwrite=True)
-	</copy>
-	```
+		```
+		<copy>
+		%python
+
+		oml.ds.save(objs={'dt_mod':dt_mod},name="ds_pymodel",description = "python model", grantable=True, overwrite=True)
+		</copy>
+		```
 
 	- The `oml.ds.dir` function returns a list of existing datastores that are available in the database to you. Run the script below to get the list.
 
-	```
-	<copy>
-	%python
-	oml.ds.dir()
-	</copy>
-	```
+		```
+		<copy>
+		%python
 
-	The output is similar to the following:
-	![List of all datastore available and their object_count, size, date and description.](images/datastore-list.png)
-	The output also includes the size in bytes consumed, the date, and the descriptive text provided by the user when loading the python objects into the datastore.
+		oml.ds.dir()
+		</copy>
+		```
+
+		The output is similar to the following:
+		![List of all datastore available and their object_count, size, date and description.](images/datastore-list01.png)
+		The output also includes the size in bytes consumed, the date, and the descriptive text provided by the user when loading the python objects into the datastore.
 
 3. In this step, you will use `oml.ds.load()` function for loading one or more python objects from the datastore to the global workspace or the user's workspace.
 	- Run the following script to load all the python objects of a datastore into global Workspace and sort them by their name.
 
-	```
+		```
 		<copy>
 		%python
+
 		sorted(oml.ds.load(name="ds_pydata"))
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![Sorted list of python proxy objects in a datastore.](images/sorted-objects-datastore.png)
+		![Sorted list of python proxy objects in a datastore.](images/sorted-objects-datastore.png)
 
 	- Run the following script to load the named python object from the datastore into the global workspace.
 
-	```
+		```
 		<copy>
 		%python
+
 		oml.ds.load(name="ds_pymodel", objs=["dt_mod"])
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![list of python model proxy objects in a datastore.](images/model-object-datastore.png)
+		![list of python model proxy objects in a datastore.](images/model-object-datastore.png)
 
 	-	Run the following script to use the `dt_mod` model from the datastore to make predictions on the test data using the predict function.
 
-	```
+		```
 		<copy>
 		%python
+
 		RES_DS= dt_mod.predict(TEST_X, supplemental_cols = TEST_X)
 		z.show(RES_DS)
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![Rows of res_ds after prediction by loaded model.](images/rows-res-ds.png)
+		![Rows of res_ds after prediction by loaded model.](images/rows-res-ds.png)
 
 	- Run the following script to load the named python object from the datastore into the user's workspace.
 
-	```
+		```
 		<copy>
 		%python
+
 		oml.ds.load(name="ds_pymodel", objs=["dt_mod"], to_globals=False)
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
-	
-	![Illustration of a dictionary object containing the models name and value.](images/loaded-dictionaryobject-datastore.png)
-	
-	Also, the boolean input **to\_globals** is set to True by default. 
-	
-	If **to\_globals=True** then the `oml.ds.load` loads the python object to the global workspace. If **to\_globals=False**, then the `oml.ds.load()` function returns a dictionary object containing the object's name and value.
-	
+		The output is similar to the following:
+
+		![Illustration of a dictionary object containing the models name and value.](images/loaded-dictionaryobject-datastore.png)
+
+		Also, the boolean input **to\_globals** is set to True by default.
+
+		If **to\_globals=True** then the `oml.ds.load` loads the python object to the global workspace. If **to\_globals=False**, then the `oml.ds.load()` function returns a dictionary object containing the object's name and value.
+
 	To learn more about how to use datastores to store python objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/save-python-objects-in-database.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710).
 
-In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data. 
+In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data.
 
-You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store. 
+You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store.
+
 You may now **proceed to the next lab**.
 
 ## Learn More
@@ -831,7 +856,7 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 	1. Prepare the Demo data and then rank the classification algorithms from the set of algorithms supported by AutoML using automatic algorithm selection.
 	![The images shows how to prepare the demo data and rank the classification with the help of AutoML.](images/automl-algorithm-selections.png)
 	2. Identify the most relevant feature subset using automatic feature selection.
-	![It shows how AutoMl can be used for selection of relevant features.](images/automl-subset-feature-selection.png)
+	![It shows how AutoML can be used for selection of relevant features.](images/automl-subset-feature-selection.png)
 	3. Finally tune the hyperparameters for the selected classification algorithm and features using automatic model tuning.
 	![The image shows how to fine tune hyperparameters with help of AutoML](images/automl-hyperparameter-tuning.png)
 
@@ -841,4 +866,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Dhanish Kumar, November 2024
