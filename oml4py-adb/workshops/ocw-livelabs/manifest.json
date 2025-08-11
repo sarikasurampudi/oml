@@ -1,6 +1,9 @@
 {
     "workshoptitle": "Introduction to Oracle Machine Learning for Python on Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
+    },
     "tutorials": [
         {
             "title": "Get Started with Live Labs",
@@ -39,7 +42,7 @@
         },
         {
             "title": "Lab 6: Use AutoML",
-            "filename": "../../automl/automl.md",
+            "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
             "type": "livelabs"
         },
         {
@@ -53,8 +56,9 @@
         "type": "livelabs"
         },
         {
-            "title": "Oracle CloudWorld 2023 - Get Help",
-            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
         }
     ]
 }

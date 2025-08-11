@@ -45,6 +45,10 @@
         {
             "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
             "filename": "../../use-scratchpad/use-scratchpad.md"
+        },
+        {
+            "title": "Lab 6: Advanced Options in Oracle Machine Learning Notebooks",
+            "filename": "../../adv-notebooks-options/adv-notebooks-options.md"
         },        
         {
             "title": "Need Help?",
